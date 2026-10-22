@@ -1,10 +1,22 @@
-# MCHOSE Native
+![MCHOSE Hub Rust — MCHOSE and Rust](docs/images/banner.png)
+
+# MCHOSE Hub Rust
 
 [Русский](README.ru.md)
 
-A native Rust configuration utility for **MCHOSE A7 V3 Ultra+ and MagDock**, for Windows and Linux. Built with egui/eframe and direct HID access. No browser engine, Electron, WebView or cloud account.
+An **open-source native alternative to MCHOSE Hub**, built in Rust for **MCHOSE A7 V3 Ultra+ and MagDock** on Windows and Linux. Built with egui/eframe and direct HID access. No browser engine, Electron, WebView or cloud account.
 
-[Download Windows and Linux packages](https://github.com/mansur54321/mchose-native/releases/latest).
+Developed through **reverse engineering** of the publicly distributed MCHOSE Hub web application, its HID protocol and official firmware. This is an independent project, not an official MCHOSE product.
+
+[Download Windows and Linux packages](https://github.com/mansur54321/mchose-hub-rust/releases/latest).
+
+## Screenshots
+
+The native application on Linux:
+
+| Dark theme | Light theme / MagDock |
+| --- | --- |
+| ![MCHOSE Hub Rust button settings in dark mode](docs/images/interface-dark.png) | ![MCHOSE Hub Rust MagDock settings in light mode](docs/images/interface-light.png) |
 
 ## Features
 
@@ -22,22 +34,22 @@ Device writes are read back and checked. Backups are saved before settings are r
 
 ## Run
 
-On Windows, launch `mchose-native.exe`. On Linux:
+On Windows, launch `mchose-hub-rust.exe`. On Linux:
 
 ```sh
-./mchose-native
+./mchose-hub-rust
 ```
 
 The application must remain running for music lighting and the charging ring. The charging signal comes from the mouse, so the ring also works when the mouse charges through a cable while MagDock is connected.
 
 ```sh
-mchose-native --lang en
-mchose-native --lang ru
-mchose-native --read-only
-mchose-native --offline
-mchose-native --status
-mchose-native --snapshot
-mchose-native --list
+mchose-hub-rust --lang en
+mchose-hub-rust --lang ru
+mchose-hub-rust --read-only
+mchose-hub-rust --offline
+mchose-hub-rust --status
+mchose-hub-rust --snapshot
+mchose-hub-rust --list
 ```
 
 `--read-only` disables device writes. `--offline` opens the local editors without HID access. `--status` and `--snapshot` print JSON; the latter also reads the device configuration. `--help` lists the remaining options.
@@ -67,11 +79,13 @@ Install a built Linux application in the current user's menu:
 python3 scripts/install-local.py
 ```
 
-Build output is `target/release/mchose-native` on Linux and `target/release/mchose-native.exe` on Windows. The local `egui-winit` patch preserves physical key events for the macro recorder; see [its scope and licenses](vendor/egui-winit/MCHOSE-PATCH.md).
+Build output is `target/release/mchose-hub-rust` on Linux and `target/release/mchose-hub-rust.exe` on Windows. The local `egui-winit` patch preserves physical key events for the macro recorder; see [its scope and licenses](vendor/egui-winit/MCHOSE-PATCH.md).
 
 ## Data and profiles
 
 Local data is stored in the application's platform data directory. It contains `backups/`, `presets/`, `macros/` and saved UI preferences. Linux uses `${XDG_DATA_HOME:-$HOME/.local/share}/mchose-native`; Windows uses the local application-data directory.
+
+The existing `mchose-native` data directory and Linux command alias are retained for compatibility with earlier builds.
 
 Profiles and macros can be imported from M HUB JSON. If a profile references a macro only by name, import that macro into the local library first. Missing definitions stop an import before any device write. The application does not overwrite existing export files.
 
@@ -88,3 +102,5 @@ See [firmware findings and limitations](docs/firmware.md) and [validation](docs/
 This is an independent implementation based on the publicly distributed MCHOSE Hub and captured device responses. It supports local device configuration; cloud accounts, shared online profiles, theme stores and other mouse models are outside its scope.
 
 The MCHOSE logo, illustrations and firmware remain third-party materials. Origins and dependency notices are recorded in [NOTICES.md](NOTICES.md). Local desktop captures, device backups, browser profiles and research toolchains are excluded from the repository.
+
+The project's original code is available under the [MIT License](LICENSE). Third-party artwork, firmware and vendored dependencies retain their own terms.

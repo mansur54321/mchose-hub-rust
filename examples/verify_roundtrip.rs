@@ -1,5 +1,5 @@
 use anyhow::{Context, Result, bail, ensure};
-use mchose_native::{
+use mchose_hub_rust::{
     controller::{data_dir, save_new_json},
     dock::{Dock, DockSettings},
     mouse::{DpiSettings, Mouse, MouseSnapshot},

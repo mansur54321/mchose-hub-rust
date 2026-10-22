@@ -20,4 +20,4 @@ if [ "${1-}" = "--test" ]; then
     shift
     exec cargo test --locked --target x86_64-pc-windows-gnullvm --release --all-targets --no-run -j 1 "$@"
 fi
-exec cargo build --locked --target x86_64-pc-windows-gnullvm --release --bin mchose-native -j 1 "$@"
+exec cargo build --locked --target x86_64-pc-windows-gnullvm --release --bin mchose-hub-rust -j 1 "$@"

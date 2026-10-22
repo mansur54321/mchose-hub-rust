@@ -4,14 +4,14 @@ param(
     [switch]$DesktopShortcut
 )
 $ErrorActionPreference = 'Stop'
-$binary = Join-Path $SourceDirectory 'mchose-native.exe'
+$binary = Join-Path $SourceDirectory 'mchose-hub-rust.exe'
 if (-not (Test-Path -LiteralPath $binary -PathType Leaf)) {
-    throw "mchose-native.exe was not found in $SourceDirectory. Extract the complete Windows package first."
+    throw "mchose-hub-rust.exe was not found in $SourceDirectory. Extract the complete Windows package first."
 }
 if (-not $env:LOCALAPPDATA) { throw 'LOCALAPPDATA is unavailable.' }
-$destination = Join-Path $env:LOCALAPPDATA 'Programs\MCHOSE Native'
+$destination = Join-Path $env:LOCALAPPDATA 'Programs\MCHOSE Hub Rust'
 New-Item -ItemType Directory -Path $destination -Force | Out-Null
-$installed = Join-Path $destination 'mchose-native.exe'
+$installed = Join-Path $destination 'mchose-hub-rust.exe'
 if (Test-Path -LiteralPath $installed) {
     $backup = Join-Path $destination ('previous-' + (Get-Date -Format 'yyyyMMdd-HHmmss-fffffff') + '.exe')
     Copy-Item -LiteralPath $installed -Destination $backup
@@ -25,7 +25,7 @@ $shell = New-Object -ComObject WScript.Shell
 $locations = @([Environment]::GetFolderPath('Programs'))
 if ($DesktopShortcut) { $locations += [Environment]::GetFolderPath('Desktop') }
 foreach ($location in $locations) {
-    $shortcut = $shell.CreateShortcut((Join-Path $location 'MCHOSE Native.lnk'))
+    $shortcut = $shell.CreateShortcut((Join-Path $location 'MCHOSE Hub Rust.lnk'))
     $shortcut.TargetPath = $installed
     $shortcut.WorkingDirectory = $destination
     $shortcut.IconLocation = "$installed,0"

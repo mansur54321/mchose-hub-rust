@@ -1,5 +1,5 @@
 use anyhow::{Context, Result, ensure};
-use mchose_native::{
+use mchose_hub_rust::{
     controller::{Command, Controller, save_new_json},
     dock::{Dock, DockMode, DockSettings},
     transport::{self, DeviceKind, HidIo, HidTransport},

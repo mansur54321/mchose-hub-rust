@@ -168,5 +168,46 @@
     "bytes": 11711,
     "transform": "ICO representations at 16,32,48,64,128,256 from mchose-icon.png",
     "created": "2026-10-22"
+  },
+  {
+    "path": "rust-logo.svg",
+    "url": "https://raw.githubusercontent.com/rust-lang/rust-artwork/main/logo/rust-logo-white-outline.svg",
+    "sha256": "c7a5fb03c8c4ddedcf2d2aa99ac607ee30cd266df7fa39b3d355d16efabcfcca",
+    "bytes": 12021,
+    "view_box": "0 0 28.752014 28.767818",
+    "source": "Rust project official rust-lang/rust-artwork repository",
+    "license": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "license_evidence": "https://github.com/rust-lang/rust-artwork/blob/main/logo/README.md",
+    "fetched": "2026-10-22",
+    "usage": "Official unmodified white-outline Rust logo; identifies implementation language without implying Rust project endorsement"
+  },
+  {
+    "path": "rust-logo.png",
+    "source_asset": "rust-logo.svg",
+    "source_sha256": "c7a5fb03c8c4ddedcf2d2aa99ac607ee30cd266df7fa39b3d355d16efabcfcca",
+    "sha256": "9d9109f0b2d94a56f1627a1a1c69c61627eb29a061ae7e07873a0c73968a1806",
+    "bytes": 36176,
+    "dimensions": [
+      512,
+      512
+    ],
+    "transform": "Rendered official SVG with librsvg to transparent PNG; artwork and colors unchanged",
+    "license": "CC-BY-4.0",
+    "created": "2026-10-22"
+  },
+  {
+    "path": "rust-logo-128.png",
+    "source_asset": "rust-logo.svg",
+    "source_sha256": "c7a5fb03c8c4ddedcf2d2aa99ac607ee30cd266df7fa39b3d355d16efabcfcca",
+    "sha256": "a799a8ab905999435be2981b484812fc4b73362fdb4a037650a29c548b33fdba",
+    "bytes": 7110,
+    "dimensions": [
+      128,
+      128
+    ],
+    "transform": "Rendered official SVG with librsvg to transparent PNG; artwork and colors unchanged",
+    "license": "CC-BY-4.0",
+    "created": "2026-10-22"
   }
 ]

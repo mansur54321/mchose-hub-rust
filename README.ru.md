@@ -1,10 +1,22 @@
-# MCHOSE Native
+![MCHOSE Hub Rust — MCHOSE и Rust](docs/images/banner.png)
+
+# MCHOSE Hub Rust
 
 [English](README.md)
 
-Нативное приложение на Rust для **MCHOSE A7 V3 Ultra+ и MagDock** под Windows и Linux. Интерфейс — egui/eframe, доступ к устройствам — через HID. Для работы не нужны браузерный движок, Electron, WebView или облачный аккаунт.
+**Open-source альтернатива MCHOSE Hub** на Rust для **MCHOSE A7 V3 Ultra+ и MagDock** под Windows и Linux. Интерфейс — egui/eframe, доступ к устройствам — через HID. Для работы не нужны браузерный движок, Electron, WebView или облачный аккаунт.
 
-[Скачать сборки Windows и Linux](https://github.com/mansur54321/mchose-native/releases/latest).
+Создано путём **реверс-инжиниринга (reverse engineering)** веб-версии MCHOSE Hub, HID-протокола и официальных прошивок. Это независимый проект, не официальное приложение MCHOSE.
+
+[Скачать сборки Windows и Linux](https://github.com/mansur54321/mchose-hub-rust/releases/latest).
+
+## Скриншоты
+
+Реальное нативное приложение под Linux:
+
+| Тёмная тема | Светлая тема / MagDock |
+| --- | --- |
+| ![Настройки кнопок в тёмной теме](docs/images/interface-dark.png) | ![Настройки MagDock в светлой теме](docs/images/interface-light.png) |
 
 ## Возможности
 
@@ -22,15 +34,15 @@
 
 ## Запуск
 
-В Windows запустите `mchose-native.exe`, в Linux — `./mchose-native`.
+В Windows запустите `mchose-hub-rust.exe`, в Linux — `./mchose-hub-rust`.
 
 ```sh
-mchose-native --lang ru
-mchose-native --lang en
-mchose-native --read-only
-mchose-native --offline
-mchose-native --status
-mchose-native --snapshot
+mchose-hub-rust --lang ru
+mchose-hub-rust --lang en
+mchose-hub-rust --read-only
+mchose-hub-rust --offline
+mchose-hub-rust --status
+mchose-hub-rust --snapshot
 ```
 
 Музыкальная подсветка и кольцо заряда требуют открытого приложения. Признак зарядки поступает от мыши, поэтому кольцо работает и при зарядке кабелем, если MagDock подключён.
@@ -52,7 +64,7 @@ cargo test --all-targets --locked
 python3 scripts/install-local.py
 ```
 
-Результат сборки: `target/release/mchose-native` в Linux, `target/release/mchose-native.exe` в Windows. Локальные данные Linux находятся в `${XDG_DATA_HOME:-$HOME/.local/share}/mchose-native`, Windows — в локальном каталоге данных приложений.
+Результат сборки: `target/release/mchose-hub-rust` в Linux, `target/release/mchose-hub-rust.exe` в Windows. Локальные данные Linux находятся в `${XDG_DATA_HOME:-$HOME/.local/share}/mchose-native`, Windows — в локальном каталоге данных приложений.
 
 ## Прошивки и проверки
 
@@ -61,3 +73,5 @@ python3 scripts/install-local.py
 [Разбор протокола и ограничения](docs/firmware.md), [проверки](docs/verification.md), [происхождение сторонних материалов](NOTICES.md).
 
 Это самостоятельное приложение совместимости. Облачные аккаунты, публикация настроек в M HUB, магазин тем и управление другими моделями в проект не входят.
+
+Собственный код проекта распространяется по [лицензии MIT](LICENSE). Сторонние изображения, прошивки и зависимости сохраняют свои условия лицензирования. Каталог данных `mchose-native` и старая команда Linux сохранены для совместимости с предыдущими сборками.

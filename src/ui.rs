@@ -100,6 +100,8 @@ pub struct NativeApp {
     offline: bool,
     textures: Vec<egui::TextureHandle>,
     dock_texture: egui::TextureHandle,
+    brand_texture: egui::TextureHandle,
+    rust_texture: egui::TextureHandle,
     skin: usize,
     staged_settings: Option<MouseSettings>,
     staged_dpi: Option<DpiSettings>,
@@ -158,7 +160,6 @@ pub struct NativeApp {
 
 impl NativeApp {
     pub fn new(cc: &eframe::CreationContext<'_>, read_only: bool, offline: bool) -> Self {
-        i18n::set_language(i18n::load_preference());
         let textures = [
             (
                 "white",
@@ -198,6 +199,8 @@ impl NativeApp {
                 "magdock",
                 include_bytes!("../assets/magdock.png"),
             ),
+            brand_texture: load_texture(&cc.egui_ctx, "mchose-brand", include_bytes!("../assets/mchose-icon.png")),
+            rust_texture: load_texture(&cc.egui_ctx, "rust-brand", include_bytes!("../assets/rust-logo-128.png")),
             skin: 0,
             staged_settings: None,
             staged_dpi: None,
@@ -263,6 +266,7 @@ impl NativeApp {
         app
     }
     fn style(&self, ctx: &egui::Context) {
+        ctx.set_theme(if self.dark { egui::ThemePreference::Dark } else { egui::ThemePreference::Light });
         let p = Palette::new(self.dark);
         let mut visuals = if self.dark {
             egui::Visuals::dark()
@@ -548,11 +552,9 @@ impl NativeApp {
             )
             .show(ctx, |ui| {
                 ui.horizontal(|ui| {
-                    ui.label(RichText::new("MCHOSE").size(22.0).strong());
-                    ui.add_space(10.0);
-                    if ctx.content_rect().width() >= 1000.0 {
-                        ui.label(RichText::new("M HUB / native").color(p.muted));
-                    }
+                    ui.add(egui::Image::new(&self.brand_texture).fit_to_exact_size(Vec2::splat(28.0)));
+                    ui.label(RichText::new("MCHOSE Hub Rust").size(if ctx.content_rect().width() < 1000.0 { 16.0 } else { 18.0 }).strong());
+                    ui.add(egui::Image::new(&self.rust_texture).fit_to_exact_size(Vec2::splat(26.0)));
                     ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
                         let label = t(if self.dark {
                             "Светлая тема"
@@ -752,6 +754,7 @@ impl NativeApp {
                             );
                             ui.add_space(12.0);
                             ui.horizontal(|ui| {
+                                ui.spacing_mut().item_spacing.x = ((ui.available_width() - 120.0) / 4.0).clamp(0.0, 10.0);
                                 for (i, color) in [
                                     Color32::from_gray(238),
                                     Color32::from_gray(40),

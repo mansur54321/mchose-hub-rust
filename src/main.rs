@@ -8,7 +8,7 @@ fn main() -> std::process::ExitCode {
                 "{}",
                 error
                     .chain()
-                    .map(|context| mchose_native::i18n::message(&context.to_string()))
+                    .map(|context| mchose_hub_rust::i18n::message(&context.to_string()))
                     .collect::<Vec<_>>()
                     .join(": ")
             );
@@ -26,7 +26,7 @@ fn run() -> anyhow::Result<()> {
             );
         }
     }
-    use mchose_native::{
+    use mchose_hub_rust::{
         dock::Dock,
         mouse::Mouse,
         transport::{self, DeviceKind, HidTransport},
@@ -38,20 +38,20 @@ fn run() -> anyhow::Result<()> {
         anyhow::ensure!(language.is_some(), "--lang expects ru or en");
     }
     let selected_language = if let Some(language) = &language {
-        mchose_native::i18n::Language::parse(language)
+        mchose_hub_rust::i18n::Language::parse(language)
             .ok_or_else(|| anyhow::anyhow!("--lang expects ru or en"))?
     } else {
-        mchose_native::i18n::load_preference()
+        mchose_hub_rust::i18n::load_preference()
     };
-    mchose_native::i18n::set_language(selected_language);
+    mchose_hub_rust::i18n::set_language(selected_language);
     if args.iter().any(|v| v == "--help" || v == "-h") {
-        if selected_language == mchose_native::i18n::Language::En {
+        if selected_language == mchose_hub_rust::i18n::Language::En {
             println!(
-                "MCHOSE Native\n\nNo arguments: native interface\n--list                 USB/HID devices\n--status               Mouse and dock status as JSON\n--snapshot             Full current settings as JSON\n--read-only            GUI without device writes\n--offline              GUI without HID access\n--lang ru|en           Interface and CLI language\n--page PAGE            keys, dpi, performance, dock, macros, profiles, system\n--light                Light theme\n--size WIDTHxHEIGHT    Window size (minimum 855x700)\n--screenshot PATH      Save this window as PNG and exit"
+                "MCHOSE Hub Rust\n\nNo arguments: native interface\n--list                 USB/HID devices\n--status               Mouse and dock status as JSON\n--snapshot             Full current settings as JSON\n--read-only            GUI without device writes\n--offline              GUI without HID access\n--lang ru|en           Interface and CLI language\n--page PAGE            keys, dpi, performance, dock, macros, profiles, system\n--light                Light theme\n--size WIDTHxHEIGHT    Window size (minimum 855x700)\n--screenshot PATH      Save this window as PNG and exit"
             );
         } else {
             println!(
-                "MCHOSE Native\n\nБез аргументов: нативный интерфейс\n--list                 USB/HID-устройства\n--status               Состояние мыши и дока в JSON\n--snapshot             Полные текущие настройки в JSON\n--read-only            GUI без записи в устройства\n--offline              GUI без доступа к HID\n--lang ru|en           Язык интерфейса и CLI\n--page PAGE            keys, dpi, performance, dock, macros, profiles, system\n--light                Светлая тема\n--size WIDTHxHEIGHT    Размер окна (минимум 855x700)\n--screenshot PATH      Сохранить собственное окно в PNG и завершить работу"
+                "MCHOSE Hub Rust\n\nБез аргументов: нативный интерфейс\n--list                 USB/HID-устройства\n--status               Состояние мыши и дока в JSON\n--snapshot             Полные текущие настройки в JSON\n--read-only            GUI без записи в устройства\n--offline              GUI без доступа к HID\n--lang ru|en           Язык интерфейса и CLI\n--page PAGE            keys, dpi, performance, dock, macros, profiles, system\n--light                Светлая тема\n--size WIDTHxHEIGHT    Размер окна (минимум 855x700)\n--screenshot PATH      Сохранить собственное окно в PNG и завершить работу"
             );
         }
         return Ok(());
@@ -104,10 +104,10 @@ fn run() -> anyhow::Result<()> {
             }));
         }
         eframe::run_native(
-            "MCHOSE Native",
+            "MCHOSE Hub Rust",
             options,
             Box::new(move |cc| {
-                let mut app = mchose_native::ui::NativeApp::new(cc, read_only, offline);
+                let mut app = mchose_hub_rust::ui::NativeApp::new(cc, read_only, offline);
                 if let Some(language) = language {
                     app.set_language(&language);
                 }
@@ -153,7 +153,7 @@ fn run() -> anyhow::Result<()> {
                                 error
                                     .chain()
                                     .map(|context| {
-                                        mchose_native::i18n::message(&context.to_string())
+                                        mchose_hub_rust::i18n::message(&context.to_string())
                                     })
                                     .collect::<Vec<_>>()
                                     .join(": ")
@@ -174,7 +174,7 @@ fn run() -> anyhow::Result<()> {
                                 error
                                     .chain()
                                     .map(|context| {
-                                        mchose_native::i18n::message(&context.to_string())
+                                        mchose_hub_rust::i18n::message(&context.to_string())
                                     })
                                     .collect::<Vec<_>>()
                                     .join(": ")

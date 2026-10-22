@@ -24,7 +24,7 @@ def main():
         if len(data) != entry['bytes'] or hashlib.sha256(data).hexdigest() != entry['sha256']:
             raise ValueError(f"Firmware manifest mismatch: {entry['filename']}")
     files = [(binary, binary.name)]
-    for name in ['README.md', 'README.ru.md', 'NOTICES.md']:
+    for name in ['README.md', 'README.ru.md', 'LICENSE', 'NOTICES.md']:
         files.append((root / name, name))
     for folder in ['firmware', 'docs']:
         files.extend((path, path.relative_to(root).as_posix()) for path in sorted((root / folder).rglob('*')) if path.is_file())
@@ -44,7 +44,7 @@ def main():
         ])
     output = root / 'dist'
     output.mkdir(exist_ok=True)
-    name = f'mchose-native-{args.platform}'
+    name = f'mchose-hub-rust-{args.platform}'
     if args.platform.startswith('windows'):
         archive = output / f'{name}.zip'
         with zipfile.ZipFile(archive, 'x', compression=zipfile.ZIP_DEFLATED) as package:

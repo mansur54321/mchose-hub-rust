@@ -47,7 +47,7 @@ impl MusicCapture {
             "stream.capture.sink": true,
             "node.dont-fallback": true,
             "node.dont-reconnect": true,
-            "application.name": "MCHOSE Native music lighting",
+            "application.name": "MCHOSE Hub Rust music lighting",
             "node.name": "mchose-native-music",
             "media.name": "MagDock lighting from speaker output"
         })

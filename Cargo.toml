@@ -1,7 +1,9 @@
 [package]
-name = "mchose-native"
+name = "mchose-hub-rust"
 version = "0.1.0"
 edition = "2024"
+license = "MIT"
+repository = "https://github.com/mansur54321/mchose-hub-rust"
 description = "Native Linux and Windows controller for MCHOSE A7 V3 Ultra+ and MagDock"
 
 [dependencies]

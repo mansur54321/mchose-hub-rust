@@ -1,4 +1,4 @@
 #!/bin/sh
 set -eu
 project_dir=$(CDPATH='' cd -- "$(dirname -- "$0")/.." && pwd)
-exec "$project_dir/target/release/mchose-native" "$@"
+exec "$project_dir/target/release/mchose-hub-rust" "$@"

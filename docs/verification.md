@@ -19,9 +19,13 @@ The tests cover frame validation, sleeping-device responses, profile and macro s
 
 The local Linux `cargo test --locked --all-targets` run passed 70 library tests and one roundtrip example test. Localization checks cover placeholders, user names and paths, nested errors and UI catalog coverage. Windows report padding and write completion conventions are tested without hardware.
 
+Native Windows CI also passed 70 library tests and one example test. In particular, saving an edited local profile preserves the original bytes in a backup and completes successfully on Windows. Nine isolated Linux installer tests cover migration from the earlier application name, repeated installs and preservation of unrelated files and user desktop-entry additions.
+
 One legacy X11 test is ignored by default because it needs an isolated X server and input-focus setup. It is separate from the platform-independent macro recording tests.
 
 The GitHub workflow builds and tests both platforms, runs CLI checks without attached devices, and packages the executable with the original firmware and notices. It does not run hardware-writing examples.
+
+Native Linux interface checks cover all seven pages, dark/light themes, widths from 855 to 1440 pixels, RU/EN switching and persistence across restart. Windows executables were additionally checked under an isolated Wine prefix for hardware-free tests and offline dark/light rendering. Wine checks do not replace physical Windows device or audio testing.
 
 ## Windows limits
 

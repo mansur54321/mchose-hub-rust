@@ -4,7 +4,7 @@ The Windows application uses the same Rust/egui interface and codecs as Linux. I
 
 ## Run or install
 
-Extract the complete Windows package and open `mchose-native.exe`. To install it for the current user with a Start menu shortcut, run PowerShell from the extracted directory:
+Extract the complete Windows package and open `mchose-hub-rust.exe`. To install it for the current user with a Start menu shortcut, run PowerShell from the extracted directory:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\install-windows.ps1 -Language en
@@ -20,7 +20,7 @@ Install stable Rust with the MSVC target and the Visual Studio C++ build tools, 
 
 ```powershell
 cargo test --locked --lib
-cargo build --locked --release --bin mchose-native
+cargo build --locked --release --bin mchose-hub-rust
 ```
 
 `build.rs` embeds the official MCHOSE icon into the executable. The PNG version is embedded separately for the native window icon.
@@ -35,7 +35,7 @@ scripts/build-windows.sh
 scripts/build-windows.sh --test # compile hardware-free Windows unit tests
 ```
 
-Toolchain URLs and SHA-256 checksums are pinned in `scripts/windows-toolchains.json`. Downloads are verified before extraction. The result is `target/x86_64-pc-windows-gnullvm/release/mchose-native.exe`. The build sets `crt-static` so the LLVM unwinder is linked into the executable instead of requiring `libunwind.dll`. Windows system DLLs remain normal runtime dependencies. A matching official compiler is required: a distribution-patched Rust compiler can reject an official standard library with E0514 even when version and commit match.
+Toolchain URLs and SHA-256 checksums are pinned in `scripts/windows-toolchains.json`. Downloads are verified before extraction. The result is `target/x86_64-pc-windows-gnullvm/release/mchose-hub-rust.exe`. The build sets `crt-static` so the LLVM unwinder is linked into the executable instead of requiring `libunwind.dll`. Windows system DLLs remain normal runtime dependencies. A matching official compiler is required: a distribution-patched Rust compiler can reject an official standard library with E0514 even when version and commit match.
 
 ## Platform details and validation limits
 
