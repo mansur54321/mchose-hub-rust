@@ -1,0 +1,44 @@
+[
+  {
+    "url": "https://cdn.mchose.com.cn/configCenter/static/binaries/A7V3Ultra_Mouse_Main_V0030_fcqg68rivdsbjbpg.bin",
+    "filename": "A7V3Ultra_Mouse_Main_V0030_fcqg68rivdsbjbpg.bin",
+    "bytes": 284448,
+    "sha256": "160b6038cfbdff9aa985ba5d69ebb9d80c33111535d7594f0e75cf0b6b617943"
+  },
+  {
+    "url": "https://cdn.mchose.com.cn/configCenter/static/binaries/A7V3Ultra_Mouse_Sub_V0030_5hpquux675nxi0rd.bin",
+    "filename": "A7V3Ultra_Mouse_Sub_V0030_5hpquux675nxi0rd.bin",
+    "bytes": 31132,
+    "sha256": "d84a924d3e50926adcbae5ab04d8769d54dc027c5dcae57647d6c6adcceee74c"
+  },
+  {
+    "url": "https://cdn.mchose.com.cn/configCenter/static/binaries/Mchose_Dongle_Main_V0006_0l241tvam259pzly.bin",
+    "filename": "Mchose_Dongle_Main_V0006_0l241tvam259pzly.bin",
+    "bytes": 144148,
+    "sha256": "31e45882ec938bd144aa9bee39265a54ec93bf3e42550e7c0fe1800550b3787a"
+  },
+  {
+    "url": "https://cdn.mchose.com.cn/configCenter/static/binaries/Mchose_Dongle_Sub_V0006_vef43frqhr5xyd63.bin",
+    "filename": "Mchose_Dongle_Sub_V0006_vef43frqhr5xyd63.bin",
+    "bytes": 30380,
+    "sha256": "7ce39857699050b4038ab8828a6a79d8fb430605776751408f822dd66744bfbf"
+  },
+  {
+    "url": "https://cdn.mchose.com.cn/configCenter/static/binaries/MCHOSE_DONGLE_MAIN_V0011_gia3z93bfwxx3o1z.bin",
+    "filename": "MCHOSE_DONGLE_MAIN_V0011_gia3z93bfwxx3o1z.bin",
+    "bytes": 143904,
+    "sha256": "b575e528c13e24925a8617a646179768103255c602b28bd69841dec165a0cb46"
+  },
+  {
+    "url": "https://cdn.mchose.com.cn/configCenter/static/binaries/Mchose_Dongle_Sub_564C_V0011_2l1rmkl1ja3dj55o.bin",
+    "filename": "Mchose_Dongle_Sub_564C_V0011_2l1rmkl1ja3dj55o.bin",
+    "bytes": 29440,
+    "sha256": "f404ff3893d69bd69b51ac4f40b7757b1ab229affefc394ba5bf3373414cae3e"
+  },
+  {
+    "url": "https://cdn.mchose.com.cn/configCenter/public/newBin/MagDock0004.bin",
+    "filename": "MagDock0004.bin",
+    "bytes": 25424,
+    "sha256": "8ad22b59bbf0704b5242ced705a5d274983b4427c5c0f7b28beeb22029988fe2"
+  }
+]

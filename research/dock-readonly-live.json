@@ -1,0 +1,36 @@
+{
+  "timestamp_utc": "2026-10-22T07:51:17.234046+00:00",
+  "node": "/dev/hidraw3",
+  "operation": "read global settings only; opcode 0x07",
+  "report_id": 0,
+  "webhid_payload_hex": "aa0700000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "raw_input": [
+    "aa070200001e010406010200ff000000001e0300004d43484f5345204d6167446f636b01000000000000000000000000000000000000000000000000000000"
+  ],
+  "write_count_including_zero_report_id": 64,
+  "status": "response received",
+  "response_length": 63,
+  "decoded": {
+    "enabled": true,
+    "mode": 4,
+    "mode_count": 6,
+    "speed": 1,
+    "brightness": 2,
+    "music_sync": false,
+    "color": [
+      255,
+      0,
+      0
+    ],
+    "sleep_enabled": false,
+    "sleep_time_raw": 0,
+    "firmware_raw": [
+      30,
+      3,
+      0,
+      0
+    ],
+    "firmware_version": "0003",
+    "direction": 1
+  }
+}

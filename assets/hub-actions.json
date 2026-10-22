@@ -1,0 +1,2213 @@
+[
+  {
+    "id": "mouse.left",
+    "category": "mouse",
+    "name_en": "Left button",
+    "name_ru": "ЛКМ",
+    "kind": 0,
+    "data": [
+      1,
+      0
+    ],
+    "upstream_value": "0x000001"
+  },
+  {
+    "id": "mouse.right",
+    "category": "mouse",
+    "name_en": "Right button",
+    "name_ru": "ПКМ",
+    "kind": 0,
+    "data": [
+      2,
+      0
+    ],
+    "upstream_value": "0x000002"
+  },
+  {
+    "id": "mouse.mid",
+    "category": "mouse",
+    "name_en": "Middle button",
+    "name_ru": "СКМ",
+    "kind": 0,
+    "data": [
+      4,
+      0
+    ],
+    "upstream_value": "0x000004"
+  },
+  {
+    "id": "mouse.forward",
+    "category": "mouse",
+    "name_en": "Advance",
+    "name_ru": "Вперед",
+    "kind": 0,
+    "data": [
+      16,
+      0
+    ],
+    "upstream_value": "0x000010"
+  },
+  {
+    "id": "mouse.retreat",
+    "category": "mouse",
+    "name_en": "Back",
+    "name_ru": "Назад",
+    "kind": 0,
+    "data": [
+      8,
+      0
+    ],
+    "upstream_value": "0x000008"
+  },
+  {
+    "id": "mouse.scrollUp",
+    "category": "mouse",
+    "name_en": "Wheel up",
+    "name_ru": "колесо вверх",
+    "kind": 5,
+    "data": [
+      0,
+      0
+    ],
+    "upstream_value": "0x050000"
+  },
+  {
+    "id": "mouse.scrollDown",
+    "category": "mouse",
+    "name_en": "Wheel down",
+    "name_ru": "колесо вниз",
+    "kind": 5,
+    "data": [
+      1,
+      0
+    ],
+    "upstream_value": "0x050001"
+  },
+  {
+    "id": "- _",
+    "category": "keyboard",
+    "name_en": "- _",
+    "name_ru": "- _",
+    "kind": 17,
+    "data": [
+      45,
+      0
+    ],
+    "upstream_value": "0x11002d"
+  },
+  {
+    "id": ", <",
+    "category": "keyboard",
+    "name_en": ", <",
+    "name_ru": ", <",
+    "kind": 17,
+    "data": [
+      54,
+      0
+    ],
+    "upstream_value": "0x110036"
+  },
+  {
+    "id": "; :",
+    "category": "keyboard",
+    "name_en": "; :",
+    "name_ru": "; :",
+    "kind": 17,
+    "data": [
+      51,
+      0
+    ],
+    "upstream_value": "0x110033"
+  },
+  {
+    "id": ". >",
+    "category": "keyboard",
+    "name_en": ". >",
+    "name_ru": ". >",
+    "kind": 17,
+    "data": [
+      55,
+      0
+    ],
+    "upstream_value": "0x110037"
+  },
+  {
+    "id": "' \"",
+    "category": "keyboard",
+    "name_en": "' \"",
+    "name_ru": "' \"",
+    "kind": 17,
+    "data": [
+      52,
+      0
+    ],
+    "upstream_value": "0x110034"
+  },
+  {
+    "id": "[ {",
+    "category": "keyboard",
+    "name_en": "[ {",
+    "name_ru": "[ {",
+    "kind": 17,
+    "data": [
+      47,
+      0
+    ],
+    "upstream_value": "0x11002f"
+  },
+  {
+    "id": "] }",
+    "category": "keyboard",
+    "name_en": "] }",
+    "name_ru": "] }",
+    "kind": 17,
+    "data": [
+      48,
+      0
+    ],
+    "upstream_value": "0x110030"
+  },
+  {
+    "id": "/ ?",
+    "category": "keyboard",
+    "name_en": "/ ?",
+    "name_ru": "/ ?",
+    "kind": 17,
+    "data": [
+      56,
+      0
+    ],
+    "upstream_value": "0x110038"
+  },
+  {
+    "id": "\\ |",
+    "category": "keyboard",
+    "name_en": "\\ |",
+    "name_ru": "\\ |",
+    "kind": 17,
+    "data": [
+      49,
+      0
+    ],
+    "upstream_value": "0x110031"
+  },
+  {
+    "id": "` ~",
+    "category": "keyboard",
+    "name_en": "` ~",
+    "name_ru": "` ~",
+    "kind": 17,
+    "data": [
+      53,
+      0
+    ],
+    "upstream_value": "0x110035"
+  },
+  {
+    "id": "= +",
+    "category": "keyboard",
+    "name_en": "= +",
+    "name_ru": "= +",
+    "kind": 17,
+    "data": [
+      46,
+      0
+    ],
+    "upstream_value": "0x11002e"
+  },
+  {
+    "id": "0 )",
+    "category": "keyboard",
+    "name_en": "0 )",
+    "name_ru": "0 )",
+    "kind": 17,
+    "data": [
+      39,
+      0
+    ],
+    "upstream_value": "0x110027"
+  },
+  {
+    "id": "1 !",
+    "category": "keyboard",
+    "name_en": "1 !",
+    "name_ru": "1 !",
+    "kind": 17,
+    "data": [
+      30,
+      0
+    ],
+    "upstream_value": "0x11001e"
+  },
+  {
+    "id": "2 @",
+    "category": "keyboard",
+    "name_en": "2 @",
+    "name_ru": "2 @",
+    "kind": 17,
+    "data": [
+      31,
+      0
+    ],
+    "upstream_value": "0x11001f"
+  },
+  {
+    "id": "3 #",
+    "category": "keyboard",
+    "name_en": "3 #",
+    "name_ru": "3 #",
+    "kind": 17,
+    "data": [
+      32,
+      0
+    ],
+    "upstream_value": "0x110020"
+  },
+  {
+    "id": "4 $",
+    "category": "keyboard",
+    "name_en": "4 $",
+    "name_ru": "4 $",
+    "kind": 17,
+    "data": [
+      33,
+      0
+    ],
+    "upstream_value": "0x110021"
+  },
+  {
+    "id": "5 %",
+    "category": "keyboard",
+    "name_en": "5 %",
+    "name_ru": "5 %",
+    "kind": 17,
+    "data": [
+      34,
+      0
+    ],
+    "upstream_value": "0x110022"
+  },
+  {
+    "id": "6 ^",
+    "category": "keyboard",
+    "name_en": "6 ^",
+    "name_ru": "6 ^",
+    "kind": 17,
+    "data": [
+      35,
+      0
+    ],
+    "upstream_value": "0x110023"
+  },
+  {
+    "id": "7 &",
+    "category": "keyboard",
+    "name_en": "7 &",
+    "name_ru": "7 &",
+    "kind": 17,
+    "data": [
+      36,
+      0
+    ],
+    "upstream_value": "0x110024"
+  },
+  {
+    "id": "8 *",
+    "category": "keyboard",
+    "name_en": "8 *",
+    "name_ru": "8 *",
+    "kind": 17,
+    "data": [
+      37,
+      0
+    ],
+    "upstream_value": "0x110025"
+  },
+  {
+    "id": "9 (",
+    "category": "keyboard",
+    "name_en": "9 (",
+    "name_ru": "9 (",
+    "kind": 17,
+    "data": [
+      38,
+      0
+    ],
+    "upstream_value": "0x110026"
+  },
+  {
+    "id": "A",
+    "category": "keyboard",
+    "name_en": "A",
+    "name_ru": "A",
+    "kind": 17,
+    "data": [
+      4,
+      0
+    ],
+    "upstream_value": "0x110004"
+  },
+  {
+    "id": "B",
+    "category": "keyboard",
+    "name_en": "B",
+    "name_ru": "B",
+    "kind": 17,
+    "data": [
+      5,
+      0
+    ],
+    "upstream_value": "0x110005"
+  },
+  {
+    "id": "C",
+    "category": "keyboard",
+    "name_en": "C",
+    "name_ru": "C",
+    "kind": 17,
+    "data": [
+      6,
+      0
+    ],
+    "upstream_value": "0x110006"
+  },
+  {
+    "id": "D",
+    "category": "keyboard",
+    "name_en": "D",
+    "name_ru": "D",
+    "kind": 17,
+    "data": [
+      7,
+      0
+    ],
+    "upstream_value": "0x110007"
+  },
+  {
+    "id": "E",
+    "category": "keyboard",
+    "name_en": "E",
+    "name_ru": "E",
+    "kind": 17,
+    "data": [
+      8,
+      0
+    ],
+    "upstream_value": "0x110008"
+  },
+  {
+    "id": "F",
+    "category": "keyboard",
+    "name_en": "F",
+    "name_ru": "F",
+    "kind": 17,
+    "data": [
+      9,
+      0
+    ],
+    "upstream_value": "0x110009"
+  },
+  {
+    "id": "G",
+    "category": "keyboard",
+    "name_en": "G",
+    "name_ru": "G",
+    "kind": 17,
+    "data": [
+      10,
+      0
+    ],
+    "upstream_value": "0x11000a"
+  },
+  {
+    "id": "H",
+    "category": "keyboard",
+    "name_en": "H",
+    "name_ru": "H",
+    "kind": 17,
+    "data": [
+      11,
+      0
+    ],
+    "upstream_value": "0x11000b"
+  },
+  {
+    "id": "I",
+    "category": "keyboard",
+    "name_en": "I",
+    "name_ru": "I",
+    "kind": 17,
+    "data": [
+      12,
+      0
+    ],
+    "upstream_value": "0x11000c"
+  },
+  {
+    "id": "J",
+    "category": "keyboard",
+    "name_en": "J",
+    "name_ru": "J",
+    "kind": 17,
+    "data": [
+      13,
+      0
+    ],
+    "upstream_value": "0x11000d"
+  },
+  {
+    "id": "K",
+    "category": "keyboard",
+    "name_en": "K",
+    "name_ru": "K",
+    "kind": 17,
+    "data": [
+      14,
+      0
+    ],
+    "upstream_value": "0x11000e"
+  },
+  {
+    "id": "L",
+    "category": "keyboard",
+    "name_en": "L",
+    "name_ru": "L",
+    "kind": 17,
+    "data": [
+      15,
+      0
+    ],
+    "upstream_value": "0x11000f"
+  },
+  {
+    "id": "M",
+    "category": "keyboard",
+    "name_en": "M",
+    "name_ru": "M",
+    "kind": 17,
+    "data": [
+      16,
+      0
+    ],
+    "upstream_value": "0x110010"
+  },
+  {
+    "id": "N",
+    "category": "keyboard",
+    "name_en": "N",
+    "name_ru": "N",
+    "kind": 17,
+    "data": [
+      17,
+      0
+    ],
+    "upstream_value": "0x110011"
+  },
+  {
+    "id": "O",
+    "category": "keyboard",
+    "name_en": "O",
+    "name_ru": "O",
+    "kind": 17,
+    "data": [
+      18,
+      0
+    ],
+    "upstream_value": "0x110012"
+  },
+  {
+    "id": "P",
+    "category": "keyboard",
+    "name_en": "P",
+    "name_ru": "P",
+    "kind": 17,
+    "data": [
+      19,
+      0
+    ],
+    "upstream_value": "0x110013"
+  },
+  {
+    "id": "Q",
+    "category": "keyboard",
+    "name_en": "Q",
+    "name_ru": "Q",
+    "kind": 17,
+    "data": [
+      20,
+      0
+    ],
+    "upstream_value": "0x110014"
+  },
+  {
+    "id": "R",
+    "category": "keyboard",
+    "name_en": "R",
+    "name_ru": "R",
+    "kind": 17,
+    "data": [
+      21,
+      0
+    ],
+    "upstream_value": "0x110015"
+  },
+  {
+    "id": "S",
+    "category": "keyboard",
+    "name_en": "S",
+    "name_ru": "S",
+    "kind": 17,
+    "data": [
+      22,
+      0
+    ],
+    "upstream_value": "0x110016"
+  },
+  {
+    "id": "T",
+    "category": "keyboard",
+    "name_en": "T",
+    "name_ru": "T",
+    "kind": 17,
+    "data": [
+      23,
+      0
+    ],
+    "upstream_value": "0x110017"
+  },
+  {
+    "id": "U",
+    "category": "keyboard",
+    "name_en": "U",
+    "name_ru": "U",
+    "kind": 17,
+    "data": [
+      24,
+      0
+    ],
+    "upstream_value": "0x110018"
+  },
+  {
+    "id": "V",
+    "category": "keyboard",
+    "name_en": "V",
+    "name_ru": "V",
+    "kind": 17,
+    "data": [
+      25,
+      0
+    ],
+    "upstream_value": "0x110019"
+  },
+  {
+    "id": "W",
+    "category": "keyboard",
+    "name_en": "W",
+    "name_ru": "W",
+    "kind": 17,
+    "data": [
+      26,
+      0
+    ],
+    "upstream_value": "0x11001a"
+  },
+  {
+    "id": "X",
+    "category": "keyboard",
+    "name_en": "X",
+    "name_ru": "X",
+    "kind": 17,
+    "data": [
+      27,
+      0
+    ],
+    "upstream_value": "0x11001b"
+  },
+  {
+    "id": "Y",
+    "category": "keyboard",
+    "name_en": "Y",
+    "name_ru": "Y",
+    "kind": 17,
+    "data": [
+      28,
+      0
+    ],
+    "upstream_value": "0x11001c"
+  },
+  {
+    "id": "Z",
+    "category": "keyboard",
+    "name_en": "Z",
+    "name_ru": "Z",
+    "kind": 17,
+    "data": [
+      29,
+      0
+    ],
+    "upstream_value": "0x11001d"
+  },
+  {
+    "id": "Backspace",
+    "category": "keyboard",
+    "name_en": "Backspace",
+    "name_ru": "Backspace",
+    "kind": 17,
+    "data": [
+      42,
+      0
+    ],
+    "upstream_value": "0x11002a"
+  },
+  {
+    "id": "Caps Lock",
+    "category": "keyboard",
+    "name_en": "Caps Lock",
+    "name_ru": "Caps Lock",
+    "kind": 17,
+    "data": [
+      57,
+      0
+    ],
+    "upstream_value": "0x110039"
+  },
+  {
+    "id": "Delete",
+    "category": "keyboard",
+    "name_en": "Delete",
+    "name_ru": "Delete",
+    "kind": 17,
+    "data": [
+      76,
+      0
+    ],
+    "upstream_value": "0x11004c"
+  },
+  {
+    "id": "Down",
+    "category": "keyboard",
+    "name_en": "Down",
+    "name_ru": "Down",
+    "kind": 17,
+    "data": [
+      81,
+      0
+    ],
+    "upstream_value": "0x110051"
+  },
+  {
+    "id": "End",
+    "category": "keyboard",
+    "name_en": "End",
+    "name_ru": "End",
+    "kind": 17,
+    "data": [
+      77,
+      0
+    ],
+    "upstream_value": "0x11004d"
+  },
+  {
+    "id": "Enter",
+    "category": "keyboard",
+    "name_en": "Enter",
+    "name_ru": "Enter",
+    "kind": 17,
+    "data": [
+      40,
+      0
+    ],
+    "upstream_value": "0x110028"
+  },
+  {
+    "id": "Esc",
+    "category": "keyboard",
+    "name_en": "Esc",
+    "name_ru": "Esc",
+    "kind": 17,
+    "data": [
+      41,
+      0
+    ],
+    "upstream_value": "0x110029"
+  },
+  {
+    "id": "F1",
+    "category": "keyboard",
+    "name_en": "F1",
+    "name_ru": "F1",
+    "kind": 17,
+    "data": [
+      58,
+      0
+    ],
+    "upstream_value": "0x11003a"
+  },
+  {
+    "id": "F2",
+    "category": "keyboard",
+    "name_en": "F2",
+    "name_ru": "F2",
+    "kind": 17,
+    "data": [
+      59,
+      0
+    ],
+    "upstream_value": "0x11003b"
+  },
+  {
+    "id": "F3",
+    "category": "keyboard",
+    "name_en": "F3",
+    "name_ru": "F3",
+    "kind": 17,
+    "data": [
+      60,
+      0
+    ],
+    "upstream_value": "0x11003c"
+  },
+  {
+    "id": "F4",
+    "category": "keyboard",
+    "name_en": "F4",
+    "name_ru": "F4",
+    "kind": 17,
+    "data": [
+      61,
+      0
+    ],
+    "upstream_value": "0x11003d"
+  },
+  {
+    "id": "F5",
+    "category": "keyboard",
+    "name_en": "F5",
+    "name_ru": "F5",
+    "kind": 17,
+    "data": [
+      62,
+      0
+    ],
+    "upstream_value": "0x11003e"
+  },
+  {
+    "id": "F6",
+    "category": "keyboard",
+    "name_en": "F6",
+    "name_ru": "F6",
+    "kind": 17,
+    "data": [
+      63,
+      0
+    ],
+    "upstream_value": "0x11003f"
+  },
+  {
+    "id": "F7",
+    "category": "keyboard",
+    "name_en": "F7",
+    "name_ru": "F7",
+    "kind": 17,
+    "data": [
+      64,
+      0
+    ],
+    "upstream_value": "0x110040"
+  },
+  {
+    "id": "F8",
+    "category": "keyboard",
+    "name_en": "F8",
+    "name_ru": "F8",
+    "kind": 17,
+    "data": [
+      65,
+      0
+    ],
+    "upstream_value": "0x110041"
+  },
+  {
+    "id": "F9",
+    "category": "keyboard",
+    "name_en": "F9",
+    "name_ru": "F9",
+    "kind": 17,
+    "data": [
+      66,
+      0
+    ],
+    "upstream_value": "0x110042"
+  },
+  {
+    "id": "F10",
+    "category": "keyboard",
+    "name_en": "F10",
+    "name_ru": "F10",
+    "kind": 17,
+    "data": [
+      67,
+      0
+    ],
+    "upstream_value": "0x110043"
+  },
+  {
+    "id": "F11",
+    "category": "keyboard",
+    "name_en": "F11",
+    "name_ru": "F11",
+    "kind": 17,
+    "data": [
+      68,
+      0
+    ],
+    "upstream_value": "0x110044"
+  },
+  {
+    "id": "F12",
+    "category": "keyboard",
+    "name_en": "F12",
+    "name_ru": "F12",
+    "kind": 17,
+    "data": [
+      69,
+      0
+    ],
+    "upstream_value": "0x110045"
+  },
+  {
+    "id": "Menu",
+    "category": "keyboard",
+    "name_en": "Menu",
+    "name_ru": "Menu",
+    "kind": 17,
+    "data": [
+      101,
+      0
+    ],
+    "upstream_value": "0x110065"
+  },
+  {
+    "id": "Home",
+    "category": "keyboard",
+    "name_en": "Home",
+    "name_ru": "Home",
+    "kind": 17,
+    "data": [
+      74,
+      0
+    ],
+    "upstream_value": "0x11004a"
+  },
+  {
+    "id": "Insert",
+    "category": "keyboard",
+    "name_en": "Insert",
+    "name_ru": "Insert",
+    "kind": 17,
+    "data": [
+      73,
+      0
+    ],
+    "upstream_value": "0x110049"
+  },
+  {
+    "id": "Left",
+    "category": "keyboard",
+    "name_en": "Left",
+    "name_ru": "Left",
+    "kind": 17,
+    "data": [
+      80,
+      0
+    ],
+    "upstream_value": "0x110050"
+  },
+  {
+    "id": "Num -",
+    "category": "keyboard",
+    "name_en": "Num -",
+    "name_ru": "Num -",
+    "kind": 17,
+    "data": [
+      86,
+      0
+    ],
+    "upstream_value": "0x110056"
+  },
+  {
+    "id": "Num *",
+    "category": "keyboard",
+    "name_en": "Num *",
+    "name_ru": "Num *",
+    "kind": 17,
+    "data": [
+      85,
+      0
+    ],
+    "upstream_value": "0x110055"
+  },
+  {
+    "id": "Num /",
+    "category": "keyboard",
+    "name_en": "Num /",
+    "name_ru": "Num /",
+    "kind": 17,
+    "data": [
+      84,
+      0
+    ],
+    "upstream_value": "0x110054"
+  },
+  {
+    "id": "Num +",
+    "category": "keyboard",
+    "name_en": "Num +",
+    "name_ru": "Num +",
+    "kind": 17,
+    "data": [
+      87,
+      0
+    ],
+    "upstream_value": "0x110057"
+  },
+  {
+    "id": "Num 0",
+    "category": "keyboard",
+    "name_en": "Num 0",
+    "name_ru": "Num 0",
+    "kind": 17,
+    "data": [
+      98,
+      0
+    ],
+    "upstream_value": "0x110062"
+  },
+  {
+    "id": "Num 1",
+    "category": "keyboard",
+    "name_en": "Num 1",
+    "name_ru": "Num 1",
+    "kind": 17,
+    "data": [
+      89,
+      0
+    ],
+    "upstream_value": "0x110059"
+  },
+  {
+    "id": "Num 2",
+    "category": "keyboard",
+    "name_en": "Num 2",
+    "name_ru": "Num 2",
+    "kind": 17,
+    "data": [
+      90,
+      0
+    ],
+    "upstream_value": "0x11005a"
+  },
+  {
+    "id": "Num 3",
+    "category": "keyboard",
+    "name_en": "Num 3",
+    "name_ru": "Num 3",
+    "kind": 17,
+    "data": [
+      91,
+      0
+    ],
+    "upstream_value": "0x11005b"
+  },
+  {
+    "id": "Num 4",
+    "category": "keyboard",
+    "name_en": "Num 4",
+    "name_ru": "Num 4",
+    "kind": 17,
+    "data": [
+      92,
+      0
+    ],
+    "upstream_value": "0x11005c"
+  },
+  {
+    "id": "Num 5",
+    "category": "keyboard",
+    "name_en": "Num 5",
+    "name_ru": "Num 5",
+    "kind": 17,
+    "data": [
+      93,
+      0
+    ],
+    "upstream_value": "0x11005d"
+  },
+  {
+    "id": "Num 6",
+    "category": "keyboard",
+    "name_en": "Num 6",
+    "name_ru": "Num 6",
+    "kind": 17,
+    "data": [
+      94,
+      0
+    ],
+    "upstream_value": "0x11005e"
+  },
+  {
+    "id": "Num 7",
+    "category": "keyboard",
+    "name_en": "Num 7",
+    "name_ru": "Num 7",
+    "kind": 17,
+    "data": [
+      95,
+      0
+    ],
+    "upstream_value": "0x11005f"
+  },
+  {
+    "id": "Num 8",
+    "category": "keyboard",
+    "name_en": "Num 8",
+    "name_ru": "Num 8",
+    "kind": 17,
+    "data": [
+      96,
+      0
+    ],
+    "upstream_value": "0x110060"
+  },
+  {
+    "id": "Num 9",
+    "category": "keyboard",
+    "name_en": "Num 9",
+    "name_ru": "Num 9",
+    "kind": 17,
+    "data": [
+      97,
+      0
+    ],
+    "upstream_value": "0x110061"
+  },
+  {
+    "id": "Num Del",
+    "category": "keyboard",
+    "name_en": "Num Del",
+    "name_ru": "Num Del",
+    "kind": 17,
+    "data": [
+      99,
+      0
+    ],
+    "upstream_value": "0x110063"
+  },
+  {
+    "id": "Num Enter",
+    "category": "keyboard",
+    "name_en": "Num Enter",
+    "name_ru": "Num Enter",
+    "kind": 17,
+    "data": [
+      88,
+      0
+    ],
+    "upstream_value": "0x110058"
+  },
+  {
+    "id": "Num Lock",
+    "category": "keyboard",
+    "name_en": "Num Lock",
+    "name_ru": "Num Lock",
+    "kind": 17,
+    "data": [
+      83,
+      0
+    ],
+    "upstream_value": "0x110053"
+  },
+  {
+    "id": "Print Screen",
+    "category": "keyboard",
+    "name_en": "Print Screen",
+    "name_ru": "Print Screen",
+    "kind": 17,
+    "data": [
+      70,
+      0
+    ],
+    "upstream_value": "0x110046"
+  },
+  {
+    "id": "Page Down",
+    "category": "keyboard",
+    "name_en": "Page Down",
+    "name_ru": "Page Down",
+    "kind": 17,
+    "data": [
+      78,
+      0
+    ],
+    "upstream_value": "0x11004e"
+  },
+  {
+    "id": "Page Up",
+    "category": "keyboard",
+    "name_en": "Page Up",
+    "name_ru": "Page Up",
+    "kind": 17,
+    "data": [
+      75,
+      0
+    ],
+    "upstream_value": "0x11004b"
+  },
+  {
+    "id": "Pause",
+    "category": "keyboard",
+    "name_en": "Pause",
+    "name_ru": "Pause",
+    "kind": 17,
+    "data": [
+      72,
+      0
+    ],
+    "upstream_value": "0x110048"
+  },
+  {
+    "id": "Right",
+    "category": "keyboard",
+    "name_en": "Right",
+    "name_ru": "Right",
+    "kind": 17,
+    "data": [
+      79,
+      0
+    ],
+    "upstream_value": "0x11004f"
+  },
+  {
+    "id": "Left Windows",
+    "category": "keyboard",
+    "name_en": "Left Windows",
+    "name_ru": "Left Windows",
+    "kind": 17,
+    "data": [
+      227,
+      0
+    ],
+    "upstream_value": "0x1100e3"
+  },
+  {
+    "id": "Right Windows",
+    "category": "keyboard",
+    "name_en": "Right Windows",
+    "name_ru": "Right Windows",
+    "kind": 17,
+    "data": [
+      231,
+      0
+    ],
+    "upstream_value": "0x1100e7"
+  },
+  {
+    "id": "Left Alt",
+    "category": "keyboard",
+    "name_en": "Left Alt",
+    "name_ru": "Left Alt",
+    "kind": 17,
+    "data": [
+      226,
+      0
+    ],
+    "upstream_value": "0x1100e2"
+  },
+  {
+    "id": "Right Alt",
+    "category": "keyboard",
+    "name_en": "Right Alt",
+    "name_ru": "Right Alt",
+    "kind": 17,
+    "data": [
+      230,
+      0
+    ],
+    "upstream_value": "0x1100e6"
+  },
+  {
+    "id": "Left Ctrl",
+    "category": "keyboard",
+    "name_en": "Left Ctrl",
+    "name_ru": "Left Ctrl",
+    "kind": 17,
+    "data": [
+      224,
+      0
+    ],
+    "upstream_value": "0x1100e0"
+  },
+  {
+    "id": "Right Ctrl",
+    "category": "keyboard",
+    "name_en": "Right Ctrl",
+    "name_ru": "Right Ctrl",
+    "kind": 17,
+    "data": [
+      228,
+      0
+    ],
+    "upstream_value": "0x1100e4"
+  },
+  {
+    "id": "Left Shift",
+    "category": "keyboard",
+    "name_en": "Left Shift",
+    "name_ru": "Left Shift",
+    "kind": 17,
+    "data": [
+      225,
+      0
+    ],
+    "upstream_value": "0x1100e1"
+  },
+  {
+    "id": "Right Shift",
+    "category": "keyboard",
+    "name_en": "Right Shift",
+    "name_ru": "Right Shift",
+    "kind": 17,
+    "data": [
+      229,
+      0
+    ],
+    "upstream_value": "0x1100e5"
+  },
+  {
+    "id": "Scroll Lock",
+    "category": "keyboard",
+    "name_en": "Scroll Lock",
+    "name_ru": "Scroll Lock",
+    "kind": 17,
+    "data": [
+      71,
+      0
+    ],
+    "upstream_value": "0x110047"
+  },
+  {
+    "id": "Space",
+    "category": "keyboard",
+    "name_en": "Space",
+    "name_ru": "Space",
+    "kind": 17,
+    "data": [
+      44,
+      0
+    ],
+    "upstream_value": "0x11002c"
+  },
+  {
+    "id": "Tab",
+    "category": "keyboard",
+    "name_en": "Tab",
+    "name_ru": "Tab",
+    "kind": 17,
+    "data": [
+      43,
+      0
+    ],
+    "upstream_value": "0x11002b"
+  },
+  {
+    "id": "Up",
+    "category": "keyboard",
+    "name_en": "Up",
+    "name_ru": "Up",
+    "kind": 17,
+    "data": [
+      82,
+      0
+    ],
+    "upstream_value": "0x110052"
+  },
+  {
+    "id": "Ctrl + -",
+    "category": "keyboard",
+    "name_en": "Ctrl + -",
+    "name_ru": "Ctrl + -",
+    "kind": 19,
+    "data": [
+      1,
+      45
+    ],
+    "upstream_value": "0x13012d"
+  },
+  {
+    "id": "Ctrl + Y",
+    "category": "keyboard",
+    "name_en": "Ctrl + Y",
+    "name_ru": "Ctrl + Y",
+    "kind": 19,
+    "data": [
+      1,
+      28
+    ],
+    "upstream_value": "0x13011c"
+  },
+  {
+    "id": "Ctrl + =",
+    "category": "keyboard",
+    "name_en": "Ctrl + =",
+    "name_ru": "Ctrl + =",
+    "kind": 19,
+    "data": [
+      1,
+      46
+    ],
+    "upstream_value": "0x13012e"
+  },
+  {
+    "id": "Ctrl + 0",
+    "category": "keyboard",
+    "name_en": "Ctrl + 0",
+    "name_ru": "Ctrl + 0",
+    "kind": 19,
+    "data": [
+      1,
+      39
+    ],
+    "upstream_value": "0x130127"
+  },
+  {
+    "id": "Ctrl + C",
+    "category": "keyboard",
+    "name_en": "Ctrl + C",
+    "name_ru": "Ctrl + C",
+    "kind": 19,
+    "data": [
+      1,
+      6
+    ],
+    "upstream_value": "0x130106"
+  },
+  {
+    "id": "Ctrl + A",
+    "category": "keyboard",
+    "name_en": "Ctrl + A",
+    "name_ru": "Ctrl + A",
+    "kind": 19,
+    "data": [
+      1,
+      4
+    ],
+    "upstream_value": "0x130104"
+  },
+  {
+    "id": "Ctrl + N",
+    "category": "keyboard",
+    "name_en": "Ctrl + N",
+    "name_ru": "Ctrl + N",
+    "kind": 19,
+    "data": [
+      1,
+      17
+    ],
+    "upstream_value": "0x130111"
+  },
+  {
+    "id": "Ctrl + X",
+    "category": "keyboard",
+    "name_en": "Ctrl + X",
+    "name_ru": "Ctrl + X",
+    "kind": 19,
+    "data": [
+      1,
+      27
+    ],
+    "upstream_value": "0x13011b"
+  },
+  {
+    "id": "Ctrl + S",
+    "category": "keyboard",
+    "name_en": "Ctrl + S",
+    "name_ru": "Ctrl + S",
+    "kind": 19,
+    "data": [
+      1,
+      22
+    ],
+    "upstream_value": "0x130116"
+  },
+  {
+    "id": "Ctrl + V",
+    "category": "keyboard",
+    "name_en": "Ctrl + V",
+    "name_ru": "Ctrl + V",
+    "kind": 19,
+    "data": [
+      1,
+      25
+    ],
+    "upstream_value": "0x130119"
+  },
+  {
+    "id": "Ctrl + Z",
+    "category": "keyboard",
+    "name_en": "Ctrl + Z",
+    "name_ru": "Ctrl + Z",
+    "kind": 19,
+    "data": [
+      1,
+      29
+    ],
+    "upstream_value": "0x13011d"
+  },
+  {
+    "id": "Ctrl + O",
+    "category": "keyboard",
+    "name_en": "Ctrl + O",
+    "name_ru": "Ctrl + O",
+    "kind": 19,
+    "data": [
+      1,
+      18
+    ],
+    "upstream_value": "0x130112"
+  },
+  {
+    "id": "Ctrl + T",
+    "category": "keyboard",
+    "name_en": "Ctrl + T",
+    "name_ru": "Ctrl + T",
+    "kind": 19,
+    "data": [
+      1,
+      23
+    ],
+    "upstream_value": "0x130117"
+  },
+  {
+    "id": "Ctrl + W",
+    "category": "keyboard",
+    "name_en": "Ctrl + W",
+    "name_ru": "Ctrl + W",
+    "kind": 19,
+    "data": [
+      1,
+      26
+    ],
+    "upstream_value": "0x13011a"
+  },
+  {
+    "id": "Alt + Left",
+    "category": "keyboard",
+    "name_en": "Alt + Left",
+    "name_ru": "Alt + Left",
+    "kind": 19,
+    "data": [
+      4,
+      80
+    ],
+    "upstream_value": "0x130450"
+  },
+  {
+    "id": "Alt + Right",
+    "category": "keyboard",
+    "name_en": "Alt + Right",
+    "name_ru": "Alt + Right",
+    "kind": 19,
+    "data": [
+      4,
+      79
+    ],
+    "upstream_value": "0x13044f"
+  },
+  {
+    "id": "LWindows + tab",
+    "category": "keyboard",
+    "name_en": "LWindows + tab",
+    "name_ru": "LWindows + tab",
+    "kind": 19,
+    "data": [
+      8,
+      43
+    ],
+    "upstream_value": "0x13082b"
+  },
+  {
+    "id": "LWindows + D",
+    "category": "keyboard",
+    "name_en": "LWindows + D",
+    "name_ru": "LWindows + D",
+    "kind": 19,
+    "data": [
+      8,
+      7
+    ],
+    "upstream_value": "0x130807"
+  },
+  {
+    "id": "LWindows + Ctrl + Enter",
+    "category": "keyboard",
+    "name_en": "LWindows + Ctrl + Enter",
+    "name_ru": "LWindows + Ctrl + Enter",
+    "kind": 19,
+    "data": [
+      9,
+      40
+    ],
+    "upstream_value": "0x130928"
+  },
+  {
+    "id": "LWindows + T",
+    "category": "keyboard",
+    "name_en": "LWindows + T",
+    "name_ru": "LWindows + T",
+    "kind": 19,
+    "data": [
+      8,
+      23
+    ],
+    "upstream_value": "0x130817"
+  },
+  {
+    "id": "LWindows + A",
+    "category": "keyboard",
+    "name_en": "LWindows + A",
+    "name_ru": "LWindows + A",
+    "kind": 19,
+    "data": [
+      8,
+      4
+    ],
+    "upstream_value": "0x130804"
+  },
+  {
+    "id": "LWindows + E",
+    "category": "keyboard",
+    "name_en": "LWindows + E",
+    "name_ru": "LWindows + E",
+    "kind": 19,
+    "data": [
+      8,
+      8
+    ],
+    "upstream_value": "0x130808"
+  },
+  {
+    "id": "LWindows + I",
+    "category": "keyboard",
+    "name_en": "LWindows + I",
+    "name_ru": "LWindows + I",
+    "kind": 19,
+    "data": [
+      8,
+      12
+    ],
+    "upstream_value": "0x13080c"
+  },
+  {
+    "id": "LWindows + L",
+    "category": "keyboard",
+    "name_en": "LWindows + L",
+    "name_ru": "LWindows + L",
+    "kind": 19,
+    "data": [
+      8,
+      15
+    ],
+    "upstream_value": "0x13080f"
+  },
+  {
+    "id": "LWindows + K",
+    "category": "keyboard",
+    "name_en": "LWindows + K",
+    "name_ru": "LWindows + K",
+    "kind": 19,
+    "data": [
+      8,
+      14
+    ],
+    "upstream_value": "0x13080e"
+  },
+  {
+    "id": "LWindows + B",
+    "category": "keyboard",
+    "name_en": "LWindows + B",
+    "name_ru": "LWindows + B",
+    "kind": 19,
+    "data": [
+      8,
+      5
+    ],
+    "upstream_value": "0x130805"
+  },
+  {
+    "id": "LWindows + G",
+    "category": "keyboard",
+    "name_en": "LWindows + G",
+    "name_ru": "LWindows + G",
+    "kind": 19,
+    "data": [
+      8,
+      10
+    ],
+    "upstream_value": "0x13080a"
+  },
+  {
+    "id": "LWindows + R",
+    "category": "keyboard",
+    "name_en": "LWindows + R",
+    "name_ru": "LWindows + R",
+    "kind": 19,
+    "data": [
+      8,
+      21
+    ],
+    "upstream_value": "0x130815"
+  },
+  {
+    "id": "LWindows + S",
+    "category": "keyboard",
+    "name_en": "LWindows + S",
+    "name_ru": "LWindows + S",
+    "kind": 19,
+    "data": [
+      8,
+      22
+    ],
+    "upstream_value": "0x130816"
+  },
+  {
+    "id": "LWindows + U",
+    "category": "keyboard",
+    "name_en": "LWindows + U",
+    "name_ru": "LWindows + U",
+    "kind": 19,
+    "data": [
+      8,
+      24
+    ],
+    "upstream_value": "0x130818"
+  },
+  {
+    "id": "LWindows + X",
+    "category": "keyboard",
+    "name_en": "LWindows + X",
+    "name_ru": "LWindows + X",
+    "kind": 19,
+    "data": [
+      8,
+      27
+    ],
+    "upstream_value": "0x13081b"
+  },
+  {
+    "id": "LWindows + .",
+    "category": "keyboard",
+    "name_en": "LWindows + .",
+    "name_ru": "LWindows + .",
+    "kind": 19,
+    "data": [
+      8,
+      55
+    ],
+    "upstream_value": "0x130837"
+  },
+  {
+    "id": "LWindows + =",
+    "category": "keyboard",
+    "name_en": "LWindows + =",
+    "name_ru": "LWindows + =",
+    "kind": 19,
+    "data": [
+      8,
+      46
+    ],
+    "upstream_value": "0x13082e"
+  },
+  {
+    "id": "Ctrl + Shift + Esc",
+    "category": "keyboard",
+    "name_en": "Ctrl + Shift + Esc",
+    "name_ru": "Ctrl + Shift + Esc",
+    "kind": 19,
+    "data": [
+      3,
+      41
+    ],
+    "upstream_value": "0x130329"
+  },
+  {
+    "id": "Ctrl + Esc",
+    "category": "keyboard",
+    "name_en": "Ctrl + Esc",
+    "name_ru": "Ctrl + Esc",
+    "kind": 19,
+    "data": [
+      1,
+      41
+    ],
+    "upstream_value": "0x130129"
+  },
+  {
+    "id": "Alt + Tab",
+    "category": "keyboard",
+    "name_en": "Alt + Tab",
+    "name_ru": "Alt + Tab",
+    "kind": 19,
+    "data": [
+      4,
+      43
+    ],
+    "upstream_value": "0x13042b"
+  },
+  {
+    "id": "Alt + F4",
+    "category": "keyboard",
+    "name_en": "Alt + F4",
+    "name_ru": "Alt + F4",
+    "kind": 19,
+    "data": [
+      4,
+      61
+    ],
+    "upstream_value": "0x13043d"
+  },
+  {
+    "id": "Alt + Esc",
+    "category": "keyboard",
+    "name_en": "Alt + Esc",
+    "name_ru": "Alt + Esc",
+    "kind": 19,
+    "data": [
+      4,
+      41
+    ],
+    "upstream_value": "0x130429"
+  },
+  {
+    "id": "mouse.volumeUp",
+    "category": "media",
+    "name_en": "Volume +",
+    "name_ru": "увеличение громкости",
+    "kind": 20,
+    "data": [
+      233,
+      0
+    ],
+    "upstream_value": "0x1400e9"
+  },
+  {
+    "id": "mouse.volumeDown",
+    "category": "media",
+    "name_en": "Volume -",
+    "name_ru": "уменьшение громкости",
+    "kind": 20,
+    "data": [
+      234,
+      0
+    ],
+    "upstream_value": "0x1400ea"
+  },
+  {
+    "id": "mouse.silence",
+    "category": "media",
+    "name_en": "Mute",
+    "name_ru": "отключение звука",
+    "kind": 20,
+    "data": [
+      226,
+      0
+    ],
+    "upstream_value": "0x1400e2"
+  },
+  {
+    "id": "mouse.playPause",
+    "category": "media",
+    "name_en": "Play/Pause",
+    "name_ru": "воспроизведение / пауза",
+    "kind": 20,
+    "data": [
+      205,
+      0
+    ],
+    "upstream_value": "0x1400cd"
+  },
+  {
+    "id": "mouse.previousSong",
+    "category": "media",
+    "name_en": "Previous Song",
+    "name_ru": "предыдущий трек",
+    "kind": 20,
+    "data": [
+      182,
+      0
+    ],
+    "upstream_value": "0x1400b6"
+  },
+  {
+    "id": "mouse.nextSong",
+    "category": "media",
+    "name_en": "Next song",
+    "name_ru": "следующий трек",
+    "kind": 20,
+    "data": [
+      181,
+      0
+    ],
+    "upstream_value": "0x1400b5"
+  },
+  {
+    "id": "mouse.stopPlaying",
+    "category": "media",
+    "name_en": "Stop",
+    "name_ru": "стоп",
+    "kind": 20,
+    "data": [
+      183,
+      0
+    ],
+    "upstream_value": "0x1400b7"
+  },
+  {
+    "id": "DPI +",
+    "category": "dpi",
+    "name_en": "DPI +",
+    "name_ru": "DPI +",
+    "kind": 1,
+    "data": [
+      2,
+      0,
+      0
+    ],
+    "upstream_value": "0x01000002"
+  },
+  {
+    "id": "DPI -",
+    "category": "dpi",
+    "name_en": "DPI -",
+    "name_ru": "DPI -",
+    "kind": 1,
+    "data": [
+      3,
+      0,
+      0
+    ],
+    "upstream_value": "0x01000003"
+  },
+  {
+    "id": "mouse.dpiSwitch",
+    "category": "dpi",
+    "name_en": "DPI switch",
+    "name_ru": "Переключатель DPI",
+    "kind": 1,
+    "data": [
+      0,
+      0,
+      0
+    ],
+    "upstream_value": "0x01000000"
+  },
+  {
+    "id": "mouse.screenBrightUp",
+    "category": "system",
+    "name_en": "Screen brightness +",
+    "name_ru": "увеличить яркость экрана",
+    "kind": 20,
+    "data": [
+      111,
+      0
+    ],
+    "upstream_value": "0x14006f"
+  },
+  {
+    "id": "mouse.screenBrightDown",
+    "category": "system",
+    "name_en": "Screen brightness -",
+    "name_ru": "уменьшить яркость экрана",
+    "kind": 20,
+    "data": [
+      112,
+      0
+    ],
+    "upstream_value": "0x140070"
+  },
+  {
+    "id": "mouse.copy",
+    "category": "system",
+    "name_en": "Copy",
+    "name_ru": "копировать",
+    "kind": 22,
+    "data": [
+      1,
+      6
+    ],
+    "upstream_value": "0x160106"
+  },
+  {
+    "id": "mouse.cut",
+    "category": "system",
+    "name_en": "Cut",
+    "name_ru": "вырезать",
+    "kind": 22,
+    "data": [
+      1,
+      27
+    ],
+    "upstream_value": "0x16011b"
+  },
+  {
+    "id": "mouse.paste",
+    "category": "system",
+    "name_en": "Paste",
+    "name_ru": "вставить",
+    "kind": 22,
+    "data": [
+      1,
+      25
+    ],
+    "upstream_value": "0x160119"
+  },
+  {
+    "id": "mouse.forbidden",
+    "category": "disabled",
+    "name_en": "Disable",
+    "name_ru": "отключить",
+    "kind": 254,
+    "data": [
+      0,
+      0
+    ],
+    "upstream_value": "0xfe0000"
+  },
+  {
+    "id": "mouse.switchOnboardProfile1",
+    "category": "profile",
+    "name_en": "Switch onboard profile1",
+    "name_ru": "Переключить встроенный профиль1",
+    "kind": 51,
+    "data": [
+      0,
+      0
+    ],
+    "upstream_value": "0x330000"
+  },
+  {
+    "id": "mouse.switchOnboardProfile2",
+    "category": "profile",
+    "name_en": "Switch onboard profile2",
+    "name_ru": "Переключить встроенный профиль2",
+    "kind": 51,
+    "data": [
+      1,
+      0
+    ],
+    "upstream_value": "0x330001"
+  },
+  {
+    "id": "mouse.switchOnboardProfile3",
+    "category": "profile",
+    "name_en": "Switch onboard profile3",
+    "name_ru": "Переключить встроенный профиль3",
+    "kind": 51,
+    "data": [
+      2,
+      0
+    ],
+    "upstream_value": "0x330002"
+  },
+  {
+    "id": "mouse.cycleOnboardProfiles",
+    "category": "profile",
+    "name_en": "Cycle onboard profiles",
+    "name_ru": "Циклическое переключение профилей",
+    "kind": 51,
+    "data": [
+      255,
+      0
+    ],
+    "upstream_value": "0x3300ff"
+  },
+  {
+    "id": "modifier-1",
+    "category": "modifiers",
+    "name_en": "Ctrl",
+    "name_ru": "Ctrl",
+    "kind": 18,
+    "data": [
+      1,
+      0
+    ],
+    "upstream_value": "0x120001"
+  },
+  {
+    "id": "modifier-2",
+    "category": "modifiers",
+    "name_en": "Shift",
+    "name_ru": "Shift",
+    "kind": 18,
+    "data": [
+      2,
+      0
+    ],
+    "upstream_value": "0x120002"
+  },
+  {
+    "id": "modifier-3",
+    "category": "modifiers",
+    "name_en": "Ctrl + Shift",
+    "name_ru": "Ctrl + Shift",
+    "kind": 18,
+    "data": [
+      3,
+      0
+    ],
+    "upstream_value": "0x120003"
+  },
+  {
+    "id": "modifier-4",
+    "category": "modifiers",
+    "name_en": "Alt",
+    "name_ru": "Alt",
+    "kind": 18,
+    "data": [
+      4,
+      0
+    ],
+    "upstream_value": "0x120004"
+  },
+  {
+    "id": "modifier-5",
+    "category": "modifiers",
+    "name_en": "Ctrl + Alt",
+    "name_ru": "Ctrl + Alt",
+    "kind": 18,
+    "data": [
+      5,
+      0
+    ],
+    "upstream_value": "0x120005"
+  },
+  {
+    "id": "modifier-6",
+    "category": "modifiers",
+    "name_en": "Shift + Alt",
+    "name_ru": "Shift + Alt",
+    "kind": 18,
+    "data": [
+      6,
+      0
+    ],
+    "upstream_value": "0x120006"
+  },
+  {
+    "id": "modifier-7",
+    "category": "modifiers",
+    "name_en": "Ctrl + Shift + Alt",
+    "name_ru": "Ctrl + Shift + Alt",
+    "kind": 18,
+    "data": [
+      7,
+      0
+    ],
+    "upstream_value": "0x120007"
+  },
+  {
+    "id": "modifier-8",
+    "category": "modifiers",
+    "name_en": "Win",
+    "name_ru": "Win",
+    "kind": 18,
+    "data": [
+      8,
+      0
+    ],
+    "upstream_value": "0x120008"
+  },
+  {
+    "id": "modifier-9",
+    "category": "modifiers",
+    "name_en": "Ctrl + Win",
+    "name_ru": "Ctrl + Win",
+    "kind": 18,
+    "data": [
+      9,
+      0
+    ],
+    "upstream_value": "0x120009"
+  },
+  {
+    "id": "modifier-10",
+    "category": "modifiers",
+    "name_en": "Shift + Win",
+    "name_ru": "Shift + Win",
+    "kind": 18,
+    "data": [
+      10,
+      0
+    ],
+    "upstream_value": "0x12000a"
+  },
+  {
+    "id": "modifier-11",
+    "category": "modifiers",
+    "name_en": "Ctrl + Shift + Win",
+    "name_ru": "Ctrl + Shift + Win",
+    "kind": 18,
+    "data": [
+      11,
+      0
+    ],
+    "upstream_value": "0x12000b"
+  },
+  {
+    "id": "modifier-12",
+    "category": "modifiers",
+    "name_en": "Alt + Win",
+    "name_ru": "Alt + Win",
+    "kind": 18,
+    "data": [
+      12,
+      0
+    ],
+    "upstream_value": "0x12000c"
+  },
+  {
+    "id": "modifier-13",
+    "category": "modifiers",
+    "name_en": "Ctrl + Alt + Win",
+    "name_ru": "Ctrl + Alt + Win",
+    "kind": 18,
+    "data": [
+      13,
+      0
+    ],
+    "upstream_value": "0x12000d"
+  },
+  {
+    "id": "modifier-14",
+    "category": "modifiers",
+    "name_en": "Shift + Alt + Win",
+    "name_ru": "Shift + Alt + Win",
+    "kind": 18,
+    "data": [
+      14,
+      0
+    ],
+    "upstream_value": "0x12000e"
+  },
+  {
+    "id": "modifier-15",
+    "category": "modifiers",
+    "name_en": "Ctrl + Shift + Alt + Win",
+    "name_ru": "Ctrl + Shift + Alt + Win",
+    "kind": 18,
+    "data": [
+      15,
+      0
+    ],
+    "upstream_value": "0x12000f"
+  }
+]

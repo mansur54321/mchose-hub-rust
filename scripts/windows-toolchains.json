@@ -1,0 +1,26 @@
+{
+  "target": "x86_64-pc-windows-gnullvm",
+  "rust": "1.99.1 (58cf8f9c3 2026-10-13)",
+  "sources": [
+    {
+      "kind": "rust-std",
+      "url": "https://static.rust-lang.org/dist/2026-10-15/rust-std-1.99.1-x86_64-pc-windows-gnullvm.tar.xz",
+      "sha256": "8ddc26705e13c46530c898524b0d2657b7d416a25e8d9ffe369a97b23a619bf6"
+    },
+    {
+      "kind": "llvm-mingw",
+      "url": "https://github.com/mstorsjo/llvm-mingw/releases/download/20261020/llvm-mingw-20261020-ucrt-ubuntu-22.04-x86_64.tar.xz",
+      "sha256": "55064b60b991a1e1e8090b8c2f84e82b22cfe5903d12c159d65064cf5e8ae335"
+    },
+    {
+      "kind": "rustc-x86_64-unknown-linux-gnu",
+      "url": "https://static.rust-lang.org/dist/2026-10-15/rustc-1.99.1-x86_64-unknown-linux-gnu.tar.xz",
+      "sha256": "2ff05ff9c08a90861e7f6e4065b40a8b87463b4576186fd613871c3e37f2091f"
+    },
+    {
+      "kind": "rust-std-x86_64-unknown-linux-gnu",
+      "url": "https://static.rust-lang.org/dist/2026-10-15/rust-std-1.99.1-x86_64-unknown-linux-gnu.tar.xz",
+      "sha256": "109b074225bf5b9ea3820890876bfdf4ed161adbfaf94b2b4b5984c85ee5d958"
+    }
+  ]
+}

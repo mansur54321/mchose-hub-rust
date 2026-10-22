@@ -1,0 +1,248 @@
+{
+  "dock": {
+    "firmware_raw": [
+      30,
+      3,
+      0,
+      0
+    ],
+    "firmware_version": "0003",
+    "lighting": {
+      "brightness": 2,
+      "color": [
+        255,
+        0,
+        0
+      ],
+      "direction": 1,
+      "enabled": true,
+      "mode": "Flow",
+      "mode_count": 6,
+      "music_sync": false,
+      "speed": 1
+    },
+    "raw_response": [
+      170,
+      7,
+      2,
+      0,
+      0,
+      30,
+      1,
+      4,
+      6,
+      1,
+      2,
+      0,
+      255,
+      0,
+      0,
+      0,
+      0,
+      30,
+      3,
+      0,
+      0,
+      77,
+      67,
+      72,
+      79,
+      83,
+      69,
+      32,
+      77,
+      97,
+      103,
+      68,
+      111,
+      99,
+      107,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "sleep_enabled": false,
+    "sleep_time_raw": 0
+  },
+  "mouse": {
+    "dpi": {
+      "count": 6,
+      "profile_index": 0,
+      "raw_x": [
+        0,
+        0,
+        6,
+        1,
+        0,
+        144,
+        1,
+        32,
+        3,
+        64,
+        6,
+        128,
+        12,
+        0,
+        25,
+        80,
+        195
+      ],
+      "raw_y": [],
+      "selected": 1,
+      "separate_y": false,
+      "x": [
+        400,
+        800,
+        1600,
+        3200,
+        6400,
+        50000
+      ],
+      "y": [
+        400,
+        800,
+        1600,
+        3200,
+        6400,
+        50000
+      ]
+    },
+    "keys": [
+      {
+        "data": [
+          1,
+          0
+        ],
+        "kind": 0
+      },
+      {
+        "data": [
+          2,
+          0
+        ],
+        "kind": 0
+      },
+      {
+        "data": [
+          4,
+          0
+        ],
+        "kind": 0
+      },
+      {
+        "data": [
+          16,
+          0
+        ],
+        "kind": 0
+      },
+      {
+        "data": [
+          8,
+          0
+        ],
+        "kind": 0
+      },
+      {
+        "data": [],
+        "kind": 255
+      }
+    ],
+    "lod_index": 4,
+    "mouse_firmware": "17",
+    "profile_names": [
+      "",
+      "",
+      ""
+    ],
+    "receiver_firmware": "6",
+    "settings": {
+      "angle": 0,
+      "dpi_index": 1,
+      "left_debounce_ms": 1,
+      "profile_index": 0,
+      "raw": [
+        0,
+        97,
+        97,
+        3,
+        0,
+        66,
+        0,
+        1,
+        1,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8
+      ],
+      "right_debounce_ms": 1,
+      "sensor": 66,
+      "sleep_disabled": false,
+      "sleep_minutes": 3,
+      "usb_rate_index": 5,
+      "wireless_rate_index": 5
+    },
+    "status": {
+      "battery_percent": 100,
+      "charge_status": 0,
+      "connection_status": 2,
+      "game_mode": 0,
+      "macro_storage_type": 0,
+      "macro_unit_bytes": 4096,
+      "product_id": 16422,
+      "profile_count": 4,
+      "raw": [
+        55,
+        56,
+        38,
+        64,
+        4,
+        0,
+        0,
+        0,
+        0,
+        16,
+        2,
+        0,
+        100,
+        0,
+        8,
+        228
+      ],
+      "shared_macro_bytes": 0,
+      "vendor_id": 14391
+    }
+  }
+}

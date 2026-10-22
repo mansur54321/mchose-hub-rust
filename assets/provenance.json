@@ -1,0 +1,172 @@
+[
+  {
+    "path": "mouse-white.png",
+    "url": "https://cdn.mchose.com.cn/configCenter/static/images/A7V3UltraPlus_White_5gtbk5jl317amall.png",
+    "sha256": "c168c053566458ce66790517e9231ecdbf1dec8847db94e8be9676ab59f2f0cf",
+    "bytes": 280090,
+    "source": "purify.es-BufdR6vO.js public distribution",
+    "fetched": "2026-10-22"
+  },
+  {
+    "path": "mouse-black.png",
+    "url": "https://cdn.mchose.com.cn/configCenter/static/images/A7V3UltraPlus_Black_qig068vnnowy9b1g.png",
+    "sha256": "3b824480e4d128b22659d5bd1ed77f615c56dd5d25de345962aa51b7245fd164",
+    "bytes": 352309,
+    "source": "purify.es-BufdR6vO.js public distribution",
+    "fetched": "2026-10-22"
+  },
+  {
+    "path": "mouse-blue.png",
+    "url": "https://cdn.mchose.com.cn/configCenter/static/images/A7V3UltraPlus_Blue_linixjm9dp904gb0.png",
+    "sha256": "c6384f6c9bc618ab6465f1e4d7a6c9f72e776930285bc02dbf735ab41be02dc3",
+    "bytes": 299566,
+    "source": "purify.es-BufdR6vO.js public distribution",
+    "fetched": "2026-10-22"
+  },
+  {
+    "path": "mouse-red.png",
+    "url": "https://cdn.mchose.com.cn/configCenter/static/images/A7V3UltraPlus_Red_t9tf89n5na4vepl8.png",
+    "sha256": "191cc30d1f7a47f1a2b7d3c24c367d7aef74c426b68ab7d43a709e5ddce2feac",
+    "bytes": 618587,
+    "source": "purify.es-BufdR6vO.js public distribution",
+    "fetched": "2026-10-22"
+  },
+  {
+    "path": "mouse-pink.png",
+    "url": "https://cdn.mchose.com.cn/configCenter/static/images/A7V3UltraPlus_Pink_nefttusqjg3o15j7.png",
+    "sha256": "748ae3da94e840ed4bdf2e3a5d9468c509216100a50278a6559e2779ee7e91d2",
+    "bytes": 467817,
+    "source": "purify.es-BufdR6vO.js public distribution",
+    "fetched": "2026-10-22"
+  },
+  {
+    "path": "magdock.png",
+    "url": "https://cdn.mchose.com.cn/configCenter/assets/img/global/mouse_base_magdock.png",
+    "sha256": "c807713acb08a03d3cfa3309116a373ac75f23dc1d553291bd710bfa3fdb77cd",
+    "bytes": 498920,
+    "source": "purify.es-BufdR6vO.js public distribution",
+    "fetched": "2026-10-22"
+  },
+  {
+    "path": "mchose-logo-original.png",
+    "url": "https://www.maicong.cn/logo.png",
+    "sha256": "27ab7ce56fa488ad47163c25e47655b572e28eaa3436a98f10ca8202f4168a44",
+    "bytes": 26899,
+    "dimensions": [
+      351,
+      351
+    ],
+    "source": "Official MCHOSE Hub HTML/bundle or official MCHOSE store HTML",
+    "fetched": "2026-10-22",
+    "usage": "source comparison only"
+  },
+  {
+    "path": "mchose-favicon-original.ico",
+    "url": "https://www.mchose.com.cn/mchose.ico",
+    "sha256": "d199da90936bbb9d946e8a86f9564cbf109561116ee2df382dd3885004d570ef",
+    "bytes": 16958,
+    "dimensions": [
+      64,
+      64
+    ],
+    "source": "Official MCHOSE Hub HTML/bundle or official MCHOSE store HTML",
+    "fetched": "2026-10-22",
+    "usage": "source comparison only"
+  },
+  {
+    "path": "mchose-hub-logo-light-original.png",
+    "url": "https://cdn.mchose.com.cn/configCenter/assets/img/global/logo_round_sm.png",
+    "sha256": "e2194531d7851cfba060217bf094641a633341a3913479be6faa6f131425f704",
+    "bytes": 498,
+    "dimensions": [
+      32,
+      32
+    ],
+    "source": "Official MCHOSE Hub HTML/bundle or official MCHOSE store HTML",
+    "fetched": "2026-10-22",
+    "usage": "source comparison only"
+  },
+  {
+    "path": "mchose-hub-logo-dark-original.png",
+    "url": "https://cdn.mchose.com.cn/configCenter/static/images/logo_round_sm_dark_3c78klh5mjrjmuon.png",
+    "sha256": "f9fa5665abeb3357712a07a837570a10f952e2fe41d04428af2254ba3ef10f09",
+    "bytes": 587,
+    "dimensions": [
+      32,
+      32
+    ],
+    "source": "Official MCHOSE Hub HTML/bundle or official MCHOSE store HTML",
+    "fetched": "2026-10-22",
+    "usage": "source comparison only"
+  },
+  {
+    "path": "mchose-hub-brand-original.png",
+    "url": "https://cdn.mchose.com.cn/configCenter/static/images/logo_634880849b49.png",
+    "sha256": "9ab7f9bffdc64301a377279efacc7466384587699bcb153e56f5995dcd519648",
+    "bytes": 1425,
+    "dimensions": [
+      112,
+      112
+    ],
+    "source": "Official MCHOSE Hub HTML/bundle or official MCHOSE store HTML",
+    "fetched": "2026-10-22",
+    "usage": "source comparison only"
+  },
+  {
+    "path": "mchose-store-icon-original.png",
+    "url": "https://www.mchose.store/cdn/shop/files/MCHOSE_icon_2c713a69-9d92-43c7-aaea-192902bcd70e.png?v=1761702142",
+    "sha256": "bbe6e10297a4c240ee300f5043beceaee1d7d05c8d306bbfdc7be03ccc4add73",
+    "bytes": 871,
+    "dimensions": [
+      180,
+      180
+    ],
+    "source": "Official MCHOSE Hub HTML/bundle or official MCHOSE store HTML",
+    "fetched": "2026-10-22",
+    "usage": "application icon source"
+  },
+  {
+    "path": "mchose-store-brand-original.png",
+    "url": "https://www.mchose.store/cdn/shop/files/Mchose_logo_6a0b71d4-d3a3-4605-9026-e7599f4a2e2d.png?v=1753951665",
+    "sha256": "3689e8143de159c3e7738c0ae448a49c181bed1d89c1ac12e6ae4d41ad23e197",
+    "bytes": 10112,
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "source": "Official MCHOSE Hub HTML/bundle or official MCHOSE store HTML",
+    "fetched": "2026-10-22",
+    "usage": "source comparison only"
+  },
+  {
+    "path": "mchose-store-logo-original.jpg",
+    "url": "https://www.mchose.store/cdn/shop/files/Mchose_logo.jpg?v=1749771223",
+    "sha256": "0124cee3ecb8ec199a7080a529bd9e6e88888d089b10a406c2e9f71cd85f35fb",
+    "bytes": 14105,
+    "dimensions": [
+      1000,
+      1000
+    ],
+    "source": "Official MCHOSE Hub HTML/bundle or official MCHOSE store HTML",
+    "fetched": "2026-10-22",
+    "usage": "source comparison only"
+  },
+  {
+    "path": "mchose-icon.png",
+    "source_asset": "mchose-store-icon-original.png",
+    "source_sha256": "bbe6e10297a4c240ee300f5043beceaee1d7d05c8d306bbfdc7be03ccc4add73",
+    "sha256": "983cbb5c8f6c8e83d32918381089284da4d919f2e9060cd235fd3dbbaf61cd51",
+    "bytes": 26310,
+    "transform": "Official 180x180 icon resized to 512x512 with Pillow Lanczos; no recoloring or redrawing",
+    "created": "2026-10-22"
+  },
+  {
+    "path": "mchose-icon.ico",
+    "source_asset": "mchose-icon.png",
+    "source_sha256": "983cbb5c8f6c8e83d32918381089284da4d919f2e9060cd235fd3dbbaf61cd51",
+    "sha256": "15affb38d395702252e9091ee04009e1c78b772e555f770bab3d34dd47a1033d",
+    "bytes": 11711,
+    "transform": "ICO representations at 16,32,48,64,128,256 from mchose-icon.png",
+    "created": "2026-10-22"
+  }
+]

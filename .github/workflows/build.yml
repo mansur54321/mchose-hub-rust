@@ -1,0 +1,60 @@
+name: Build and test
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: ${{ matrix.platform }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-24.04
+            platform: linux-x86_64
+            binary: target/release/mchose-native
+            rustflags: ''
+          - os: windows-latest
+            platform: windows-x86_64
+            binary: target/release/mchose-native.exe
+            rustflags: '-C target-feature=+crt-static'
+    env:
+      RUSTFLAGS: ${{ matrix.rustflags }}
+      CARGO_TERM_COLOR: always
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: dtolnay/rust-toolchain@b725eda525362e7cf34af9a7243cac1e3f01a7ec # stable
+        with:
+          toolchain: stable
+      - name: Linux development libraries
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y pkg-config libudev-dev libxkbcommon-dev libwayland-dev libgl-dev
+      - name: Tests
+        run: cargo test --locked --all-targets
+      - name: Release build
+        run: cargo build --locked --release --bin mchose-native
+      - name: CLI smoke checks
+        shell: python
+        env:
+          MCHOSE_BINARY: ${{ matrix.binary }}
+        run: |
+          import json, os, subprocess
+          binary = os.path.abspath(os.environ['MCHOSE_BINARY'])
+          result = subprocess.run([binary, '--help', '--lang', 'en'], check=True, capture_output=True, text=True)
+          assert 'MCHOSE Native' in result.stdout, result.stdout
+          result = subprocess.run([binary, '--list'], check=True, capture_output=True, text=True)
+          assert json.loads(result.stdout) == [], result.stdout
+      - name: Package
+        run: python scripts/package-release.py --platform ${{ matrix.platform }} --binary ${{ matrix.binary }}
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: mchose-native-${{ matrix.platform }}
+          path: dist/*
+          if-no-files-found: error
