@@ -665,7 +665,9 @@ fn save_edited_preset(path: &Path, backups: &Path, value: &ProfileFile) -> Resul
             fs::symlink_metadata(path)?.is_file() && fs::read(path)? == previous,
             "Файл изменился во время сохранения; замена отменена"
         );
+        drop(file);
         fs::rename(&temporary, path)?;
+        #[cfg(unix)]
         fs::File::open(parent)?.sync_all()?;
         Ok(())
     })();
