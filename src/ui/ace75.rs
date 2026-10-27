@@ -949,8 +949,11 @@ impl Ace75Ui {
             Color32::from_rgb(116, 123, 138)
         };
         {
-            let mut grid =
-                ui.new_child(egui::UiBuilder::new().id_salt("ace75-grid").max_rect(area));
+            let mut grid = ui.new_child(
+                egui::UiBuilder::new()
+                    .id_salt(("ace75-grid", self.frame_preview.is_some()))
+                    .max_rect(area),
+            );
             let ui = &mut grid;
             ui.spacing_mut().button_padding = Vec2::new(2.0, 0.0);
             for cell in cells(purpose) {
