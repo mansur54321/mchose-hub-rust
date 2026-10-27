@@ -32,7 +32,7 @@ Firmware-specific lighting gates matter. Logo follow mode and its custom color r
 
 ## Editor layout
 
-The keyboard uses the official geometry with native keycaps, chassis, wheel and arrow drawing. A stored RGB value of zero keeps a neutral keycap, matching Hub. Selection uses both an outline and a check mark; the selected key names are shown above the diagram. The logo zone uses the original MCHOSE mark.
+The keyboard uses the official geometry with native keycaps, chassis, wheel and arrow drawing. A stored RGB value of zero keeps a neutral keycap, matching Hub. Select all targets the 81 keyboard keys; the global RT/wheel controls remain individually selectable. Selection uses both an outline and a check mark; the selected key names are shown above the diagram. The logo zone uses the original MCHOSE mark.
 
 At wide window sizes, key assignments, trigger controls and advanced actions sit beside the keyboard. Apply/discard remains outside the main scroll area. Trigger controls have Press, Rapid Trigger and Dead zones tabs. At 855×700 the trigger diagram can be expanded to change selection; the configured value and editable slider remain visible without opening it. The original switch illustration is shown in the wide layout and is not a live travel measurement.
 

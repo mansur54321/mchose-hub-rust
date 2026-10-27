@@ -967,6 +967,13 @@ impl Ace75Ui {
             if ui.button(t("Выбрать все")).clicked() {
                 *selected = cells(self.purpose)
                     .filter(|cell| {
+                        self.purpose != GridPurpose::Assignment
+                            || layout()
+                                .keys
+                                .iter()
+                                .any(|key| key.matrix_index == cell.matrix_index)
+                    })
+                    .filter(|cell| {
                         self.purpose != GridPurpose::Lighting
                             || self.frame_preview.is_some()
                             || light_index_in_scope(cell.matrix_index, self.light_scope)
@@ -4119,6 +4126,43 @@ mod tests {
         assert_eq!(indices.len(), 114);
         assert!(indices.is_superset(&(95..=123).collect()));
         assert!(indices.is_superset(&[3, 12, 13, 23, 25].into_iter().collect()));
+    }
+
+    #[test]
+    fn select_all_keyboard_keys_keeps_global_controls_separate() {
+        let context = egui::Context::default();
+        let mut editor = Ace75Ui::default();
+        for event in [
+            None,
+            Some((egui::Key::Tab, true)),
+            Some((egui::Key::Tab, false)),
+            Some((egui::Key::Tab, true)),
+            Some((egui::Key::Tab, false)),
+            Some((egui::Key::Enter, true)),
+            Some((egui::Key::Enter, false)),
+        ] {
+            let mut input = egui::RawInput::default();
+            if let Some((key, pressed)) = event {
+                input.events.push(egui::Event::Key {
+                    key,
+                    physical_key: None,
+                    pressed,
+                    repeat: false,
+                    modifiers: egui::Modifiers::NONE,
+                });
+            }
+            let _ = context.run(input, |ctx| {
+                egui::CentralPanel::default().show(ctx, |ui| editor.selection_controls(ui));
+            });
+        }
+        assert_eq!(editor.selected_keys.len(), 81);
+        assert!(
+            !editor
+                .selected_keys
+                .iter()
+                .any(|index| [92, 93, 94].contains(index))
+        );
+        assert!(editor.take_action().is_none());
     }
 
     #[test]

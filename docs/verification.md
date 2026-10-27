@@ -61,7 +61,7 @@ Every bundled BIN matches the source size and SHA-256 in the manifest. Transfer 
 
 ## v0.2.1 interface refresh
 
-The local all-targets run passed 161 library tests and one example test, with the isolated legacy X11 test ignored. New regressions cover one-time WASD selection without configuration edits, separate frame/onboard color selections, Tab/Space activation of the native switch, and palette wrapping inside the actual scrolling inspector. The backend HID implementation is unchanged.
+The local all-targets run passed 162 library tests and one example test, with the isolated legacy X11 test ignored. New regressions cover one-time WASD selection without configuration edits, separate frame/onboard color selections, Tab/Space activation of the native switch, palette wrapping inside the actual scrolling inspector, and keyboard bulk selection that keeps global RT/wheel controls separate. The backend HID implementation is unchanged.
 
 An initial 64-case render matrix covered all eight pages, both languages/themes and 855×700/1440×940 windows. Follow-up representative captures and actual window input checked the corrected side panes, A and Ctrl+A+D selection, RS/LT help, three trigger tabs, strip/logo selection, wrapped palette entries and the fourth DKS phase dropdown. Final wide/narrow trigger captures verify the original switch illustration and the compact layout with the editable slider in the first viewport. All these sessions used `--read-only`; no device settings were written.
 
