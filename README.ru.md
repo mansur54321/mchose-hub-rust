@@ -17,7 +17,7 @@
 | Тёмная тема | Светлая тема |
 | --- | --- |
 | ![Настройки кнопок в тёмной теме](docs/images/interface-dark.png) | ![Настройки MagDock в светлой теме](docs/images/interface-light.png) |
-| ![Настройки клавиатуры Ace75 на русском в тёмной теме](docs/images/ace75-dark.png) | ![Подсветка Ace75 на английском в светлой теме](docs/images/ace75-light.png) |
+| ![Настройки клавиатуры Ace75 на русском в тёмной теме](docs/images/ace75-dark.png) | ![Настройки срабатывания Ace75 на русском в светлой теме](docs/images/ace75-light.png) |
 
 ## Возможности
 

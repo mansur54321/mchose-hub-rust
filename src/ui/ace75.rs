@@ -1,3 +1,10 @@
+mod components;
+mod diagram;
+use components::{preference_toggle, setting_section};
+
+mod lighting;
+mod settings;
+
 use super::Palette;
 use crate::ace75::host_lighting::{LightingAnimation, LightingFrame};
 use crate::ace75::{
@@ -154,6 +161,23 @@ enum Page {
 }
 
 impl Page {
+    fn description(self) -> &'static str {
+        t(match self {
+            Self::Keys => "Назначения клавиш и сочетаний для каждого слоя Windows и Mac.",
+            Self::Trigger => {
+                "Выберите клавиши и настройте глубину нажатия и чувствительность Rapid Trigger."
+            }
+            Self::Advanced => "Расширенные действия для одной клавиши или пары клавиш.",
+            Self::Performance => "Частота USB, стабильность нажатий и системные блокировки.",
+            Self::Lighting => "Эффекты клавиш, RGB-полосы и логотипа, музыка и собственные темы.",
+            Self::Macros => {
+                "Записывайте последовательности и сохраняйте их в клавиатуру или локальную библиотеку."
+            }
+            Self::Profiles => "Профили устройства, локальные копии и перенос настроек.",
+            Self::Device => "Данные клавиатуры, калибровка и официальные обновления.",
+        })
+    }
+
     fn title(self) -> &'static str {
         t(match self {
             Self::Keys => "Клавиши",
@@ -180,7 +204,10 @@ pub(crate) struct Ace75Ui {
     purpose: GridPurpose,
     pub selected_keys: BTreeSet<u16>,
     pub selected_lights: BTreeSet<u16>,
+    animation_selected_lights: BTreeSet<u16>,
     multi_select: bool,
+    trigger_selection_initialized: bool,
+    trigger_panel: u8,
     rt_double: bool,
     paint_color: [u8; 3],
     macro_slot: usize,
@@ -217,6 +244,7 @@ pub(crate) struct Ace75Ui {
     animation_path: String,
     animation_frame: usize,
     frame_preview: Option<Vec<[u8; 3]>>,
+    logo_texture: Option<egui::TextureHandle>,
     advanced_editor: Option<AdvancedEditor>,
     calibrated: BTreeSet<u16>,
     calibrating: bool,
@@ -770,6 +798,24 @@ impl Ace75Ui {
                 }),
             );
         }
+        if matches!(
+            self.page,
+            Page::Performance | Page::Macros | Page::Profiles | Page::Device
+        ) {
+            ui.label(RichText::new(self.page.title()).size(21.0).strong());
+            ui.label(
+                RichText::new(self.page.description())
+                    .size(12.5)
+                    .color(palette.muted),
+            );
+            ui.add_space(14.0);
+        }
+        if matches!(
+            self.page,
+            Page::Keys | Page::Trigger | Page::Performance | Page::Lighting
+        ) {
+            self.apply_row(ui, state, busy, writable, self.page);
+        }
         egui::ScrollArea::vertical()
             .id_salt(("ace75-page", self.page as u8))
             .auto_shrink([false, false])
@@ -854,10 +900,25 @@ impl Ace75Ui {
         ui.add_space(12.0);
     }
 
-    fn grid_section(&mut self, ui: &mut egui::Ui, palette: Palette, purpose: GridPurpose) {
+    fn prepare_selection(&mut self, purpose: GridPurpose) {
         self.purpose = purpose;
         self.selected_keys
             .retain(|index| cells(purpose).any(|cell| cell.matrix_index == *index));
+        if purpose == GridPurpose::Trigger && !self.trigger_selection_initialized {
+            if self.selected_keys.is_empty() {
+                self.selected_keys = layout()
+                    .keys
+                    .iter()
+                    .filter(|cell| [26, 4, 22, 7].contains(&cell.code))
+                    .map(|cell| cell.matrix_index)
+                    .collect();
+            }
+            self.trigger_selection_initialized = true;
+        }
+    }
+
+    fn grid_section(&mut self, ui: &mut egui::Ui, palette: Palette, purpose: GridPurpose) {
+        self.prepare_selection(purpose);
         self.selection_controls(ui);
         ui.add_space(8.0);
         self.show_grid(ui, palette, purpose);
@@ -904,7 +965,14 @@ impl Ace75Ui {
                 &mut self.selected_keys
             };
             if ui.button(t("Выбрать все")).clicked() {
-                *selected = cells(self.purpose).map(|cell| cell.matrix_index).collect();
+                *selected = cells(self.purpose)
+                    .filter(|cell| {
+                        self.purpose != GridPurpose::Lighting
+                            || self.frame_preview.is_some()
+                            || light_index_in_scope(cell.matrix_index, self.light_scope)
+                    })
+                    .map(|cell| cell.matrix_index)
+                    .collect();
             }
             if ui
                 .add_enabled(
@@ -917,135 +985,33 @@ impl Ace75Ui {
             }
             ui.label(tf!("Выбрано: {}", selected.len()));
         });
-    }
-
-    pub fn show_grid(&mut self, ui: &mut egui::Ui, palette: Palette, purpose: GridPurpose) {
-        let layout = layout();
-        let width = ui.available_width().min(layout.canvas.width);
-        let scale = width / layout.canvas.width;
-        let height = (layout.canvas.height + layout.canvas.top_inset) * scale;
-        let (area, _) = ui.allocate_exact_size(Vec2::new(width, height), egui::Sense::hover());
-        let origin = area.min + Vec2::new(0.0, layout.canvas.top_inset * scale);
-        let case =
-            egui::Rect::from_min_size(origin, Vec2::new(width, layout.canvas.height * scale));
-        ui.painter().rect_filled(case, 10.0, palette.field);
-        let colors = (purpose == GridPurpose::Lighting)
-            .then(|| {
-                self.frame_preview
-                    .clone()
-                    .or_else(|| self.working().map(|profile| profile.colors.clone()))
-            })
-            .flatten();
-        let selected = if purpose == GridPurpose::Lighting {
-            &mut self.selected_lights
+        let selected = if self.purpose == GridPurpose::Lighting {
+            &self.selected_lights
         } else {
-            &mut self.selected_keys
+            &self.selected_keys
         };
-        let additive =
-            self.multi_select || ui.input(|input| input.modifiers.ctrl || input.modifiers.command);
-        let edge = if ui.visuals().dark_mode {
-            Color32::from_rgb(118, 123, 135)
-        } else {
-            Color32::from_rgb(116, 123, 138)
-        };
-        {
-            let mut grid = ui.new_child(
-                egui::UiBuilder::new()
-                    .id_salt(("ace75-grid", self.frame_preview.is_some()))
-                    .max_rect(area),
+        if self.purpose != GridPurpose::Lighting && selected.is_empty() {
+            ui.label(
+                RichText::new(t("Выберите клавишу на схеме."))
+                    .size(12.5)
+                    .strong(),
             );
-            let ui = &mut grid;
-            ui.spacing_mut().button_padding = Vec2::new(2.0, 0.0);
-            for cell in cells(purpose) {
-                let mut rect = egui::Rect::from_min_size(
-                    origin + Vec2::new(cell.x, cell.y) * scale,
-                    Vec2::new(cell.width, cell.height) * scale,
-                );
-                if purpose == GridPurpose::Lighting && cell.label == "sideLight" {
-                    rect.set_height((12.0 * scale).max(6.0));
-                    rect.set_center(egui::pos2(rect.center().x, origin.y + 73.0 * scale));
-                }
-                if cell.label == "gunlun" {
-                    rect.max.x = rect.max.x.max(rect.min.x + 22.0);
-                }
-                let active = selected.contains(&cell.matrix_index);
-                let light_color = if self.calibrating && purpose == GridPurpose::Trigger {
-                    self.calibrated
-                        .contains(&cell.matrix_index)
-                        .then_some(Color32::from_rgb(35, 170, 92))
-                } else {
-                    colors
-                        .as_ref()
-                        .and_then(|colors| colors.get(cell.matrix_index as usize))
-                        .map(|rgb| Color32::from_rgb(rgb[0], rgb[1], rgb[2]))
-                };
-                let fill = light_color.unwrap_or(if active {
-                    palette.accent
-                } else {
-                    palette.panel
-                });
-                let text_color = light_color.map(contrast_text).unwrap_or(if active {
-                    Color32::WHITE
-                } else {
-                    palette.text
-                });
-                let response = if cell.label == "sideLight" {
-                    let response = ui.interact(
-                        rect,
-                        ui.id().with(("ace75-key", cell.source_index)),
-                        egui::Sense::click(),
-                    );
-                    ui.painter().rect_filled(rect, 2.0, fill);
-                    ui.painter().rect_stroke(
-                        rect,
-                        2.0,
-                        Stroke::new(
-                            if active { 2.0_f32 } else { 1.0_f32 },
-                            if active { palette.accent_text } else { edge },
-                        ),
-                        egui::StrokeKind::Inside,
-                    );
-                    response
-                } else {
-                    ui.push_id(("ace75-key", cell.source_index), |ui| {
-                        ui.put(
-                            rect,
-                            egui::Button::new(
-                                RichText::new(cell.legend())
-                                    .size((13.0 * scale).max(10.5))
-                                    .color(text_color),
-                            )
-                            .fill(fill)
-                            .stroke(Stroke::new(
-                                if active { 2.0_f32 } else { 1.0_f32 },
-                                if active { palette.accent_text } else { edge },
-                            ))
-                            .corner_radius(4.0),
-                        )
-                    })
-                    .inner
-                };
-                response.widget_info(|| {
-                    egui::WidgetInfo::selected(
-                        egui::WidgetType::Button,
-                        ui.is_enabled(),
-                        active,
-                        cell.description(),
-                    )
-                });
-                if response.clicked() && !self.calibrating {
-                    toggle_selection(selected, cell.matrix_index, additive);
-                }
-                if response.has_focus() {
-                    ui.painter().rect_stroke(
-                        rect.expand(1.0),
-                        4.0,
-                        Stroke::new(2.0_f32, palette.accent_text),
-                        egui::StrokeKind::Outside,
-                    );
-                }
-                response.on_hover_text(cell.description());
-            }
+        }
+        if !selected.is_empty() && self.purpose != GridPurpose::Lighting {
+            let names = layout()
+                .keys
+                .iter()
+                .chain(&layout().controls)
+                .filter(|cell| selected.contains(&cell.matrix_index))
+                .take(8)
+                .map(|cell| cell.description())
+                .collect::<Vec<_>>()
+                .join(", ");
+            ui.label(
+                RichText::new(tf!("Выбранные клавиши: {}", names))
+                    .size(12.5)
+                    .strong(),
+            );
         }
     }
 }
@@ -1122,10 +1088,66 @@ impl Ace75Ui {
         busy: bool,
         writable: bool,
     ) {
-        self.apply_row(ui, state, busy, writable, Page::Keys);
         self.layer_selector(ui);
-        ui.add_space(10.0);
-        self.grid_section(ui, palette, GridPurpose::Assignment);
+        ui.add_space(12.0);
+        if ui.available_width() >= 980.0 {
+            let editor_width = 306.0;
+            let canvas_width = ui.available_width() - editor_width - 16.0;
+            ui.horizontal_top(|ui| {
+                ui.spacing_mut().item_spacing.x = 16.0;
+                ui.allocate_ui_with_layout(
+                    Vec2::new(canvas_width, 0.0),
+                    egui::Layout::top_down(egui::Align::Min),
+                    |ui| {
+                        setting_section(
+                            ui,
+                            palette,
+                            t("Клавиатура"),
+                            t("Выберите клавишу, затем назначьте ей действие справа."),
+                            |ui| self.grid_section(ui, palette, GridPurpose::Assignment),
+                        );
+                    },
+                );
+                ui.allocate_ui_with_layout(
+                    Vec2::new(editor_width, 570.0),
+                    egui::Layout::top_down(egui::Align::Min),
+                    |ui| {
+                        setting_section(ui, palette, t("Назначение"), "", |ui| {
+                            let content_width = ui.available_width();
+                            egui::ScrollArea::vertical()
+                                .id_salt("ace75-assignment-editor")
+                                .max_height(530.0)
+                                .show(ui, |ui| {
+                                    ui.set_width(content_width);
+                                    self.key_assignment_editor(ui, palette, state, busy, writable)
+                                });
+                        });
+                    },
+                );
+            });
+        } else {
+            setting_section(
+                ui,
+                palette,
+                t("Клавиатура"),
+                t("Выберите клавишу на схеме, чтобы изменить её назначение."),
+                |ui| self.grid_section(ui, palette, GridPurpose::Assignment),
+            );
+            ui.add_space(14.0);
+            setting_section(ui, palette, t("Назначение"), "", |ui| {
+                self.key_assignment_editor(ui, palette, state, busy, writable)
+            });
+        }
+    }
+
+    fn key_assignment_editor(
+        &mut self,
+        ui: &mut egui::Ui,
+        palette: Palette,
+        state: &KeyboardState,
+        busy: bool,
+        writable: bool,
+    ) {
         if self.no_data(ui, palette) {
             return;
         }
@@ -1180,8 +1202,11 @@ impl Ace75Ui {
             ui.label(tf!("Текущее назначение: {}", key_label(*value, self.layer)));
         }
         ui.horizontal_wrapped(|ui| {
-            ui.label(t("Поиск"));
-            ui.text_edit_singleline(&mut self.action_search);
+            ui.add(
+                egui::TextEdit::singleline(&mut self.action_search)
+                    .desired_width(ui.available_width())
+                    .hint_text(t("Поиск действия")),
+            );
             if ui.button(t("Восстановить выбранные клавиши")).clicked()
             {
                 let layer = self.layer;
@@ -1319,17 +1344,26 @@ impl Ace75Ui {
         if self.action_category.is_empty() {
             self.action_category = "basic".into();
         }
-        ui.horizontal_wrapped(|ui| {
-            for (id, label) in [
-                ("basic", "Клавиатура"),
-                ("extra", "Система и сочетания"),
-                ("mouse", "Мышь"),
-                ("media", "Мультимедиа"),
-                ("light", "Подсветка"),
-            ] {
-                ui.selectable_value(&mut self.action_category, id.into(), t(label));
-            }
-        });
+        let categories = [
+            ("basic", "Клавиатура"),
+            ("extra", "Система и сочетания"),
+            ("mouse", "Мышь"),
+            ("media", "Мультимедиа"),
+            ("light", "Подсветка"),
+        ];
+        let label = categories
+            .iter()
+            .find(|(id, _)| *id == self.action_category)
+            .map_or(t("Клавиатура"), |(_, label)| t(label));
+        egui::ComboBox::from_id_salt(("ace75-action-category", advanced_type))
+            .width((ui.available_width() - 10.0).max(120.0))
+            .selected_text(label)
+            .show_ui(ui, |ui| {
+                for (id, label) in categories {
+                    ui.selectable_value(&mut self.action_category, id.into(), t(label));
+                }
+            });
+        ui.add_space(10.0);
         let query = self.action_search.to_lowercase();
         let mut chosen = None;
         ui.horizontal_wrapped(|ui| {
@@ -1345,10 +1379,7 @@ impl Ace75Ui {
                         .any(|value| value == kind)
                 });
                 if ui
-                    .push_id(&action.id, |ui| {
-                        ui.add_enabled(allowed, egui::Button::new(action.label()))
-                    })
-                    .inner
+                    .add_enabled(allowed, egui::Button::new(action.label()))
                     .clicked()
                 {
                     chosen = Some(action.assignment());
@@ -1356,354 +1387,6 @@ impl Ace75Ui {
             }
         });
         chosen
-    }
-
-    fn trigger_page(
-        &mut self,
-        ui: &mut egui::Ui,
-        palette: Palette,
-        state: &KeyboardState,
-        busy: bool,
-        writable: bool,
-    ) {
-        self.apply_row(ui, state, busy, writable, Page::Trigger);
-        self.grid_section(ui, palette, GridPurpose::Trigger);
-        if self.no_data(ui, palette) {
-            return;
-        }
-        let mut tachyon = self.working().unwrap().functions.performance.tachyon_mode;
-        if ui
-            .checkbox(&mut tachyon, t("Режим высокой точности RT (Tachyon 2.0)"))
-            .changed()
-        {
-            let selected = self.selected_keys.clone();
-            if let Some(profile) = self.working_mut() {
-                profile.functions.performance.tachyon_mode = tachyon;
-                if !tachyon {
-                    for index in selected {
-                        let trigger = &mut profile.triggers[index as usize];
-                        let max = if trigger.switch_type == 3 { 350 } else { 340 };
-                        trigger.rt_press = ((f64::from(trigger.rt_press)
-                            / precision_base(trigger.press_precision)
-                            * 100.0)
-                            .floor() as u16)
-                            .clamp(2, max);
-                        trigger.rt_release = ((f64::from(trigger.rt_release)
-                            / precision_base(trigger.release_precision)
-                            * 100.0)
-                            .floor() as u16)
-                            .clamp(2, max);
-                        trigger.press_precision = 0;
-                        trigger.release_precision = 0;
-                    }
-                }
-            }
-        }
-        ui.label(RichText::new(t("Высокая точность позволяет выбрать шаг RT 0,005 или 0,001 мм. Отключение возвращает выбранные клавиши к шагу 0,01 мм.")).small().color(palette.muted));
-        let Some(index) = self.selected_keys.first().copied() else {
-            ui.label(t("Выберите клавишу на схеме."));
-            return;
-        };
-        let Some(mut value) = self
-            .working()
-            .and_then(|profile| profile.triggers.get(index as usize))
-            .cloned()
-        else {
-            return;
-        };
-        let before = value.clone();
-        let firmware = firmware_number(state);
-        ui.horizontal_wrapped(|ui| {
-            ui.label(t("Магнитный переключатель"));
-            egui::ComboBox::from_id_salt("ace75-switch")
-                .selected_text(switch_name(value.switch_type))
-                .show_ui(ui, |ui| {
-                    for id in 0..=if firmware >= 117 { 5 } else { 4 } {
-                        ui.selectable_value(&mut value.switch_type, id, switch_name(id));
-                    }
-                });
-        });
-        let max_actuation = if value.switch_type == 3 { 350 } else { 340 };
-        mm_slider(
-            ui,
-            &mut value.actuation,
-            100.0,
-            10..=max_actuation,
-            t("Точка срабатывания"),
-        );
-        ui.horizontal_wrapped(|ui| {
-            ui.label("Rapid Trigger");
-            for (mode, label) in [(0, "Отключён"), (1, "Включён"), (2, "Непрерывный")]
-            {
-                ui.selectable_value(&mut value.key_mode, mode, t(label));
-            }
-        });
-        if value.key_mode != 0 {
-            let tachyon = self
-                .working()
-                .is_some_and(|profile| profile.functions.performance.tachyon_mode);
-            rt_control(
-                ui,
-                "ace75-rt-press",
-                t("RT: нажатие"),
-                &mut value.press_precision,
-                &mut value.rt_press,
-                max_actuation,
-                tachyon,
-            );
-            rt_control(
-                ui,
-                "ace75-rt-release",
-                t("RT: отпускание"),
-                &mut value.release_precision,
-                &mut value.rt_release,
-                max_actuation,
-                tachyon,
-            );
-        }
-        egui::CollapsingHeader::new(t("Мёртвые зоны")).show(ui, |ui| {
-            deadzone_control(ui, &mut value.press_deadzone, t("Верхняя мёртвая зона"));
-            deadzone_control(ui, &mut value.release_deadzone, t("Нижняя мёртвая зона"));
-        });
-        if value != before {
-            let selected = self.selected_keys.clone();
-            if let Some(profile) = self.working_mut() {
-                for index in selected {
-                    let target = &mut profile.triggers[index as usize];
-                    merge_trigger(target, &before, &value);
-                    if before.switch_type != value.switch_type {
-                        let travel = if target.switch_type == 3 { 350 } else { 340 };
-                        target.actuation = target.actuation.min(travel);
-                        if target.press_precision == 0 {
-                            target.rt_press = target.rt_press.min(travel);
-                        }
-                        if target.release_precision == 0 {
-                            target.rt_release = target.rt_release.min(travel);
-                        }
-                    }
-                }
-            }
-        }
-        ui.add_space(8.0);
-        ui.label(RichText::new(t("Изменяются только выбранные клавиши. Остальные значения каждой клавиши сохраняются.")).small().color(palette.muted));
-    }
-
-    fn performance_page(
-        &mut self,
-        ui: &mut egui::Ui,
-        palette: Palette,
-        state: &KeyboardState,
-        busy: bool,
-        writable: bool,
-    ) {
-        self.apply_row(ui, state, busy, writable, Page::Performance);
-        if self.no_data(ui, palette) {
-            return;
-        }
-        let mut value = self.working().unwrap().functions.performance.clone();
-        let before = value.clone();
-        ui.label(RichText::new(t("Частота опроса")).strong());
-        ui.horizontal_wrapped(|ui| {
-            for (code, label) in [
-                (4, "1000 Hz"),
-                (3, "2000 Hz"),
-                (2, "4000 Hz"),
-                (1, "8000 Hz"),
-            ] {
-                ui.selectable_value(&mut value.report_rate, code, label);
-            }
-            if ui
-                .add_enabled(
-                    !busy && writable && self.local_edit.is_none() && self.target(state).is_some(),
-                    egui::Button::new(t("Применить частоту")),
-                )
-                .clicked()
-            {
-                if let Some((device_path, profile)) = self.target(state) {
-                    self.action = Some(Action::Send(KeyboardCommand::ApplyReportRate {
-                        device_path,
-                        profile,
-                        report_rate: value.report_rate,
-                    }));
-                }
-            }
-        });
-        ui.add_space(16.0);
-        ui.checkbox(
-            &mut value.bottom_rapid_trigger,
-            t("Защита от случайных срабатываний"),
-        )
-        .on_hover_text(t(
-            "Снижает ложные нажатия из-за вибраций стола и небольшого давления на клавиши.",
-        ));
-        let mut debounce = value.debounce_level > 0;
-        if ui
-            .checkbox(&mut debounce, t("Оптимизация дребезга клавиш"))
-            .changed()
-        {
-            value.debounce_level = if debounce { 7 } else { 0 };
-        }
-        let mut mac = value.mac_mode % 4 >= 2;
-        if ui.checkbox(&mut mac, t("Режим Mac")).changed() {
-            value.mac_mode = self.working().unwrap().index * 4 + if mac { 2 } else { 0 };
-            if mac {
-                value.lock_win = false;
-            }
-        }
-        ui.add_enabled(
-            !mac,
-            egui::Checkbox::new(&mut value.lock_win, t("Блокировать Win")),
-        );
-        ui.checkbox(
-            &mut value.travel_check,
-            t("Адаптивная динамическая калибровка (бета)"),
-        );
-        ui.add_space(16.0);
-        let mut smart = value.rt_smart > 0;
-        if ui.checkbox(&mut smart, "RT Smart").changed() {
-            value.rt_smart = if smart { 8 } else { 0 };
-        }
-        if smart {
-            ui.add(
-                egui::Slider::new(&mut value.rt_smart, 1..=15)
-                    .text(t("Стабильность"))
-                    .clamping(egui::SliderClamping::Edits),
-            );
-        }
-        ui.add_space(16.0);
-        ui.label(RichText::new(t("Сон подсветки")).strong());
-        let mut never = value.sleep_mode == 1;
-        if ui
-            .checkbox(&mut never, t("Не выключать автоматически"))
-            .changed()
-        {
-            value.sleep_mode = u8::from(never);
-        }
-        let mut minutes = f32::from(value.sleep_time) / 2.0;
-        if ui
-            .add_enabled(
-                !never,
-                egui::Slider::new(&mut minutes, 1.0..=30.0)
-                    .step_by(1.0)
-                    .suffix(t(" мин"))
-                    .clamping(egui::SliderClamping::Edits),
-            )
-            .changed()
-        {
-            value.sleep_time = (minutes * 2.0) as u8;
-        }
-        if value != before {
-            self.working_mut().unwrap().functions.performance = value;
-        }
-        ui.add_space(12.0);
-        ui.label(RichText::new(t("Частота опроса применяется отдельной кнопкой; остальные параметры — кнопкой «Применить».")).small().color(palette.muted));
-    }
-
-    fn lighting_page(
-        &mut self,
-        ui: &mut egui::Ui,
-        palette: Palette,
-        state: &KeyboardState,
-        busy: bool,
-        writable: bool,
-    ) {
-        self.apply_row(ui, state, busy, writable, Page::Lighting);
-        ui.horizontal_wrapped(|ui| {
-            for (id, label) in [(0, "Основная"), (1, "Полоса"), (2, "Логотип")]
-            {
-                ui.selectable_value(&mut self.light_scope, id, t(label));
-            }
-        });
-        ui.add_space(12.0);
-        if self.no_data(ui, palette) {
-            self.grid_section(ui, palette, GridPurpose::Lighting);
-            ui.add_space(18.0);
-            self.animation_editor(ui, palette, state, busy, writable);
-            return;
-        }
-        let mut lighting = self.working().unwrap().functions.lighting.clone();
-        let before = lighting.clone();
-        let zone = match self.light_scope {
-            1 => &mut lighting.side,
-            2 => &mut lighting.side2,
-            _ => &mut lighting.main,
-        };
-        let effects = effect_options(self.light_scope, firmware_number(state));
-        let current = effects
-            .iter()
-            .find(|effect| effect.value == zone.effect)
-            .copied();
-        egui::ComboBox::from_id_salt("ace75-effect")
-            .width(ui.available_width().min(300.0))
-            .selected_text(
-                current
-                    .map(LightEffect::label)
-                    .unwrap_or_else(|| t("Неизвестный эффект")),
-            )
-            .show_ui(ui, |ui| {
-                for effect in &effects {
-                    ui.selectable_value(&mut zone.effect, effect.value, effect.label());
-                }
-            });
-        ui.add_space(10.0);
-        let current = effects
-            .iter()
-            .find(|effect| effect.value == zone.effect)
-            .copied();
-        if let Some(effect) = current {
-            if effect.brightness {
-                ui.add(
-                    egui::Slider::new(&mut zone.brightness, 0..=100)
-                        .text(t("Яркость"))
-                        .suffix("%")
-                        .clamping(egui::SliderClamping::Edits),
-                );
-            }
-            if effect.speed {
-                ui.add(
-                    egui::Slider::new(&mut zone.speed, 0..=4)
-                        .text(t("Скорость"))
-                        .clamping(egui::SliderClamping::Edits),
-                );
-            }
-            if effect.direction {
-                ui.horizontal_wrapped(|ui| {
-                    ui.label(t("Направление"));
-                    for (id, label) in effect.direction_labels().into_iter().enumerate() {
-                        ui.selectable_value(&mut zone.direction, id as u8, t(label));
-                    }
-                });
-            }
-            if effect.color {
-                ui.horizontal_wrapped(|ui| {
-                    ui.label(t("Цвет"));
-                    ui.color_edit_button_srgb(&mut zone.color);
-                    ui.checkbox(&mut zone.rainbow, t("Радуга"));
-                });
-            }
-        }
-        if lighting != before {
-            lighting.scope = match self.light_scope {
-                1 => LightScope::Side,
-                2 => LightScope::Side2,
-                _ => LightScope::Main,
-            };
-            self.working_mut().unwrap().functions.lighting = lighting;
-        }
-        ui.add_space(18.0);
-        self.grid_section(ui, palette, GridPurpose::Lighting);
-        self.colors_editor(ui, state, busy, writable);
-        egui::CollapsingHeader::new(t("Цвет калибровки")).show(ui, |ui| {
-            if let Some(profile) = self.working_mut() {
-                ui.color_edit_button_srgb(&mut profile.functions.lighting.calibration_color);
-            }
-        });
-        ui.add_space(18.0);
-        self.music_controls(ui, palette, state, busy, writable);
-        ui.add_space(14.0);
-        egui::CollapsingHeader::new(t("Статические и анимированные темы")).show(ui, |ui| {
-            self.animation_editor(ui, palette, state, busy, writable)
-        });
     }
 
     fn profiles_page(
@@ -2318,6 +2001,10 @@ impl Ace75Ui {
                     .text(t("Длительность кадра"))
                     .clamping(egui::SliderClamping::Edits),
             );
+            std::mem::swap(
+                &mut self.selected_lights,
+                &mut self.animation_selected_lights,
+            );
             self.frame_preview = Some(frame.colors.clone());
             self.grid_section(ui, palette, GridPurpose::Lighting);
             self.frame_preview = None;
@@ -2343,6 +2030,10 @@ impl Ace75Ui {
                     }
                 }
             });
+            std::mem::swap(
+                &mut self.selected_lights,
+                &mut self.animation_selected_lights,
+            );
         }
         let validation = animation.validate();
         if let Err(error) = &validation {
@@ -3426,10 +3117,61 @@ impl Ace75Ui {
             .advanced_editor
             .as_ref()
             .is_some_and(|editor| editor.dirty);
-        ui.add_enabled_ui(!editing, |ui| {
-            self.layer_selector(ui);
-            self.grid_section(ui, palette, GridPurpose::Advanced);
-        });
+        ui.add_enabled_ui(!editing, |ui| self.layer_selector(ui));
+        ui.add_space(12.0);
+        if ui.available_width() >= 980.0 {
+            let options_width = 380.0;
+            let canvas_width = ui.available_width() - options_width - 16.0;
+            ui.horizontal_top(|ui| {
+                ui.spacing_mut().item_spacing.x = 16.0;
+                ui.allocate_ui_with_layout(
+                    Vec2::new(canvas_width, 0.0),
+                    egui::Layout::top_down(egui::Align::Min),
+                    |ui| {
+                        setting_section(
+                            ui,
+                            palette,
+                            t("Выбор клавиш"),
+                            t("Для парного действия выберите две клавиши с Ctrl или Shift."),
+                            |ui| {
+                                ui.add_enabled_ui(!editing, |ui| {
+                                    self.grid_section(ui, palette, GridPurpose::Advanced)
+                                });
+                            },
+                        );
+                    },
+                );
+                ui.allocate_ui_with_layout(
+                    Vec2::new(options_width, 590.0),
+                    egui::Layout::top_down(egui::Align::Min),
+                    |ui| {
+                        setting_section(
+                            ui,
+                            palette,
+                            t("Режим и действия"),
+                            "",
+                            |ui| {
+                                egui::ScrollArea::vertical()
+                                    .id_salt("ace75-advanced-editor")
+                                    .max_height(560.0)
+                                    .show(ui, |ui| self.advanced_controls(ui, palette));
+                            },
+                        );
+                    },
+                );
+            });
+        } else {
+            ui.add_enabled_ui(!editing, |ui| {
+                self.grid_section(ui, palette, GridPurpose::Advanced)
+            });
+            ui.add_space(12.0);
+            setting_section(ui, palette, t("Режим и действия"), "", |ui| {
+                self.advanced_controls(ui, palette)
+            });
+        }
+    }
+
+    fn advanced_controls(&mut self, ui: &mut egui::Ui, palette: Palette) {
         if self.layer % 2 != 0 {
             ui.label(t(
                 "Расширенные назначения доступны только на основных слоях.",
@@ -3468,21 +3210,16 @@ impl Ace75Ui {
                 ui.selectable_value(&mut editor.kind, kind, advanced_name(kind));
             }
         });
+        ui.label(
+            RichText::new(advanced_help(editor.kind))
+                .size(12.5)
+                .color(palette.muted),
+        );
+        ui.add_space(10.0);
         if editor.kind != before_kind {
             editor.dirty = true;
             editor.pick = 0;
         }
-        ui.label(
-            RichText::new(t(match editor.kind {
-                147 => "Приоритет получает глубже нажатая клавиша.",
-                148 => "Разрешение одновременного нажатия противоположных клавиш.",
-                149 => "Действия пары клавиш связаны между собой.",
-                144 => "До четырёх действий на разных этапах нажатия и отпускания.",
-                146 => "Разные действия при коротком нажатии и удержании.",
-                _ => "Первое нажатие включает удержание, повторное выключает.",
-            }))
-            .color(palette.muted),
-        );
         let count = match editor.kind {
             144 => 4,
             145 => 1,
@@ -3604,44 +3341,63 @@ impl Ace75Ui {
 
 fn dks_editor(ui: &mut egui::Ui, editor: &mut AdvancedEditor) {
     ui.label(t(
-        "Этапы DKS: нажатие 1,0 → 3,0 мм; отпускание 3,0 → 1,0 мм.",
+        "Этапы DKS: нажатие от 1,0 до 3,0 мм; отпускание от 3,0 до 1,0 мм.",
     ));
-    let points = ["↓ 1.0 mm", "↓ 3.0 mm", "↑ 3.0 mm", "↑ 1.0 mm"];
+    let points = [
+        t("Нажатие 1,0 мм"),
+        t("Нажатие 3,0 мм"),
+        t("Отпускание 3,0 мм"),
+        t("Отпускание 1,0 мм"),
+    ];
+    let columns = if ui.available_width() >= 680.0 { 4 } else { 2 };
+    let phase_width = (ui.available_width() - (columns - 1) as f32 * 10.0) / columns as f32;
     for action in 0..4 {
         let Ok(mut phases) = editor.dks.ui_phases(action) else {
             continue;
         };
         let original = phases;
         ui.push_id(("dks-phases", action), |ui| {
-            ui.label(tf!("Действие {}", action + 1));
-            ui.horizontal_wrapped(|ui| {
-                for phase in 0..4 {
-                    let covered =
-                        (0..phase).any(|previous| usize::from(phases[previous]) > phase - previous);
-                    ui.add_enabled_ui(!covered, |ui| {
-                        ui.vertical(|ui| {
-                            ui.label(points[phase]);
-                            egui::ComboBox::from_id_salt(phase)
-                                .width(112.0)
-                                .selected_text(dks_phase_label(phase, phases[phase], &points))
-                                .show_ui(ui, |ui| {
-                                    for value in 0..=(4 - phase) as u8 {
-                                        ui.selectable_value(
-                                            &mut phases[phase],
-                                            value,
-                                            dks_phase_label(phase, value, &points),
-                                        );
-                                    }
-                                });
+            ui.label(RichText::new(tf!("Действие {}", action + 1)).strong());
+            egui::Grid::new("phases")
+                .num_columns(columns)
+                .spacing(Vec2::new(10.0, 8.0))
+                .min_col_width(phase_width)
+                .max_col_width(phase_width)
+                .show(ui, |ui| {
+                    for phase in 0..4 {
+                        let covered = (0..phase)
+                            .any(|previous| usize::from(phases[previous]) > phase - previous);
+                        ui.add_enabled_ui(!covered, |ui| {
+                            ui.vertical(|ui| {
+                                ui.set_width(phase_width);
+                                ui.label(points[phase]);
+                                let label = dks_phase_label(phase, phases[phase], &points);
+                                egui::ComboBox::from_id_salt(phase)
+                                    .width(phase_width)
+                                    .truncate()
+                                    .selected_text(&label)
+                                    .show_ui(ui, |ui| {
+                                        for value in 0..=(4 - phase) as u8 {
+                                            ui.selectable_value(
+                                                &mut phases[phase],
+                                                value,
+                                                dks_phase_label(phase, value, &points),
+                                            );
+                                        }
+                                    })
+                                    .response
+                                    .on_hover_text(label);
+                            });
                         });
-                    });
-                }
-            });
+                        if (phase + 1) % columns == 0 {
+                            ui.end_row();
+                        }
+                    }
+                });
         });
-        if phases != original {
-            if editor.dks.set_ui_phases(action, phases).is_ok() {
-                editor.dirty = true;
-            }
+        ui.add_space(10.0);
+        if phases != original && editor.dks.set_ui_phases(action, phases).is_ok() {
+            editor.dirty = true;
         }
     }
 }
@@ -3654,6 +3410,20 @@ fn dks_phase_label(phase: usize, value: u8, points: &[&str; 4]) -> String {
             points[(phase + usize::from(value) - 1).min(3)]
         ),
     }
+}
+
+fn advanced_help(kind: u8) -> &'static str {
+    t(match kind {
+        147 => "Из двух клавиш срабатывает та, что нажата глубже.",
+        149 => "При отпускании одной из двух связанных клавиш автоматически срабатывает другая.",
+        148 => {
+            "Для двух клавиш выберите правило: последнее нажатие, приоритет одной из клавиш или отмена обеих."
+        }
+        144 => "До четырёх действий на разных этапах нажатия и отпускания.",
+        146 => "Короткое нажатие выполняет одно действие, удержание выполняет другое.",
+        145 => "Короткое нажатие включает удержание действия, следующее нажатие выключает его.",
+        _ => "",
+    })
 }
 
 fn advanced_name(kind: u8) -> &'static str {
@@ -3789,57 +3559,27 @@ fn mm_slider(
     range: std::ops::RangeInclusive<u16>,
     label: &str,
 ) {
-    let mut value = f64::from(*raw) / base;
-    if ui
-        .add(
-            egui::Slider::new(
-                &mut value,
-                f64::from(*range.start()) / base..=f64::from(*range.end()) / base,
-            )
-            .step_by(1.0 / base)
-            .max_decimals(3)
-            .suffix(t(" мм"))
-            .text(label)
-            .clamping(egui::SliderClamping::Edits),
-        )
-        .changed()
-    {
-        *raw = (value * base).round() as u16;
+    if !label.is_empty() {
+        ui.label(RichText::new(label).strong());
     }
-}
-fn rt_control(
-    ui: &mut egui::Ui,
-    id: &str,
-    label: &str,
-    precision: &mut u8,
-    value: &mut u16,
-    max_travel: u16,
-    tachyon: bool,
-) {
-    ui.push_id(id, |ui| {
-        ui.add_enabled_ui(tachyon, |ui| {
-            ui.horizontal_wrapped(|ui| {
-                ui.label(label);
-                for (code, name) in [(0, "0.01 mm"), (1, "0.005 mm"), (2, "0.001 mm")] {
-                    let previous = *precision;
-                    if ui.selectable_value(precision, code, name).changed() {
-                        let old_base = precision_base(previous);
-                        let new_base = precision_base(code);
-                        *value = ((f64::from(*value) / old_base * new_base).round() as u16).clamp(
-                            if tachyon { 1 } else { 2 },
-                            if code == 0 { max_travel } else { 500 },
-                        );
-                    }
-                }
-            });
-        });
-        mm_slider(
-            ui,
-            value,
-            precision_base(*precision),
-            if tachyon { 1 } else { 2 }..=if *precision == 0 { max_travel } else { 500 },
-            label,
-        );
+    ui.scope(|ui| {
+        ui.spacing_mut().slider_width = (ui.available_width() - 96.0).max(80.0);
+        let mut value = f64::from(*raw) / base;
+        if ui
+            .add(
+                egui::Slider::new(
+                    &mut value,
+                    f64::from(*range.start()) / base..=f64::from(*range.end()) / base,
+                )
+                .step_by(1.0 / base)
+                .max_decimals(3)
+                .suffix(t(" мм"))
+                .clamping(egui::SliderClamping::Edits),
+            )
+            .changed()
+        {
+            *raw = (value * base).round() as u16;
+        }
     });
 }
 fn precision_base(value: u8) -> f64 {
@@ -3952,7 +3692,6 @@ fn default_assignment(index: u16, profile: u8, layer: u8) -> Option<KeyAssignmen
 }
 #[derive(Deserialize)]
 struct KeyAction {
-    id: String,
     category: String,
     name_en: String,
     name_ru: String,
@@ -4383,6 +4122,108 @@ mod tests {
     }
 
     #[test]
+    fn action_palette_wraps_inside_its_scrolling_inspector() {
+        let context = egui::Context::default();
+        let mut editor = Ace75Ui::default();
+        editor.draft = Some(profile_fixture());
+        editor.selected_keys.insert(88);
+        let mut found = false;
+        for _ in 0..2 {
+            let output = context.run(
+                egui::RawInput {
+                    screen_rect: Some(egui::Rect::from_min_size(
+                        egui::Pos2::ZERO,
+                        Vec2::new(1144.0, 800.0),
+                    )),
+                    ..Default::default()
+                },
+                |ctx| {
+                    egui::CentralPanel::default()
+                        .frame(egui::Frame::NONE)
+                        .show(ctx, |ui| {
+                            editor.keys_page(
+                                ui,
+                                Palette::new(true),
+                                &KeyboardState::default(),
+                                false,
+                                false,
+                            )
+                        });
+                },
+            );
+            found = output.shapes.iter().any(|clipped| match &clipped.shape {
+                egui::Shape::Text(text) if text.galley.job.text == "Z" && text.pos.x > 800.0 => {
+                    clipped
+                        .clip_rect
+                        .contains(text.pos + text.galley.size() * 0.5)
+                }
+                _ => false,
+            });
+        }
+        assert!(
+            found,
+            "The Z action must be visible inside the inspector after wrapping"
+        );
+    }
+
+    #[test]
+    fn trigger_starts_with_wasd_without_editing_and_allows_clearing_selection() {
+        let context = egui::Context::default();
+        let mut editor = Ace75Ui::default();
+        let original = profile_fixture();
+        editor.draft = Some(original.clone());
+        editor.baseline = Some(original.clone());
+        for first in [true, false] {
+            let _ = context.run(egui::RawInput::default(), |ctx| {
+                egui::CentralPanel::default().show(ctx, |ui| {
+                    editor.grid_section(ui, Palette::new(true), GridPurpose::Trigger)
+                });
+            });
+            if first {
+                assert_eq!(editor.selected_keys.len(), 4);
+                assert_eq!(editor.working(), Some(&original));
+                assert!(!editor.part_dirty(Page::Trigger));
+                editor.selected_keys.clear();
+            } else {
+                assert!(editor.selected_keys.is_empty());
+            }
+        }
+    }
+
+    #[test]
+    fn animation_editor_keeps_its_selection_separate_from_onboard_colors() {
+        let context = egui::Context::default();
+        let mut editor = Ace75Ui::default();
+        editor.selected_lights.insert(88);
+        editor.animation_selected_lights.insert(95);
+        editor.animation_draft = Some(LightingAnimation {
+            schema_version: 1,
+            model: crate::ace75::MODEL.into(),
+            name: "Theme".into(),
+            scopes: vec![LightScope::Main, LightScope::Side],
+            frames: vec![LightingFrame {
+                duration_ms: 100,
+                colors: vec![[0; 3]; 128],
+            }],
+        });
+        let _ = context.run(egui::RawInput::default(), |ctx| {
+            egui::CentralPanel::default().show(ctx, |ui| {
+                editor.animation_editor(
+                    ui,
+                    Palette::new(true),
+                    &KeyboardState::default(),
+                    false,
+                    false,
+                )
+            });
+        });
+        assert_eq!(editor.selected_lights, [88].into_iter().collect());
+        assert_eq!(editor.animation_selected_lights, [95].into_iter().collect());
+        assert!(editor.frame_preview.is_none());
+        assert!(editor.take_action().is_none());
+    }
+
+    #[test]
     fn additive_selection_preserves_unrelated_keys() {
         let mut selected = BTreeSet::new();
         toggle_selection(&mut selected, 88, false);
@@ -4426,8 +4267,9 @@ mod tests {
         for (code, additive) in [(4, false), (7, true)] {
             let cell = layout().keys.iter().find(|cell| cell.code == code).unwrap();
             let position = egui::pos2(
-                cell.x + cell.width / 2.0,
-                layout().canvas.top_inset + cell.y + cell.height / 2.0,
+                (cell.x + cell.width / 2.0) * (855.0 / layout().canvas.width),
+                (layout().canvas.top_inset + cell.y + cell.height / 2.0)
+                    * (855.0 / layout().canvas.width),
             );
             let modifiers = egui::Modifiers {
                 ctrl: additive,
@@ -4470,8 +4312,8 @@ mod tests {
                 .frame(egui::Frame::NONE)
                 .show(context, |ui| {
                     let before = ui.cursor().top();
-                    let expected = layout().canvas.height
-                        + layout().canvas.top_inset
+                    let expected = (layout().canvas.height + layout().canvas.top_inset)
+                        * (855.0 / layout().canvas.width)
                         + ui.spacing().item_spacing.y;
                     editor.show_grid(ui, Palette::new(true), GridPurpose::Assignment);
                     assert!((ui.cursor().top() - before - expected).abs() <= 1.0);
@@ -4490,8 +4332,8 @@ mod tests {
             .find(|cell| cell.x == 35.0 && cell.y == 80.0)
             .unwrap();
         let position = egui::pos2(
-            number.x + number.width / 2.0,
-            layout().canvas.top_inset + number.y + 2.0,
+            (number.x + number.width / 2.0) * (855.0 / layout().canvas.width),
+            (layout().canvas.top_inset + number.y + 2.0) * (855.0 / layout().canvas.width),
         );
         for pressed in [None, Some(true), Some(false)] {
             let input = egui::RawInput {

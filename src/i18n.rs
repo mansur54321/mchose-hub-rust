@@ -281,7 +281,7 @@ mod tests {
 
     #[test]
     fn every_russian_interface_literal_has_a_catalog_entry() {
-        let source = [include_str!("ui.rs"), include_str!("ui/ace75.rs")].join("\n");
+        let source = [include_str!("ui.rs"), include_str!("ui/ace75.rs"), include_str!("ui/ace75/settings.rs"), include_str!("ui/ace75/lighting.rs"), include_str!("ui/ace75/components.rs"), include_str!("ui/ace75/diagram.rs")].join("\n");
         assert_translated_literals(&source);
     }
 

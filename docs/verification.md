@@ -58,3 +58,20 @@ The user subsequently reported that v0.1.0 works on Windows. No per-feature Wind
 ## Firmware limits
 
 Every bundled BIN matches the source size and SHA-256 in the manifest. Transfer code requires explicit confirmation, validates role and official contents, and checks transport replies. No firmware was flashed during development of this release. Boot recovery, power-loss recovery and acceptance of modified firmware remain unverified.
+
+## v0.2.1 interface refresh
+
+The local all-targets run passed 161 library tests and one example test, with the isolated legacy X11 test ignored. New regressions cover one-time WASD selection without configuration edits, separate frame/onboard color selections, Tab/Space activation of the native switch, and palette wrapping inside the actual scrolling inspector. The backend HID implementation is unchanged.
+
+An initial 64-case render matrix covered all eight pages, both languages/themes and 855×700/1440×940 windows. Follow-up representative captures and actual window input checked the corrected side panes, A and Ctrl+A+D selection, RS/LT help, three trigger tabs, strip/logo selection, wrapped palette entries and the fourth DKS phase dropdown. Final wide/narrow trigger captures verify the original switch illustration and the compact layout with the editable slider in the first viewport. All these sessions used `--read-only`; no device settings were written.
+
+The final screenshots in [dark](images/ace75-dark.png) and [light](images/ace75-light.png) are captures of the native application. Private inspection logs and intermediate screenshots remain excluded from the repository.
+
+Design delivery gate, reviewed against `DESIGN.md`:
+
+| Gate | Status | Evidence |
+| --- | --- | --- |
+| Hard gate | PASS | Native controls remain bound to existing actions; RU/EN, empty/read-only states and both window sizes were rendered and exercised. |
+| Purpose | PASS | Official keyboard geometry, original switch/brand assets, source theme colors and grouped settings; each adaptation and its purpose is recorded in `DESIGN.md`. |
+| Liveliness | PASS | ENERGY 1 / RHYTHM 2 / MOTION 1; the physical keyboard and selected settings are the focal point, with blue used for actual selection. |
+| Craftsmanship | PASS | Pointer/keyboard checks and regression tests pass; text contrast is 15.00:1/15.91:1 on neutral caps, control borders 3.49:1/3.79:1, muted text 5.10:1/6.49:1, selected white text 4.77:1. |

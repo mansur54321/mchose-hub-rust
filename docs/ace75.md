@@ -30,6 +30,14 @@ Trigger limits depend on switch travel and precision. The UI uses 0.01/0.005/0.0
 
 Firmware-specific lighting gates matter. Logo follow mode and its custom color range require 115. The production configuration sets the newer `GLWRemapkableLightV2` capability to **118**, even though a bundled SDK table says 117; it must stay disabled on firmware 117. The normal effect lists, per-position colors and native host playback are separate from that newer capability. No unsupported on-device GIF storage or live LED-read capability is claimed.
 
+## Editor layout
+
+The keyboard uses the official geometry with native keycaps, chassis, wheel and arrow drawing. A stored RGB value of zero keeps a neutral keycap, matching Hub. Selection uses both an outline and a check mark; the selected key names are shown above the diagram. The logo zone uses the original MCHOSE mark.
+
+At wide window sizes, key assignments, trigger controls and advanced actions sit beside the keyboard. Apply/discard remains outside the main scroll area. Trigger controls have Press, Rapid Trigger and Dead zones tabs. At 855×700 the trigger diagram can be expanded to change selection; the configured value and editable slider remain visible without opening it. The original switch illustration is shown in the wide layout and is not a live travel measurement.
+
+Performance groups USB polling, input stability, system key locks and lighting sleep. Lighting separates the keys, strip and logo; clicking a zone on the diagram selects its controls. Theme-frame selection is independent from onboard-color selection. Action palettes wrap inside their inspector, and DKS phases use a two-column layout when the pane is narrow.
+
 ## Host lighting and files
 
 Music captures the system playback endpoint through PipeWire on Linux or WASAPI on Windows. The microphone is not selected. The native FFT renderer maps spectrum bars to the captured keyboard geometry and can target the main keys, strip and logo separately. The renderer implements this feature natively; the original parent-page music visualization algorithm was not recovered in this bounded analysis.

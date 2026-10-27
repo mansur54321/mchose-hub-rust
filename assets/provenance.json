@@ -97,7 +97,7 @@
     ],
     "source": "Official MCHOSE Hub HTML/bundle or official MCHOSE store HTML",
     "fetched": "2026-10-22",
-    "usage": "source comparison only"
+    "usage": "native keyboard logo-zone indicator"
   },
   {
     "path": "mchose-hub-brand-original.png",
@@ -241,5 +241,27 @@
     "sha256": "222370558091ea6f496b28f4896da9dbd6cfbc6054fce6c47eef0482f869c3d9",
     "bytes": 60488,
     "fetched": "2026-10-27"
+  },
+  {
+    "path": "ace75-switch-light.png",
+    "url": "https://www.mchose.com.cn/cizhou/_next/static/chunks/1833-bb9dc82e7ca4286d.js",
+    "source": "Original pure iL switch SVG component, resolved with official theme variables and rasterized without changing geometry",
+    "source_sha256": "4c7f5f44992c710d34fc816e7459892a3971a7b3916be7ab1f4bfb84735c7422",
+    "sha256": "648f57f6e1e2b15d83bf7509f9e1b6a7a6fcf4f584ea0648139f290669ba333c",
+    "bytes": 25334,
+    "fetched": "2026-10-27",
+    "usage": "native actuation illustration; configuration, not live travel",
+    "extraction_source_sha256": "1f04a1c1a5c92364385bf581925dc85ad7a7280c44d9f867b98cda31c74d5393"
+  },
+  {
+    "path": "ace75-switch-dark.png",
+    "url": "https://www.mchose.com.cn/cizhou/_next/static/chunks/1833-bb9dc82e7ca4286d.js",
+    "source": "Original pure iL switch SVG component, resolved with official theme variables and rasterized without changing geometry",
+    "source_sha256": "4c7f5f44992c710d34fc816e7459892a3971a7b3916be7ab1f4bfb84735c7422",
+    "sha256": "be4325d318f237276da46cfaded11795db168a1f4398ff5529af5e1cd07f425b",
+    "bytes": 25020,
+    "fetched": "2026-10-27",
+    "usage": "native actuation illustration; configuration, not live travel",
+    "extraction_source_sha256": "1f04a1c1a5c92364385bf581925dc85ad7a7280c44d9f867b98cda31c74d5393"
   }
 ]

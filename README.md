@@ -17,7 +17,7 @@ The native application on Linux:
 | Dark theme | Light theme |
 | --- | --- |
 | ![MCHOSE Hub Rust button settings in dark mode](docs/images/interface-dark.png) | ![MCHOSE Hub Rust MagDock settings in light mode](docs/images/interface-light.png) |
-| ![Ace75 keyboard settings in Russian, dark mode](docs/images/ace75-dark.png) | ![Ace75 lighting settings in English, light mode](docs/images/ace75-light.png) |
+| ![Ace75 keyboard settings in Russian, dark mode](docs/images/ace75-dark.png) | ![Ace75 actuation settings in Russian, light mode](docs/images/ace75-light.png) |
 
 ## Features
 
