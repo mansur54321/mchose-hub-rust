@@ -36,6 +36,7 @@ fn catalog() -> &'static BTreeMap<String, String> {
     CATALOG.get_or_init(|| {
         let mut values: BTreeMap<String, String> = serde_json::from_str(include_str!("../assets/locales/backend-en.json")).expect("Embedded backend translations");
         values.extend(serde_json::from_str::<BTreeMap<String, String>>(include_str!("../assets/locales/ui-en.json")).expect("Embedded interface translations"));
+        values.extend(serde_json::from_str::<BTreeMap<String, String>>(include_str!("../assets/locales/ace75-backend-en.json")).expect("Embedded Ace75 translations"));
         values
     })
 }
@@ -149,7 +150,7 @@ fn english_message(text: &str, depth: u8) -> String {
                 Part::Argument(name) => {
                     let Some(value) = values.get(name) else { return text.to_owned(); };
                     // Only error parameters contain another system message. Names and paths stay literal.
-                    if matches!(name.as_str(), "error" | "err" | "e" | "source" | "advice" | "restore" | "second") {
+                    if matches!(name.as_str(), "error" | "err" | "e" | "source" | "advice" | "restore" | "second" | "cleanup" | "flash_error" | "enter_error") {
                         output.push_str(&english_message(value, depth + 1));
                     } else {
                         output.push_str(value);
@@ -191,6 +192,10 @@ pub fn load_preference() -> Language {
 }
 
 pub fn save_preference(locale: Language) -> std::io::Result<()> {
+    save_ui_preference("language", serde_json::Value::String(locale.code().into()))
+}
+
+pub(crate) fn save_ui_preference(key: &str, setting: serde_json::Value) -> std::io::Result<()> {
     use std::io::Write;
     let directory = crate::controller::data_dir();
     std::fs::create_dir_all(&directory)?;
@@ -201,7 +206,7 @@ pub fn save_preference(locale: Language) -> std::io::Result<()> {
         Err(error) => return Err(error),
     };
     let object = value.as_object_mut().ok_or_else(|| std::io::Error::other("Invalid UI preferences"))?;
-    object.insert("language".into(), serde_json::Value::String(locale.code().into()));
+    object.insert(key.into(), setting);
     let stamp = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap_or_default().as_nanos();
     let pending = directory.join(format!(".ui-preferences-{}-{stamp}.json", std::process::id()));
     let mut file = std::fs::OpenOptions::new().create_new(true).write(true).open(&pending)?;
@@ -271,11 +276,27 @@ mod tests {
         assert_eq!(message_for(Language::En, "MagDock: Мышь не подключена"), "MagDock: The mouse is not connected");
         assert_eq!(message_for(Language::En, "WASAPI: Не удалось инициализировать COM"), "WASAPI: Could not initialize COM");
         assert_eq!(message_for(Language::En, "Не удалось восстановить подсветку: Мышь не подключена"), "Could not restore the lighting: The mouse is not connected");
+        assert_eq!(message_for(Language::En, "ACE75: восстановление настроек не подтверждено: ACE75 не подключена"), "ACE75: settings restoration was not confirmed: ACE75 is not connected");
     }
 
     #[test]
     fn every_russian_interface_literal_has_a_catalog_entry() {
-        let source = include_str!("ui.rs");
+        let source = [include_str!("ui.rs"), include_str!("ui/ace75.rs")].join("\n");
+        assert_translated_literals(&source);
+    }
+
+    #[test]
+    fn every_russian_keyboard_backend_literal_has_a_catalog_entry() {
+        let source = [include_str!("ace75.rs"), include_str!("keyboard_controller.rs"),
+            include_str!("ace75/advanced.rs"), include_str!("ace75/advanced_io.rs"),
+            include_str!("ace75/bootloader.rs"), include_str!("ace75/model.rs"),
+            include_str!("ace75/operations.rs"), include_str!("ace75/hub_profile.rs"),
+            include_str!("ace75/firmware_catalog.rs"), include_str!("ace75/firmware_service.rs"),
+            include_str!("ace75/host_lighting.rs")].join("\n");
+        assert_translated_literals(&source);
+    }
+
+    fn assert_translated_literals(source: &str) {
         let mut start = None;
         let mut escaped = false;
         for (index, ch) in source.char_indices() {

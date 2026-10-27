@@ -40,5 +40,11 @@
     "filename": "MagDock0004.bin",
     "bytes": 25424,
     "sha256": "8ad22b59bbf0704b5242ced705a5d274983b4427c5c0f7b28beeb22029988fe2"
+  },
+  {
+    "url": "https://cdn.mchose.com.cn/configCenter/static/binaries/Ace75_8K_V117_CS6698734A20260727_okby9heultrya4ba.bin",
+    "filename": "Ace75_8K_V117_CS6698734A20260727_okby9heultrya4ba.bin",
+    "bytes": 229800,
+    "sha256": "180c5a25afe55125dad36c607de93d0b5a2eb25b11db04b029ad1b0f52414e0e"
   }
 ]

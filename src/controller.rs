@@ -2,6 +2,7 @@ use crate::{
     dock::{Dock, DockLighting, DockMode, DockSettings, FirmwarePlan},
     firmware::{self, FirmwareCatalog},
     hub_format,
+    keyboard_controller::{KeyboardCommand, KeyboardSession, KeyboardState},
     mouse::{
         AdaptivePower, DpiSettings, KeyBinding, Mouse, MouseMacro, MouseSettings, MouseSnapshot,
     },
@@ -21,6 +22,7 @@ use std::{
 
 #[derive(Debug, Clone, Default)]
 pub struct AppSnapshot {
+    pub ace75: KeyboardState,
     pub devices: Vec<DeviceInfo>,
     pub active_mouse_path: Option<String>,
     pub mouse: Option<MouseSnapshot>,
@@ -46,6 +48,7 @@ pub struct AppSnapshot {
 
 #[derive(Debug)]
 pub enum Command {
+    Ace75(KeyboardCommand),
     Refresh,
     SelectMouse(String),
     ApplySettings(MouseSettings),
@@ -130,6 +133,9 @@ pub enum Command {
 
 impl Command {
     fn writes_hardware(&self) -> bool {
+        if let Self::Ace75(command) = self {
+            return command.writes_hardware();
+        }
         !matches!(
             self,
             Self::Refresh
@@ -189,7 +195,7 @@ impl Controller {
             snapshot: AppSnapshot {
                 busy: true,
                 charging_indicator_enabled: true,
-                message: "Чтение мыши и MagDock…".into(),
+                message: "Чтение устройств MCHOSE…".into(),
                 ..Default::default()
             },
             sender,
@@ -222,6 +228,10 @@ impl Controller {
     pub fn poll(&mut self) {
         while let Ok(snapshot) = self.receiver.try_recv() {
             self.snapshot = snapshot;
+        }
+        self.snapshot.ace75.pull_telemetry();
+        if let Some(progress) = self.snapshot.ace75.firmware_progress() {
+            self.snapshot.firmware_progress = Some(progress);
         }
     }
 }
@@ -832,6 +842,7 @@ fn validate_firmware_files(
 }
 
 struct Worker {
+    keyboard: KeyboardSession,
     events: Sender<AppSnapshot>,
     state: AppSnapshot,
     mouse: Option<Mouse>,
@@ -851,6 +862,7 @@ struct Worker {
 impl Worker {
     fn new(events: Sender<AppSnapshot>, read_only: bool) -> Self {
         Self {
+            keyboard: KeyboardSession::new(read_only),
             events,
             state: AppSnapshot {
                 charging_indicator_enabled: true,
@@ -885,13 +897,16 @@ impl Worker {
         self.finish_poll(initial);
         let mut last_poll = Instant::now();
         loop {
-            let interval = if self.music.is_some() || self.state.charging_indicator_active {
+            let interval = if self.music.is_some() || self.state.charging_indicator_active || self.keyboard.needs_fast_tick() {
                 Duration::from_millis(50)
             } else {
                 Duration::from_secs(2)
             };
             match commands.recv_timeout(interval) {
                 Ok(Command::Stop) | Err(mpsc::RecvTimeoutError::Disconnected) => {
+                    if let Err(error) = self.keyboard.stop_activity() {
+                        eprintln!("ACE75: восстановление настроек при выходе не подтверждено: {error:#}");
+                    }
                     if let Err(error) = self.stop_charging_indicator() {
                         eprintln!("Не удалось восстановить подсветку после индикации зарядки: {error:#}");
                     }
@@ -920,6 +935,15 @@ impl Worker {
                     }
                 }
                 Err(mpsc::RecvTimeoutError::Timeout) => {
+                    if let Err(error) = self.keyboard.tick() {
+                        let cleanup = self.keyboard.stop_activity();
+                        self.state.ace75 = self.keyboard.state.clone();
+                        let result = match cleanup {
+                            Ok(()) => Err(error),
+                            Err(cleanup) => Err(error.context(format!("ACE75: восстановление настроек не подтверждено: {cleanup:#}"))),
+                        };
+                        self.finish(result);
+                    }
                     let frame = if self.state.charging_indicator_active {
                         self.charging_frame()
                     } else if self.charging_restore.is_some() {
@@ -1041,6 +1065,8 @@ impl Worker {
             }
             changed = true;
         }
+        changed |= self.keyboard.discover(&devices)?;
+        self.state.ace75 = self.keyboard.state.clone();
         self.state.devices = devices;
         Ok(changed)
     }
@@ -1052,6 +1078,10 @@ impl Worker {
             .into_keys()
             .collect();
         let mut errors = Vec::new();
+        if let Err(error) = self.keyboard.refresh() {
+            errors.push(format!("ACE75: {error:#}"));
+        }
+        self.state.ace75 = self.keyboard.state.clone();
         let has_receiver = self.has_receiver();
         if let Some(mouse) = &mut self.mouse {
             match mouse.read_snapshot_with_receiver(has_receiver) {
@@ -1086,7 +1116,7 @@ impl Worker {
         }
         self.state.last_update = (!self.state.devices.is_empty()).then(Instant::now);
         self.state.message = if self.state.devices.is_empty() {
-            "Подключите мышь или MagDock через USB".into()
+            "Подключите устройство MCHOSE через USB".into()
         } else {
             "Параметры прочитаны с устройств".into()
         };
@@ -1099,6 +1129,10 @@ impl Worker {
         }
         let mut profile_changed = false;
         let mut errors = Vec::new();
+        if let Err(error) = self.keyboard.poll() {
+            errors.push(format!("ACE75: {error:#}"));
+        }
+        self.state.ace75 = self.keyboard.state.clone();
         let configured = self.state.mouse.as_ref().map(|mouse| mouse.settings.clone());
         let charging_pending = self.charging_restore.is_some();
         let indicator_enabled = self.state.charging_indicator_enabled
@@ -1381,6 +1415,19 @@ impl Worker {
             self.stop_charging_indicator()?;
         }
         match command {
+            Command::Ace75(command) => {
+                let progress = self.keyboard.state.progress_channel();
+                let callback_progress = progress.clone();
+                let result = self.keyboard.execute_with_progress(command, move |done, total| {
+                    if let Ok(mut value) = callback_progress.lock() { *value = Some((done, total)); }
+                });
+                if let Ok(mut value) = progress.lock() { *value = None; }
+                self.state.ace75 = self.keyboard.state.clone();
+                if !self.state.ace75.message.is_empty() {
+                    self.state.message = self.state.ace75.message.clone();
+                }
+                return result;
+            }
             Command::Refresh => return self.refresh(),
             Command::SelectMouse(path) => {
                 let info = self

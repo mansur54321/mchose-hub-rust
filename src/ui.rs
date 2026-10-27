@@ -7,6 +7,34 @@ use eframe::egui::{self, Color32, FontId, RichText, Stroke, Vec2};
 use std::path::PathBuf;
 use std::time::{Duration, Instant};
 
+mod ace75;
+
+#[derive(Clone, Copy, PartialEq, Eq)]
+enum DeviceView {
+    Mouse,
+    Ace75,
+}
+
+impl DeviceView {
+    fn code(self) -> &'static str {
+        match self { Self::Mouse => "a7", Self::Ace75 => "ace75" }
+    }
+
+    fn parse(value: &str) -> Option<Self> {
+        match value { "a7" | "mouse" => Some(Self::Mouse), "ace75" | "keyboard" => Some(Self::Ace75), _ => None }
+    }
+
+    fn label(self) -> &'static str {
+        match self { Self::Mouse => "A7 V3 Ultra+", Self::Ace75 => "ACE75" }
+    }
+}
+
+fn preferred_device_view() -> Option<DeviceView> {
+    let path = crate::controller::data_dir().join("ui-preferences.json");
+    let value: serde_json::Value = serde_json::from_slice(&std::fs::read(path).ok()?).ok()?;
+    DeviceView::parse(value.get("device")?.as_str()?)
+}
+
 const RATES: [u32; 6] = [125, 500, 1000, 2000, 4000, 8000];
 const LODS: [&str; 5] = ["0,7 мм", "0,9 мм", "1,2 мм", "1,4 мм", "1,7 мм"];
 const BUTTONS: [&str; 6] = [
@@ -93,6 +121,9 @@ impl Palette {
 
 pub struct NativeApp {
     controller: Controller,
+    device_view: DeviceView,
+    auto_device_view: bool,
+    ace75: ace75::Ace75Ui,
     page: Page,
     dark: bool,
     theme_pending: bool,
@@ -160,6 +191,7 @@ pub struct NativeApp {
 
 impl NativeApp {
     pub fn new(cc: &eframe::CreationContext<'_>, read_only: bool, offline: bool) -> Self {
+        let preferred_view = preferred_device_view();
         let textures = [
             (
                 "white",
@@ -188,6 +220,9 @@ impl NativeApp {
             } else {
                 Controller::new(read_only)
             },
+            device_view: preferred_view.unwrap_or(DeviceView::Mouse),
+            auto_device_view: preferred_view.is_none(),
+            ace75: ace75::Ace75Ui::default(),
             page: Page::Keys,
             dark: true,
             theme_pending: false,
@@ -328,6 +363,11 @@ impl NativeApp {
         });
     }
     fn sync(&mut self) {
+        self.ace75.sync(&self.controller.snapshot.ace75, self.controller.snapshot.busy);
+        if self.auto_device_view && !self.controller.snapshot.busy {
+            self.device_view = if self.controller.snapshot.mouse.is_some() { DeviceView::Mouse } else { DeviceView::Ace75 };
+            self.auto_device_view = false;
+        }
         if self.recording
             && (self.local_macro_seen != self.controller.snapshot.local_macro_value
                 || !self.macro_dirty && self.macro_seen != self.controller.snapshot.macro_value)
@@ -448,6 +488,7 @@ impl NativeApp {
         }
     }
     pub fn select_page(&mut self, name: &str) {
+        self.ace75.select_page(name);
         self.page = match name {
             "dpi" => Page::Dpi,
             "performance" => Page::Performance,
@@ -457,6 +498,22 @@ impl NativeApp {
             "system" | "firmware" => Page::System,
             _ => Page::Keys,
         };
+    }
+    pub fn select_device(&mut self, name: &str) {
+        let Some(view) = DeviceView::parse(name) else { return; };
+        if self.device_view != view {
+            if view != DeviceView::Ace75 {
+                if let Some(command) = self.ace75.hide(&self.controller.snapshot.ace75) { self.command(Command::Ace75(command)); }
+            } else { self.ace75.stop_recording(None); }
+        }
+        if self.device_view != view && self.recording {
+            self.stop_recording(None);
+        }
+        self.device_view = view;
+        self.auto_device_view = false;
+        if let Err(error) = i18n::save_ui_preference("device", serde_json::json!(view.code())) {
+            self.local_message = format!("Не удалось сохранить выбор устройства: {error}");
+        }
     }
     pub fn set_dark(&mut self, dark: bool) {
         self.dark = dark;
@@ -480,6 +537,7 @@ impl NativeApp {
             && self.preset_edit.is_none()
     }
     fn command(&mut self, cmd: Command) {
+        if let Command::Ace75(command) = &cmd { self.ace75.command_started(command); }
         if let Command::PreviewPreset(path) = &cmd {
             self.preview_pending = Some(path.clone());
         }
@@ -592,6 +650,13 @@ impl NativeApp {
                 });
             });
     }
+    fn ace75_action(&mut self) {
+        match self.ace75.take_action() {
+            Some(ace75::Action::Send(command)) => self.command(Command::Ace75(command)),
+            Some(ace75::Action::Confirm(message, command)) => self.pending = Some((message, Command::Ace75(command))),
+            None => {}
+        }
+    }
     fn sidebar(&mut self, ctx: &egui::Context) {
         let p = Palette::new(self.dark);
         egui::SidePanel::left("device-profiles")
@@ -603,6 +668,25 @@ impl NativeApp {
                     .inner_margin(egui::Margin::symmetric(20, 20)),
             )
             .show(ctx, |ui| {
+                let mut view = self.device_view;
+                ui.add_enabled_ui(!self.controller.snapshot.busy, |ui| { egui::ComboBox::from_id_salt("device-view")
+                    .width(ui.available_width())
+                    .selected_text(view.label())
+                    .show_ui(ui, |ui| {
+                        for item in [DeviceView::Mouse, DeviceView::Ace75] {
+                            ui.selectable_value(&mut view, item, item.label());
+                        }
+                    }); });
+                if view != self.device_view {
+                    self.select_device(view.code());
+                }
+                ui.add_space(16.0);
+                if self.device_view == DeviceView::Ace75 {
+                    let writable = !self.read_only && !self.offline && !self.controller.snapshot.busy;
+                    egui::ScrollArea::vertical().id_salt("ace75-sidebar").show(ui, |ui| self.ace75.sidebar(ui, p, &self.controller.snapshot.ace75, self.controller.snapshot.busy, writable));
+                    self.ace75_action();
+                    return;
+                }
                 egui::ScrollArea::vertical()
                     .id_salt("device-sidebar-scroll")
                     .show(ui, |ui| {
@@ -853,6 +937,12 @@ impl NativeApp {
                     .inner_margin(if ctx.content_rect().width() < 1000.0 { 18 } else { 24 })
                     .show(ui, |ui| {
                         ui.set_min_height(ui.available_height());
+                        if self.device_view == DeviceView::Ace75 {
+                            let writable = !self.read_only && !self.offline && !self.controller.snapshot.busy;
+                            self.ace75.show(ui, p, &self.controller.snapshot.ace75, self.controller.snapshot.busy, writable);
+                            self.ace75_action();
+                            return;
+                        }
                         ui.horizontal_wrapped(|ui| {
                             for page in [
                                 Page::Keys,
@@ -2785,6 +2875,7 @@ impl NativeApp {
 }
 impl eframe::App for NativeApp {
     fn raw_input_hook(&mut self, ctx: &egui::Context, input: &mut egui::RawInput) {
+        self.ace75.filter_raw_input(ctx, input);
         if self.recording && self.recorder.is_some() {
             let mut pointer = ctx.input(|input| input.pointer.hover_pos());
             input.events.retain(|event| {
@@ -2803,9 +2894,11 @@ impl eframe::App for NativeApp {
             self.style(ctx);
             self.theme_pending = false;
         }
-        if self.recording && self.page != Page::Macros {
+        if self.recording && (self.device_view != DeviceView::Mouse || self.page != Page::Macros) {
             self.stop_recording(None);
         }
+        if self.device_view != DeviceView::Ace75 { self.ace75.stop_recording(None); }
+        self.ace75.poll_recording(ctx);
         self.controller.poll();
         self.sync();
         let was_recording = self.recording;
@@ -2820,7 +2913,7 @@ impl eframe::App for NativeApp {
         self.footer(ctx);
         self.sidebar(ctx);
         self.content(ctx);
-        if self.recording && self.page != Page::Macros {
+        if self.recording && (self.device_view != DeviceView::Mouse || self.page != Page::Macros) {
             self.stop_recording(None);
         }
         self.confirm(ctx);

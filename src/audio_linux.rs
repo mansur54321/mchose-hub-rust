@@ -171,6 +171,12 @@ impl MusicCapture {
     }
 
     pub fn latest_colors(&mut self, color: [u8; 3], brightness: u8) -> Option<[[u8; 3]; 12]> {
+        let frequencies = self.latest_frequencies()?;
+        let level = upstream_level(&frequencies, &mut self.history);
+        Some(upstream_colors(level, color, brightness))
+    }
+
+    pub fn latest_frequencies(&mut self) -> Option<Vec<u8>> {
         self.check_process();
         let frequencies = {
             let state = self.state.lock().unwrap();
@@ -180,8 +186,7 @@ impl MusicCapture {
             self.generation = state.generation;
             state.frequencies.clone()
         };
-        let level = upstream_level(&frequencies, &mut self.history);
-        Some(upstream_colors(level, color, brightness))
+        Some(frequencies)
     }
 }
 

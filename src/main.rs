@@ -27,6 +27,7 @@ fn run() -> anyhow::Result<()> {
         }
     }
     use mchose_hub_rust::{
+        ace75::{Ace75, KeyboardBase},
         dock::Dock,
         mouse::Mouse,
         transport::{self, DeviceKind, HidTransport},
@@ -34,6 +35,14 @@ fn run() -> anyhow::Result<()> {
     let args: Vec<String> = std::env::args().skip(1).collect();
     let option = |name: &str| args.windows(2).find(|p| p[0] == name).map(|p| p[1].clone());
     let language = option("--lang");
+    let device_view = option("--device");
+    let keyboard_backup = option("--backup-keyboard");
+    if args.iter().any(|value| value == "--backup-keyboard") {
+        anyhow::ensure!(keyboard_backup.is_some(), "--backup-keyboard expects a JSON file path");
+    }
+    if let Some(device) = &device_view {
+        anyhow::ensure!(matches!(device.as_str(), "a7" | "mouse" | "ace75" | "keyboard"), "--device expects a7 or ace75");
+    }
     if args.iter().any(|v| v == "--lang") {
         anyhow::ensure!(language.is_some(), "--lang expects ru or en");
     }
@@ -47,13 +56,22 @@ fn run() -> anyhow::Result<()> {
     if args.iter().any(|v| v == "--help" || v == "-h") {
         if selected_language == mchose_hub_rust::i18n::Language::En {
             println!(
-                "MCHOSE Hub Rust\n\nNo arguments: native interface\n--list                 USB/HID devices\n--status               Mouse and dock status as JSON\n--snapshot             Full current settings as JSON\n--read-only            GUI without device writes\n--offline              GUI without HID access\n--lang ru|en           Interface and CLI language\n--page PAGE            keys, dpi, performance, dock, macros, profiles, system\n--light                Light theme\n--size WIDTHxHEIGHT    Window size (minimum 855x700)\n--screenshot PATH      Save this window as PNG and exit"
+                "MCHOSE Hub Rust\n\nNo arguments: native interface\n--list                 USB/HID devices\n--status               Device status as JSON\n--snapshot             Full current settings as JSON\n--backup-keyboard PATH Full raw Ace75 backup as JSON\n--read-only            GUI without device writes\n--offline              GUI without HID access\n--device a7|ace75      Device editor\n--lang ru|en           Interface and CLI language\n--page PAGE            keys, dpi, trigger, advanced, performance, dock, macros, profiles, system\n--light                Light theme\n--size WIDTHxHEIGHT    Window size (minimum 855x700)\n--screenshot PATH      Save this window as PNG and exit"
             );
         } else {
             println!(
-                "MCHOSE Hub Rust\n\nБез аргументов: нативный интерфейс\n--list                 USB/HID-устройства\n--status               Состояние мыши и дока в JSON\n--snapshot             Полные текущие настройки в JSON\n--read-only            GUI без записи в устройства\n--offline              GUI без доступа к HID\n--lang ru|en           Язык интерфейса и CLI\n--page PAGE            keys, dpi, performance, dock, macros, profiles, system\n--light                Светлая тема\n--size WIDTHxHEIGHT    Размер окна (минимум 855x700)\n--screenshot PATH      Сохранить собственное окно в PNG и завершить работу"
+                "MCHOSE Hub Rust\n\nБез аргументов: нативный интерфейс\n--list                 USB/HID-устройства\n--status               Состояние устройств в JSON\n--snapshot             Полные текущие настройки в JSON\n--backup-keyboard PATH Полная резервная копия Ace75 в JSON\n--read-only            GUI без записи в устройства\n--offline              GUI без доступа к HID\n--device a7|ace75      Редактор устройства\n--lang ru|en           Язык интерфейса и CLI\n--page PAGE            keys, dpi, trigger, advanced, performance, dock, macros, profiles, system\n--light                Светлая тема\n--size WIDTHxHEIGHT    Размер окна (минимум 855x700)\n--screenshot PATH      Сохранить собственное окно в PNG и завершить работу"
             );
         }
+        return Ok(());
+    }
+    if let Some(path) = keyboard_backup {
+        let devices = transport::enumerate()?;
+        let keyboards: Vec<_> = devices.iter().filter(|device| device.kind == DeviceKind::Keyboard).collect();
+        anyhow::ensure!(keyboards.len() == 1, "Expected one connected Ace 75 8K for backup");
+        let mut keyboard = Ace75::new(Box::new(HidTransport::open(keyboards[0])?));
+        mchose_hub_rust::keyboard_controller::write_keyboard_backup(&mut keyboard, std::path::Path::new(&path))?;
+        println!("{path}");
         return Ok(());
     }
     if !args
@@ -108,6 +126,9 @@ fn run() -> anyhow::Result<()> {
             options,
             Box::new(move |cc| {
                 let mut app = mchose_hub_rust::ui::NativeApp::new(cc, read_only, offline);
+                if let Some(device) = device_view {
+                    app.select_device(&device);
+                }
                 if let Some(language) = language {
                     app.set_language(&language);
                 }
@@ -126,13 +147,17 @@ fn run() -> anyhow::Result<()> {
         .map_err(|error| anyhow::anyhow!("Ошибка нативного интерфейса: {error}"))?;
         return Ok(());
     }
-    let devices = transport::enumerate()?;
+    let mut devices = transport::enumerate()?;
+    if let Some(view) = &device_view {
+        let keyboard = matches!(view.as_str(), "ace75" | "keyboard");
+        devices.retain(|device| matches!(device.kind, DeviceKind::Keyboard | DeviceKind::KeyboardBootloader) == keyboard);
+    }
     if args.iter().any(|v| v == "--status" || v == "--snapshot") {
         let mut data = serde_json::Map::new();
         for device in &devices {
-            let io = Box::new(HidTransport::open(device)?);
             match device.kind {
                 DeviceKind::Mouse => {
+                    let io = Box::new(HidTransport::open(device)?);
                     let mut mouse = Mouse::new(io);
                     let result = if args.iter().any(|v| v == "--snapshot") {
                         mouse
@@ -163,6 +188,7 @@ fn run() -> anyhow::Result<()> {
                     }
                 }
                 DeviceKind::Dock => {
+                    let io = Box::new(HidTransport::open(device)?);
                     let result = Dock::new(io).read_settings();
                     match result {
                         Ok(value) => {
@@ -182,6 +208,27 @@ fn run() -> anyhow::Result<()> {
                             );
                         }
                     }
+                }
+                DeviceKind::Keyboard => {
+                    let result = (|| -> anyhow::Result<serde_json::Value> {
+                        let mut keyboard = Ace75::new(Box::new(HidTransport::open(device)?));
+                        if args.iter().any(|argument| argument == "--snapshot") {
+                            Ok(serde_json::to_value(keyboard.read_snapshot()?)?)
+                        } else {
+                            let info = keyboard.read_identity()?;
+                            let base = KeyboardBase::decode(&keyboard.read_base()?)?;
+                            Ok(serde_json::json!({ "info": info, "base": base }))
+                        }
+                    })();
+                    match result {
+                        Ok(value) => { data.insert("keyboard".into(), value); }
+                        Err(error) => {
+                            data.insert("keyboard_error".into(), error.chain().map(|context| mchose_hub_rust::i18n::message(&context.to_string())).collect::<Vec<_>>().join(": ").into());
+                        }
+                    }
+                }
+                DeviceKind::KeyboardBootloader => {
+                    data.insert("keyboard_bootloader".into(), serde_json::json!({"device": device, "mode": "firmware-upgrader"}));
                 }
             }
         }

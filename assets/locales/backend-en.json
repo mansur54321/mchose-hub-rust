@@ -282,5 +282,7 @@
   "Нет доступа к {} ({}). {advice}": "Cannot access {} ({}). {advice}",
   "Файл снимка уже существует: {path}": "Screenshot file already exists: {path}",
   "Ошибка нативного интерфейса: {error}": "Native interface error: {error}",
-  "WASAPI: {error}": "WASAPI: {error}"
+  "WASAPI: {error}": "WASAPI: {error}",
+  "Чтение устройств MCHOSE…": "Reading MCHOSE devices…",
+  "Подключите устройство MCHOSE через USB": "Connect a MCHOSE device by USB"
 }

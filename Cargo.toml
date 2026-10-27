@@ -1,16 +1,16 @@
 [package]
 name = "mchose-hub-rust"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2024"
 license = "MIT"
 repository = "https://github.com/mansur54321/mchose-hub-rust"
-description = "Native Linux and Windows controller for MCHOSE A7 V3 Ultra+ and MagDock"
+description = "Native Linux and Windows controller for MCHOSE Ace 75 8K, A7 V3 Ultra+ and MagDock"
 
 [dependencies]
 anyhow = "1"
 eframe = { version = "=0.33.3", default-features = false, features = ["accesskit", "default_fonts", "glow"] }
 egui-winit = { version = "=0.33.3", default-features = false }
-image = { version = "0.25", default-features = false, features = ["png", "jpeg", "webp"] }
+image = { version = "0.25", default-features = false, features = ["png", "jpeg", "webp", "gif"] }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 sha2 = "0.10"

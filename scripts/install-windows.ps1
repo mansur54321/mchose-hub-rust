@@ -28,6 +28,7 @@ foreach ($location in $locations) {
     $shortcut = $shell.CreateShortcut((Join-Path $location 'MCHOSE Hub Rust.lnk'))
     $shortcut.TargetPath = $installed
     $shortcut.WorkingDirectory = $destination
+    $shortcut.Description = 'Control MCHOSE A7 V3 Ultra+, MagDock and Ace75'
     $shortcut.IconLocation = "$installed,0"
     if ($Language) { $shortcut.Arguments = "--lang $Language" }
     $shortcut.Save()

@@ -9,6 +9,8 @@ pub const VENDOR_ID: u16 = 0x3837;
 pub enum DeviceKind {
     Mouse,
     Dock,
+    Keyboard,
+    KeyboardBootloader,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -28,14 +30,14 @@ pub fn enumerate() -> Result<Vec<DeviceInfo>> {
     let mut devices = Vec::new();
     for d in api.device_list().filter(|d| d.vendor_id() == VENDOR_ID) {
         let name = d.product_string().unwrap_or("");
-        let kind = match d.product_id() {
-            0x1012 if d.usage_page() == 0xff00 && name == "MCHOSE MagDock" => DeviceKind::Dock,
-            0x4033 | 0x1014 | 0x1018
-                if d.usage_page() == 0xff01 && name == crate::firmware::MODEL =>
-            {
-                DeviceKind::Mouse
-            }
-            _ => continue,
+        let Some(kind) = classify_device(
+            d.vendor_id(),
+            d.product_id(),
+            name,
+            d.usage_page(),
+            d.usage(),
+        ) else {
+            continue;
         };
         let path = d.path().to_string_lossy().into_owned();
         if devices.iter().any(|entry: &DeviceInfo| entry.path == path) {
@@ -55,6 +57,33 @@ pub fn enumerate() -> Result<Vec<DeviceInfo>> {
     Ok(devices)
 }
 
+fn classify_device(
+    vendor: u16,
+    product: u16,
+    name: &str,
+    usage_page: u16,
+    usage: u16,
+) -> Option<DeviceKind> {
+    if vendor != VENDOR_ID {
+        return None;
+    }
+    match product {
+        0x1012 if usage_page == 0xff00 && name == "MCHOSE MagDock" => Some(DeviceKind::Dock),
+        0x4033 | 0x1014 | 0x1018 if usage_page == 0xff01 && name == crate::firmware::MODEL => {
+            Some(DeviceKind::Mouse)
+        }
+        crate::ace75::PRODUCT_ID
+            if usage_page == 1 && usage == 0 && name == crate::ace75::USB_PRODUCT =>
+        {
+            Some(DeviceKind::Keyboard)
+        }
+        crate::ace75::BOOTLOADER_PRODUCT_ID if usage_page == 0xff00 && usage == 1 => {
+            Some(DeviceKind::KeyboardBootloader)
+        }
+        _ => None,
+    }
+}
+
 /// Report IDs are separate from payloads. Input reports retain their ID byte.
 pub trait HidIo: Send {
     fn send_feature(&self, report_id: u8, payload: &[u8]) -> Result<()>;
@@ -70,6 +99,28 @@ pub struct HidTransport {
 
 impl HidTransport {
     pub fn open(info: &DeviceInfo) -> Result<Self> {
+        if info.kind == DeviceKind::KeyboardBootloader {
+            bail!("Ace 75 находится в режиме загрузчика; обычное управление недоступно");
+        }
+        Self::open_selected(info)
+    }
+
+    pub fn open_keyboard_bootloader(info: &DeviceInfo) -> Result<Self> {
+        anyhow::ensure!(
+            info.kind == DeviceKind::KeyboardBootloader
+                && classify_device(
+                    info.vendor_id,
+                    info.product_id,
+                    &info.name,
+                    info.usage_page,
+                    info.usage
+                ) == Some(DeviceKind::KeyboardBootloader),
+            "ACE75: выбрано неподходящее устройство загрузчика"
+        );
+        Self::open_selected(info)
+    }
+
+    fn open_selected(info: &DeviceInfo) -> Result<Self> {
         let api = HidApi::new()?;
         let path = CString::new(info.path.as_str())?;
         let device = api.open_path(&path).with_context(|| {
@@ -80,10 +131,11 @@ impl HidTransport {
             format!("Нет доступа к {} ({}). {advice}", info.name, info.path)
         })?;
         #[cfg(windows)]
-        let output_report_len = Some(match info.kind {
-            DeviceKind::Dock => 65,
-            DeviceKind::Mouse => 64,
-        });
+        let output_report_len = match info.kind {
+            DeviceKind::Dock | DeviceKind::Keyboard => Some(65),
+            DeviceKind::Mouse => Some(64),
+            DeviceKind::KeyboardBootloader => Some(65),
+        };
         #[cfg(not(windows))]
         let output_report_len = None;
         Ok(Self {
@@ -162,6 +214,41 @@ fn complete_output(count: usize, expected: usize, windows_native: bool) -> bool 
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn ace75_selects_only_the_captured_configuration_collection() {
+        assert_eq!(
+            classify_device(0x3837, 0x303c, "Ace 75", 1, 0),
+            Some(DeviceKind::Keyboard)
+        );
+        assert_eq!(classify_device(0x3837, 0x303c, "Ace 75", 1, 6), None);
+        assert_eq!(classify_device(0x3837, 0x303c, "Ace 75", 0x0c, 1), None);
+        assert_eq!(classify_device(0x3837, 0x301d, "Ace 75", 1, 0), None);
+        assert_eq!(
+            classify_device(0x3837, 0x303c, "Other keyboard", 1, 0),
+            None
+        );
+        assert_eq!(classify_device(0x1234, 0x303c, "Ace 75", 1, 0), None);
+        assert_eq!(
+            classify_device(0x3837, 0x303d, "Ace 75 Upgrader", 0xff00, 1),
+            Some(DeviceKind::KeyboardBootloader)
+        );
+        assert_eq!(
+            classify_device(0x3837, 0x303d, "Ace 75 Upgrader", 1, 0),
+            None
+        );
+    }
+
+    #[test]
+    fn ace75_unnumbered_report_keeps_all_64_payload_bytes() {
+        let payload = std::array::from_fn::<u8, 64, _>(|index| index as u8);
+        let windows = output_report(0, &payload, Some(65)).unwrap();
+        let linux = output_report(0, &payload, None).unwrap();
+        assert_eq!(windows.len(), 65);
+        assert_eq!(windows[0], 0);
+        assert_eq!(&windows[1..], &payload);
+        assert_eq!(windows, linux);
+    }
 
     #[test]
     fn windows_dock_reports_include_zero_id_and_descriptor_padding() {

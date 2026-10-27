@@ -209,5 +209,37 @@
     "transform": "Rendered official SVG with librsvg to transparent PNG; artwork and colors unchanged",
     "license": "CC-BY-4.0",
     "created": "2026-10-22"
+  },
+  {
+    "path": "ace75-layout.json",
+    "url": "https://www.mchose.com.cn/cizhou",
+    "sha256": "b1c0e3bd59ceb31a4ba0c356f0c68b91ff57930709ca76ed1debb2a928432d7b",
+    "bytes": 29662,
+    "source": "Official ACE75 layout module27409; default-key module97467; geometry helper92137, sanitized native geometry",
+    "fetched": "2026-10-27"
+  },
+  {
+    "path": "ace75-default-key-layers.json",
+    "url": "https://www.mchose.com.cn/cizhou",
+    "sha256": "e00af37417772b84c7f36ec9d86cfea9a762041ea89ca2208719768a9f08bd9d",
+    "bytes": 22388,
+    "source": "Official preset 0x3837_0x303C_114_9a5f1d6699a8.json allDefaultKeys, all16 layers preserved as wire triples",
+    "fetched": "2026-10-27"
+  },
+  {
+    "path": "ace75-light-effects.json",
+    "url": "https://www.mchose.com.cn/cizhou",
+    "sha256": "6a5a918ffc3e51025e5578efff1e02ad3cae2f53874aeb65db11be3673b99e6c",
+    "bytes": 13201,
+    "source": "Official Next module77877 effects metadata and en/common.json names; ACE75 layout effect lists",
+    "fetched": "2026-10-27"
+  },
+  {
+    "path": "ace75-actions.json",
+    "url": "https://www.mchose.com.cn/cizhou",
+    "source": "Actual Next eG chooser with ACE75 type134 FW117 predicates; original GLW key codec and official RU/EN locales; layer restrictions preserved",
+    "sha256": "222370558091ea6f496b28f4896da9dbd6cfbc6054fce6c47eef0482f869c3d9",
+    "bytes": 60488,
+    "fetched": "2026-10-27"
   }
 ]

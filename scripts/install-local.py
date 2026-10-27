@@ -77,7 +77,7 @@ if previous_desktop is None:
         "Terminal=false\n"
         "Categories=Settings;HardwareSettings;\n"
         "StartupWMClass=mchose-native\n"
-        "Keywords=MCHOSE;A7;MagDock;mouse;мышь;\n"
+        "Keywords=MCHOSE;A7;MagDock;Ace75;keyboard;mouse;клавиатура;мышь;\n"
     )
 else:
     content = previous_desktop.decode("utf-8")
@@ -89,8 +89,8 @@ updated = section.group()
 for key, value in {
     "Name": "MCHOSE Hub Rust",
     "Icon": "mchose-native",
-    "Comment": "Control MCHOSE A7 V3 Ultra+ and MagDock",
-    "Comment[ru]": "Управление A7 V3 Ultra+ и MagDock",
+    "Comment": "Control MCHOSE A7 V3 Ultra+, MagDock and Ace75",
+    "Comment[ru]": "Управление A7 V3 Ultra+, MagDock и Ace75",
     "StartupWMClass": "mchose-native",
     "X-MCHOSE-Native-Managed": "true",
 }.items():

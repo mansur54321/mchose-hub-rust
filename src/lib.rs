@@ -1,3 +1,4 @@
+pub mod ace75;
 pub mod audio;
 pub mod charging;
 pub mod controller;
@@ -5,6 +6,7 @@ pub mod dock;
 pub mod firmware;
 pub mod hub_format;
 pub mod i18n;
+pub mod keyboard_controller;
 pub mod mouse;
 pub mod recorder;
 pub mod transport;

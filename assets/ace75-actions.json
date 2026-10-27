@@ -1,0 +1,3471 @@
+[
+  {
+    "id": "KC_A",
+    "category": "basic",
+    "name_en": "A",
+    "name_ru": "A",
+    "kind": 16,
+    "code1": 0,
+    "code2": 4,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_B",
+    "category": "basic",
+    "name_en": "B",
+    "name_ru": "B",
+    "kind": 16,
+    "code1": 0,
+    "code2": 5,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_C",
+    "category": "basic",
+    "name_en": "C",
+    "name_ru": "C",
+    "kind": 16,
+    "code1": 0,
+    "code2": 6,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_D",
+    "category": "basic",
+    "name_en": "D",
+    "name_ru": "D",
+    "kind": 16,
+    "code1": 0,
+    "code2": 7,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_E",
+    "category": "basic",
+    "name_en": "E",
+    "name_ru": "E",
+    "kind": 16,
+    "code1": 0,
+    "code2": 8,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_F",
+    "category": "basic",
+    "name_en": "F",
+    "name_ru": "F",
+    "kind": 16,
+    "code1": 0,
+    "code2": 9,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_G",
+    "category": "basic",
+    "name_en": "G",
+    "name_ru": "G",
+    "kind": 16,
+    "code1": 0,
+    "code2": 10,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_H",
+    "category": "basic",
+    "name_en": "H",
+    "name_ru": "H",
+    "kind": 16,
+    "code1": 0,
+    "code2": 11,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_I",
+    "category": "basic",
+    "name_en": "I",
+    "name_ru": "I",
+    "kind": 16,
+    "code1": 0,
+    "code2": 12,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_J",
+    "category": "basic",
+    "name_en": "J",
+    "name_ru": "J",
+    "kind": 16,
+    "code1": 0,
+    "code2": 13,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_K",
+    "category": "basic",
+    "name_en": "K",
+    "name_ru": "K",
+    "kind": 16,
+    "code1": 0,
+    "code2": 14,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_L",
+    "category": "basic",
+    "name_en": "L",
+    "name_ru": "L",
+    "kind": 16,
+    "code1": 0,
+    "code2": 15,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_M",
+    "category": "basic",
+    "name_en": "M",
+    "name_ru": "M",
+    "kind": 16,
+    "code1": 0,
+    "code2": 16,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_N",
+    "category": "basic",
+    "name_en": "N",
+    "name_ru": "N",
+    "kind": 16,
+    "code1": 0,
+    "code2": 17,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_O",
+    "category": "basic",
+    "name_en": "O",
+    "name_ru": "O",
+    "kind": 16,
+    "code1": 0,
+    "code2": 18,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_P",
+    "category": "basic",
+    "name_en": "P",
+    "name_ru": "P",
+    "kind": 16,
+    "code1": 0,
+    "code2": 19,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_Q",
+    "category": "basic",
+    "name_en": "Q",
+    "name_ru": "Q",
+    "kind": 16,
+    "code1": 0,
+    "code2": 20,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_R",
+    "category": "basic",
+    "name_en": "R",
+    "name_ru": "R",
+    "kind": 16,
+    "code1": 0,
+    "code2": 21,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_S",
+    "category": "basic",
+    "name_en": "S",
+    "name_ru": "S",
+    "kind": 16,
+    "code1": 0,
+    "code2": 22,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_T",
+    "category": "basic",
+    "name_en": "T",
+    "name_ru": "T",
+    "kind": 16,
+    "code1": 0,
+    "code2": 23,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_U",
+    "category": "basic",
+    "name_en": "U",
+    "name_ru": "U",
+    "kind": 16,
+    "code1": 0,
+    "code2": 24,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_V",
+    "category": "basic",
+    "name_en": "V",
+    "name_ru": "V",
+    "kind": 16,
+    "code1": 0,
+    "code2": 25,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_W",
+    "category": "basic",
+    "name_en": "W",
+    "name_ru": "W",
+    "kind": 16,
+    "code1": 0,
+    "code2": 26,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_X",
+    "category": "basic",
+    "name_en": "X",
+    "name_ru": "X",
+    "kind": 16,
+    "code1": 0,
+    "code2": 27,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_Y",
+    "category": "basic",
+    "name_en": "Y",
+    "name_ru": "Y",
+    "kind": 16,
+    "code1": 0,
+    "code2": 28,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_Z",
+    "category": "basic",
+    "name_en": "Z",
+    "name_ru": "Z",
+    "kind": 16,
+    "code1": 0,
+    "code2": 29,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_1",
+    "category": "basic",
+    "name_en": "1 !",
+    "name_ru": "1 !",
+    "kind": 16,
+    "code1": 0,
+    "code2": 30,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_2",
+    "category": "basic",
+    "name_en": "2 @",
+    "name_ru": "2 @",
+    "kind": 16,
+    "code1": 0,
+    "code2": 31,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_3",
+    "category": "basic",
+    "name_en": "3 #",
+    "name_ru": "3 #",
+    "kind": 16,
+    "code1": 0,
+    "code2": 32,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_4",
+    "category": "basic",
+    "name_en": "4 $",
+    "name_ru": "4 $",
+    "kind": 16,
+    "code1": 0,
+    "code2": 33,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_5",
+    "category": "basic",
+    "name_en": "5 %",
+    "name_ru": "5 %",
+    "kind": 16,
+    "code1": 0,
+    "code2": 34,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_6",
+    "category": "basic",
+    "name_en": "6 ^",
+    "name_ru": "6 ^",
+    "kind": 16,
+    "code1": 0,
+    "code2": 35,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_7",
+    "category": "basic",
+    "name_en": "7 &",
+    "name_ru": "7 &",
+    "kind": 16,
+    "code1": 0,
+    "code2": 36,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_8",
+    "category": "basic",
+    "name_en": "8 *",
+    "name_ru": "8 *",
+    "kind": 16,
+    "code1": 0,
+    "code2": 37,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_9",
+    "category": "basic",
+    "name_en": "9 (",
+    "name_ru": "9 (",
+    "kind": 16,
+    "code1": 0,
+    "code2": 38,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_0",
+    "category": "basic",
+    "name_en": "0 )",
+    "name_ru": "0 )",
+    "kind": 16,
+    "code1": 0,
+    "code2": 39,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_BACKQUOTE",
+    "category": "basic",
+    "name_en": "` ~",
+    "name_ru": "` ~",
+    "kind": 16,
+    "code1": 0,
+    "code2": 53,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_MINUS",
+    "category": "basic",
+    "name_en": "- _",
+    "name_ru": "- _",
+    "kind": 16,
+    "code1": 0,
+    "code2": 45,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_EQUAL",
+    "category": "basic",
+    "name_en": "= +",
+    "name_ru": "= +",
+    "kind": 16,
+    "code1": 0,
+    "code2": 46,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_BRACKET_LEFT",
+    "category": "basic",
+    "name_en": "[ {",
+    "name_ru": "[ {",
+    "kind": 16,
+    "code1": 0,
+    "code2": 47,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_BRACKET_RIGHT",
+    "category": "basic",
+    "name_en": "] }",
+    "name_ru": "] }",
+    "kind": 16,
+    "code1": 0,
+    "code2": 48,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_BACKSLASH",
+    "category": "basic",
+    "name_en": "\\ |",
+    "name_ru": "\\ |",
+    "kind": 16,
+    "code1": 0,
+    "code2": 49,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_SEMICOLON",
+    "category": "basic",
+    "name_en": "; :",
+    "name_ru": "; :",
+    "kind": 16,
+    "code1": 0,
+    "code2": 51,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_QUOTE",
+    "category": "basic",
+    "name_en": "' \"",
+    "name_ru": "' \"",
+    "kind": 16,
+    "code1": 0,
+    "code2": 52,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_COMMA",
+    "category": "basic",
+    "name_en": ", <",
+    "name_ru": ", <",
+    "kind": 16,
+    "code1": 0,
+    "code2": 54,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_PERIOD",
+    "category": "basic",
+    "name_en": ". >",
+    "name_ru": ". >",
+    "kind": 16,
+    "code1": 0,
+    "code2": 55,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_SLASH",
+    "category": "basic",
+    "name_en": "/ ?",
+    "name_ru": "/ ?",
+    "kind": 16,
+    "code1": 0,
+    "code2": 56,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_ESCAPE",
+    "category": "basic",
+    "name_en": "Esc",
+    "name_ru": "Esc",
+    "kind": 16,
+    "code1": 0,
+    "code2": 41,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_TAB",
+    "category": "basic",
+    "name_en": "Tab",
+    "name_ru": "Tab",
+    "kind": 16,
+    "code1": 0,
+    "code2": 43,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_CAPS_LOCK",
+    "category": "basic",
+    "name_en": "Caps",
+    "name_ru": "Caps",
+    "kind": 16,
+    "code1": 0,
+    "code2": 57,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_META_LEFT",
+    "category": "basic",
+    "name_en": "Left\nWin",
+    "name_ru": "Left\nWin",
+    "kind": 16,
+    "code1": 8,
+    "code2": 0,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_META_RIGHT",
+    "category": "basic",
+    "name_en": "Right\nWin",
+    "name_ru": "Right\nWin",
+    "kind": 16,
+    "code1": 128,
+    "code2": 0,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_ALT_LEFT",
+    "category": "basic",
+    "name_en": "Left\nAlt",
+    "name_ru": "Left\nAlt",
+    "kind": 16,
+    "code1": 4,
+    "code2": 0,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_CONTROL_LEFT",
+    "category": "basic",
+    "name_en": "Left\nCtrl",
+    "name_ru": "Left\nCtrl",
+    "kind": 16,
+    "code1": 1,
+    "code2": 0,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_SHIFT_LEFT",
+    "category": "basic",
+    "name_en": "Left\nShift",
+    "name_ru": "Left\nShift",
+    "kind": 16,
+    "code1": 2,
+    "code2": 0,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_BACKSPACE",
+    "category": "basic",
+    "name_en": "Backspace",
+    "name_ru": "Backspace",
+    "kind": 16,
+    "code1": 0,
+    "code2": 42,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_ENTER",
+    "category": "basic",
+    "name_en": "Enter",
+    "name_ru": "Enter",
+    "kind": 16,
+    "code1": 0,
+    "code2": 40,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_SPACE",
+    "category": "basic",
+    "name_en": "Space",
+    "name_ru": "Space",
+    "kind": 16,
+    "code1": 0,
+    "code2": 44,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_ALT_RIGHT",
+    "category": "basic",
+    "name_en": "Right\nAlt",
+    "name_ru": "Right\nAlt",
+    "kind": 16,
+    "code1": 64,
+    "code2": 0,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_CONTROL_RIGHT",
+    "category": "basic",
+    "name_en": "Right\nCtrl",
+    "name_ru": "Right\nCtrl",
+    "kind": 16,
+    "code1": 16,
+    "code2": 0,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_SHIFT_RIGHT",
+    "category": "basic",
+    "name_en": "Right\nShift",
+    "name_ru": "Right\nShift",
+    "kind": 16,
+    "code1": 32,
+    "code2": 0,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_PRINT_SCREEN",
+    "category": "basic",
+    "name_en": "Print",
+    "name_ru": "Print",
+    "kind": 16,
+    "code1": 0,
+    "code2": 70,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_SCROLL_LOCK",
+    "category": "basic",
+    "name_en": "Scroll",
+    "name_ru": "Scroll",
+    "kind": 16,
+    "code1": 0,
+    "code2": 71,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_PAUSE",
+    "category": "basic",
+    "name_en": "Pause",
+    "name_ru": "Pause",
+    "kind": 16,
+    "code1": 0,
+    "code2": 72,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_INSERT",
+    "category": "basic",
+    "name_en": "Insert",
+    "name_ru": "Insert",
+    "kind": 16,
+    "code1": 0,
+    "code2": 73,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_DELETE",
+    "category": "basic",
+    "name_en": "Delete",
+    "name_ru": "Delete",
+    "kind": 16,
+    "code1": 0,
+    "code2": 76,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_HOME",
+    "category": "basic",
+    "name_en": "Home",
+    "name_ru": "Home",
+    "kind": 16,
+    "code1": 0,
+    "code2": 74,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_END",
+    "category": "basic",
+    "name_en": "End",
+    "name_ru": "End",
+    "kind": 16,
+    "code1": 0,
+    "code2": 77,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_PAGEUP",
+    "category": "basic",
+    "name_en": "PgUp",
+    "name_ru": "PgUp",
+    "kind": 16,
+    "code1": 0,
+    "code2": 75,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_PAGEDOWN",
+    "category": "basic",
+    "name_en": "PgDn",
+    "name_ru": "PgDn",
+    "kind": 16,
+    "code1": 0,
+    "code2": 78,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_ARROW_UP",
+    "category": "basic",
+    "name_en": "↑",
+    "name_ru": "↑",
+    "kind": 16,
+    "code1": 0,
+    "code2": 82,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_ARROW_DOWN",
+    "category": "basic",
+    "name_en": "↓",
+    "name_ru": "↓",
+    "kind": 16,
+    "code1": 0,
+    "code2": 81,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_ARROW_LEFT",
+    "category": "basic",
+    "name_en": "←",
+    "name_ru": "←",
+    "kind": 16,
+    "code1": 0,
+    "code2": 80,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_ARROW_RIGHT",
+    "category": "basic",
+    "name_en": "→",
+    "name_ru": "→",
+    "kind": 16,
+    "code1": 0,
+    "code2": 79,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_F1",
+    "category": "basic",
+    "name_en": "F1",
+    "name_ru": "F1",
+    "kind": 16,
+    "code1": 0,
+    "code2": 58,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_F2",
+    "category": "basic",
+    "name_en": "F2",
+    "name_ru": "F2",
+    "kind": 16,
+    "code1": 0,
+    "code2": 59,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_F3",
+    "category": "basic",
+    "name_en": "F3",
+    "name_ru": "F3",
+    "kind": 16,
+    "code1": 0,
+    "code2": 60,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_F4",
+    "category": "basic",
+    "name_en": "F4",
+    "name_ru": "F4",
+    "kind": 16,
+    "code1": 0,
+    "code2": 61,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_F5",
+    "category": "basic",
+    "name_en": "F5",
+    "name_ru": "F5",
+    "kind": 16,
+    "code1": 0,
+    "code2": 62,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_F6",
+    "category": "basic",
+    "name_en": "F6",
+    "name_ru": "F6",
+    "kind": 16,
+    "code1": 0,
+    "code2": 63,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_F7",
+    "category": "basic",
+    "name_en": "F7",
+    "name_ru": "F7",
+    "kind": 16,
+    "code1": 0,
+    "code2": 64,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_F8",
+    "category": "basic",
+    "name_en": "F8",
+    "name_ru": "F8",
+    "kind": 16,
+    "code1": 0,
+    "code2": 65,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_F9",
+    "category": "basic",
+    "name_en": "F9",
+    "name_ru": "F9",
+    "kind": 16,
+    "code1": 0,
+    "code2": 66,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_F10",
+    "category": "basic",
+    "name_en": "F10",
+    "name_ru": "F10",
+    "kind": 16,
+    "code1": 0,
+    "code2": 67,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_F11",
+    "category": "basic",
+    "name_en": "F11",
+    "name_ru": "F11",
+    "kind": 16,
+    "code1": 0,
+    "code2": 68,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_F12",
+    "category": "basic",
+    "name_en": "F12",
+    "name_ru": "F12",
+    "kind": 16,
+    "code1": 0,
+    "code2": 69,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_NUM_LOCK",
+    "category": "basic",
+    "name_en": "Num\nLock",
+    "name_ru": "Num\nLock",
+    "kind": 16,
+    "code1": 0,
+    "code2": 83,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_NUMPAD_0",
+    "category": "basic",
+    "name_en": "Num 0",
+    "name_ru": "Num 0",
+    "kind": 16,
+    "code1": 0,
+    "code2": 98,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_NUMPAD_1",
+    "category": "basic",
+    "name_en": "Num 1",
+    "name_ru": "Num 1",
+    "kind": 16,
+    "code1": 0,
+    "code2": 89,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_NUMPAD_2",
+    "category": "basic",
+    "name_en": "Num 2",
+    "name_ru": "Num 2",
+    "kind": 16,
+    "code1": 0,
+    "code2": 90,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_NUMPAD_3",
+    "category": "basic",
+    "name_en": "Num 3",
+    "name_ru": "Num 3",
+    "kind": 16,
+    "code1": 0,
+    "code2": 91,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_NUMPAD_4",
+    "category": "basic",
+    "name_en": "Num 4",
+    "name_ru": "Num 4",
+    "kind": 16,
+    "code1": 0,
+    "code2": 92,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_NUMPAD_5",
+    "category": "basic",
+    "name_en": "Num 5",
+    "name_ru": "Num 5",
+    "kind": 16,
+    "code1": 0,
+    "code2": 93,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_NUMPAD_6",
+    "category": "basic",
+    "name_en": "Num 6",
+    "name_ru": "Num 6",
+    "kind": 16,
+    "code1": 0,
+    "code2": 94,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_NUMPAD_7",
+    "category": "basic",
+    "name_en": "Num 7",
+    "name_ru": "Num 7",
+    "kind": 16,
+    "code1": 0,
+    "code2": 95,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_NUMPAD_8",
+    "category": "basic",
+    "name_en": "Num 8",
+    "name_ru": "Num 8",
+    "kind": 16,
+    "code1": 0,
+    "code2": 96,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_NUMPAD_9",
+    "category": "basic",
+    "name_en": "Num 9",
+    "name_ru": "Num 9",
+    "kind": 16,
+    "code1": 0,
+    "code2": 97,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_NUMPAD_ADD",
+    "category": "basic",
+    "name_en": "Num +",
+    "name_ru": "Num +",
+    "kind": 16,
+    "code1": 0,
+    "code2": 87,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_NUMPAD_SUBTRACT",
+    "category": "basic",
+    "name_en": "Num -",
+    "name_ru": "Num -",
+    "kind": 16,
+    "code1": 0,
+    "code2": 86,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_NUMPAD_MULTIPLY",
+    "category": "basic",
+    "name_en": "Num *",
+    "name_ru": "Num *",
+    "kind": 16,
+    "code1": 0,
+    "code2": 85,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_NUMPAD_DIVIDE",
+    "category": "basic",
+    "name_en": "Num /",
+    "name_ru": "Num /",
+    "kind": 16,
+    "code1": 0,
+    "code2": 84,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_NUMPAD_DECIMAL",
+    "category": "basic",
+    "name_en": "Num .",
+    "name_ru": "Num .",
+    "kind": 16,
+    "code1": 0,
+    "code2": 99,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_NUMPAD_ENTER",
+    "category": "basic",
+    "name_en": "Num\nEnter",
+    "name_ru": "Num\nEnter",
+    "kind": 16,
+    "code1": 0,
+    "code2": 88,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_CONTEXT_MENU",
+    "category": "basic",
+    "name_en": "Menu",
+    "name_ru": "Menu",
+    "kind": 16,
+    "code1": 0,
+    "code2": 101,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_MOUSE_BUTTON_0",
+    "category": "mouse",
+    "name_en": "Left mouse button",
+    "name_ru": "левая кнопка мыши",
+    "kind": 32,
+    "code1": 1,
+    "code2": 0,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "keyboard.left"
+  },
+  {
+    "id": "KC_MOUSE_BUTTON_2",
+    "category": "mouse",
+    "name_en": "Right mouse button",
+    "name_ru": "правая кнопка мыши",
+    "kind": 32,
+    "code1": 2,
+    "code2": 0,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "keyboard.right"
+  },
+  {
+    "id": "KC_MOUSE_BUTTON_1",
+    "category": "mouse",
+    "name_en": "Middle mouse button",
+    "name_ru": "средняя кнопка мыши",
+    "kind": 32,
+    "code1": 4,
+    "code2": 0,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "keyboard.mid"
+  },
+  {
+    "id": "KC_MOUSE_BUTTON_4",
+    "category": "mouse",
+    "name_en": "Mouse forward",
+    "name_ru": "мышь вперед",
+    "kind": 32,
+    "code1": 16,
+    "code2": 0,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "keyboard.mForward"
+  },
+  {
+    "id": "KC_MOUSE_BUTTON_3",
+    "category": "mouse",
+    "name_en": "Mouse backward",
+    "name_ru": "мышь назад",
+    "kind": 32,
+    "code1": 8,
+    "code2": 0,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "keyboard.mRetreat"
+  },
+  {
+    "id": "code-210001",
+    "category": "mouse",
+    "name_en": "Wheel up",
+    "name_ru": "колесо вверх",
+    "kind": 33,
+    "code1": 0,
+    "code2": 1,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "keyboard.scrollUp"
+  },
+  {
+    "id": "code-2100ff",
+    "category": "mouse",
+    "name_en": "Wheel down",
+    "name_ru": "колесо вниз",
+    "kind": 33,
+    "code1": 0,
+    "code2": 255,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "keyboard.scrollDown"
+  },
+  {
+    "id": "KC_MEDIA_PLAY_PAUSE",
+    "category": "media",
+    "name_en": "Play/Pause",
+    "name_ru": "Воспроизведение / пауза",
+    "kind": 48,
+    "code1": 205,
+    "code2": 0,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [
+      "tgl"
+    ],
+    "lang_key": "mouse.playPause"
+  },
+  {
+    "id": "KC_AUDIO_VOLUME_MUTE",
+    "category": "media",
+    "name_en": "Mute",
+    "name_ru": "Отключение звука",
+    "kind": 48,
+    "code1": 226,
+    "code2": 0,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [
+      "tgl"
+    ],
+    "lang_key": "mouse.silence"
+  },
+  {
+    "id": "KC_MEDIA_STOP",
+    "category": "media",
+    "name_en": "Stop",
+    "name_ru": "стоп",
+    "kind": 48,
+    "code1": 183,
+    "code2": 0,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [
+      "tgl"
+    ],
+    "lang_key": "mouse.stopPlaying"
+  },
+  {
+    "id": "KC_MEDIA_TRACK_PREVIOUS",
+    "category": "media",
+    "name_en": "Previous Song",
+    "name_ru": "Предыдущий трек",
+    "kind": 48,
+    "code1": 182,
+    "code2": 0,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [
+      "tgl"
+    ],
+    "lang_key": "mouse.previousSong"
+  },
+  {
+    "id": "KC_MEDIA_TRACK_NEXT",
+    "category": "media",
+    "name_en": "Next Song",
+    "name_ru": "Следующий трек",
+    "kind": 48,
+    "code1": 181,
+    "code2": 0,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [
+      "tgl"
+    ],
+    "lang_key": "mouse.nextSong"
+  },
+  {
+    "id": "KC_AUDIO_VOLUME_UP",
+    "category": "media",
+    "name_en": "Volume +",
+    "name_ru": "Увеличение громкости",
+    "kind": 48,
+    "code1": 233,
+    "code2": 0,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [
+      "tgl"
+    ],
+    "lang_key": "mouse.volumeUp"
+  },
+  {
+    "id": "KC_AUDIO_VOLUME_DOWN",
+    "category": "media",
+    "name_en": "Volume -",
+    "name_ru": "Уменьшение громкости",
+    "kind": 48,
+    "code1": 234,
+    "code2": 0,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [
+      "tgl"
+    ],
+    "lang_key": "mouse.volumeDown"
+  },
+  {
+    "id": "code-f03f00",
+    "category": "light",
+    "name_en": "Cycle lighting modes",
+    "name_ru": "Цикл режимов подсветки",
+    "kind": 240,
+    "code1": 63,
+    "code2": 0,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "light.changeLightingWay"
+  },
+  {
+    "id": "code-f08100",
+    "category": "light",
+    "name_en": "Backlight Mode Switch→",
+    "name_ru": "Переключение режима подсветки→",
+    "kind": 240,
+    "code1": 129,
+    "code2": 0,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "light.lightUp"
+  },
+  {
+    "id": "code-f08600",
+    "category": "light",
+    "name_en": "Switch backlight color→",
+    "name_ru": "Переключение цвета подсветки→",
+    "kind": 240,
+    "code1": 134,
+    "code2": 0,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "light.colorUp"
+  },
+  {
+    "id": "code-f08200",
+    "category": "light",
+    "name_en": "Backlight brightness +",
+    "name_ru": "Яркость подсветки +",
+    "kind": 240,
+    "code1": 130,
+    "code2": 0,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "light.brightUp"
+  },
+  {
+    "id": "code-f08300",
+    "category": "light",
+    "name_en": "Backlight brightness -",
+    "name_ru": "Яркость подсветки -",
+    "kind": 240,
+    "code1": 131,
+    "code2": 0,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "light.brightDown"
+  },
+  {
+    "id": "code-f08400",
+    "category": "light",
+    "name_en": "Backlight speed +",
+    "name_ru": "Скорость подсветки +",
+    "kind": 240,
+    "code1": 132,
+    "code2": 0,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "light.speedUp"
+  },
+  {
+    "id": "code-f08500",
+    "category": "light",
+    "name_en": "Backlight speed -",
+    "name_ru": "Скорость подсветки -",
+    "kind": 240,
+    "code1": 133,
+    "code2": 0,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "light.speedDown"
+  },
+  {
+    "id": "KC_LIGHT_TOGGLE_ALL",
+    "category": "light",
+    "name_en": "Turn All Lights On/Off",
+    "name_ru": "Включить/выключить весь свет",
+    "kind": 240,
+    "code1": 53,
+    "code2": 0,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "light.brightOffAll"
+  },
+  {
+    "id": "KC_MEDIA_ZOOM_OUT",
+    "category": "extra",
+    "name_en": "Zoom out",
+    "name_ru": "уменьшить масштаб",
+    "kind": 16,
+    "code1": 1,
+    "code2": 45,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.zoomOut"
+  },
+  {
+    "id": "KC_MEDIA_ZOOM_IN",
+    "category": "extra",
+    "name_en": "Zoom in",
+    "name_ru": "увеличить масштаб",
+    "kind": 16,
+    "code1": 1,
+    "code2": 46,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.zoomIn"
+  },
+  {
+    "id": "code-100127",
+    "category": "extra",
+    "name_en": "Reset",
+    "name_ru": "сбросить",
+    "kind": 16,
+    "code1": 1,
+    "code2": 39,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.resetting"
+  },
+  {
+    "id": "code-10011c",
+    "category": "extra",
+    "name_en": "Restore",
+    "name_ru": "восстановить",
+    "kind": 16,
+    "code1": 1,
+    "code2": 28,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.recover"
+  },
+  {
+    "id": "code-10011d",
+    "category": "extra",
+    "name_en": "Undo",
+    "name_ru": "отменить",
+    "kind": 16,
+    "code1": 1,
+    "code2": 29,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.repeal"
+  },
+  {
+    "id": "code-100104",
+    "category": "extra",
+    "name_en": "Select all",
+    "name_ru": "выбрать все",
+    "kind": 16,
+    "code1": 1,
+    "code2": 4,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.selectAll"
+  },
+  {
+    "id": "code-100111",
+    "category": "extra",
+    "name_en": "Create",
+    "name_ru": "создать",
+    "kind": 16,
+    "code1": 1,
+    "code2": 17,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.new"
+  },
+  {
+    "id": "code-100106",
+    "category": "extra",
+    "name_en": "Copy",
+    "name_ru": "копировать",
+    "kind": 16,
+    "code1": 1,
+    "code2": 6,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.copy"
+  },
+  {
+    "id": "code-10011b",
+    "category": "extra",
+    "name_en": "Cut",
+    "name_ru": "вырезать",
+    "kind": 16,
+    "code1": 1,
+    "code2": 27,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.cut"
+  },
+  {
+    "id": "code-100119",
+    "category": "extra",
+    "name_en": "Paste",
+    "name_ru": "вставить",
+    "kind": 16,
+    "code1": 1,
+    "code2": 25,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.paste"
+  },
+  {
+    "id": "code-100116",
+    "category": "extra",
+    "name_en": "Save",
+    "name_ru": "Сохранить",
+    "kind": 16,
+    "code1": 1,
+    "code2": 22,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.save"
+  },
+  {
+    "id": "code-100112",
+    "category": "extra",
+    "name_en": "Open",
+    "name_ru": "открыть",
+    "kind": 16,
+    "code1": 1,
+    "code2": 18,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.open"
+  },
+  {
+    "id": "code-100117",
+    "category": "extra",
+    "name_en": "New Item",
+    "name_ru": "создать элемент",
+    "kind": 16,
+    "code1": 1,
+    "code2": 23,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.newItem"
+  },
+  {
+    "id": "code-10011a",
+    "category": "extra",
+    "name_en": "Close item",
+    "name_ru": "закрыть элемент",
+    "kind": 16,
+    "code1": 1,
+    "code2": 26,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.closeItem"
+  },
+  {
+    "id": "code-100450",
+    "category": "extra",
+    "name_en": "Back (keyboard)",
+    "name_ru": "назад (клавиатура)",
+    "kind": 16,
+    "code1": 4,
+    "code2": 80,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "keyboard.backward"
+  },
+  {
+    "id": "code-10044f",
+    "category": "extra",
+    "name_en": "Forward (keyboard)",
+    "name_ru": "вперед (клавиатура)",
+    "kind": 16,
+    "code1": 4,
+    "code2": 79,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "keyboard.forward"
+  },
+  {
+    "id": "code-10082b",
+    "category": "extra",
+    "name_en": "switch window",
+    "name_ru": "переключение окна",
+    "kind": 16,
+    "code1": 8,
+    "code2": 43,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "keyboard.conversionWindow"
+  },
+  {
+    "id": "code-100807",
+    "category": "extra",
+    "name_en": "Show desktop",
+    "name_ru": "показать рабочий стол",
+    "kind": 16,
+    "code1": 8,
+    "code2": 7,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "keyboard.showDesktop"
+  },
+  {
+    "id": "code-100958",
+    "category": "extra",
+    "name_en": "Open navigation",
+    "name_ru": "открыть навигацию",
+    "kind": 16,
+    "code1": 9,
+    "code2": 88,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.openNarrative"
+  },
+  {
+    "id": "code-100817",
+    "category": "extra",
+    "name_en": "Cycle taskbar Apps",
+    "name_ru": "переключение приложений панели задач",
+    "kind": 16,
+    "code1": 8,
+    "code2": 23,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.loopApplication"
+  },
+  {
+    "id": "code-100804",
+    "category": "extra",
+    "name_en": "Action center",
+    "name_ru": "центр действий",
+    "kind": 16,
+    "code1": 8,
+    "code2": 4,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.actionCenter"
+  },
+  {
+    "id": "code-100808",
+    "category": "extra",
+    "name_en": "File Explorer",
+    "name_ru": "Проводник",
+    "kind": 16,
+    "code1": 8,
+    "code2": 8,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.fileExplorer"
+  },
+  {
+    "id": "code-10080c",
+    "category": "extra",
+    "name_en": "Windows settings center",
+    "name_ru": "центр настроек Windows",
+    "kind": 16,
+    "code1": 8,
+    "code2": 12,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.winSettingsCenter"
+  },
+  {
+    "id": "code-10080f",
+    "category": "extra",
+    "name_en": "Lock computer",
+    "name_ru": "заблокировать компьютер",
+    "kind": 16,
+    "code1": 8,
+    "code2": 15,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "keyboard.lockComputer"
+  },
+  {
+    "id": "code-10080e",
+    "category": "extra",
+    "name_en": "Cast screen to other devices",
+    "name_ru": "перенос экрана на другие устройства",
+    "kind": 16,
+    "code1": 8,
+    "code2": 14,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.projectToOtherDevices"
+  },
+  {
+    "id": "code-100805",
+    "category": "extra",
+    "name_en": "Jump to tray",
+    "name_ru": "переход в трей",
+    "kind": 16,
+    "code1": 8,
+    "code2": 5,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.jumpToTray"
+  },
+  {
+    "id": "code-10080a",
+    "category": "extra",
+    "name_en": "Start Xbox game bar",
+    "name_ru": "запуск игровой панели Xbox",
+    "kind": 16,
+    "code1": 8,
+    "code2": 10,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.launchXboxGameBar"
+  },
+  {
+    "id": "code-100815",
+    "category": "extra",
+    "name_en": "Run",
+    "name_ru": "запуск",
+    "kind": 16,
+    "code1": 8,
+    "code2": 21,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.operation"
+  },
+  {
+    "id": "code-100816",
+    "category": "extra",
+    "name_en": "Search",
+    "name_ru": "Поиск",
+    "kind": 16,
+    "code1": 8,
+    "code2": 22,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.search"
+  },
+  {
+    "id": "code-100818",
+    "category": "extra",
+    "name_en": "Display settings",
+    "name_ru": "настройки экрана",
+    "kind": 16,
+    "code1": 8,
+    "code2": 24,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.displaySetting"
+  },
+  {
+    "id": "code-10081b",
+    "category": "extra",
+    "name_en": "Simple menu",
+    "name_ru": "простое меню",
+    "kind": 16,
+    "code1": 8,
+    "code2": 27,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.simpleMenu"
+  },
+  {
+    "id": "code-100837",
+    "category": "extra",
+    "name_en": "Emoji box",
+    "name_ru": "окно с эмодзи",
+    "kind": 16,
+    "code1": 8,
+    "code2": 55,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.emojiBox"
+  },
+  {
+    "id": "code-100129",
+    "category": "extra",
+    "name_en": "Start menu",
+    "name_ru": "меню 'Пуск'",
+    "kind": 16,
+    "code1": 1,
+    "code2": 41,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.startMenu"
+  },
+  {
+    "id": "code-10042b",
+    "category": "extra",
+    "name_en": "Taskbar",
+    "name_ru": "панель задач",
+    "kind": 16,
+    "code1": 4,
+    "code2": 43,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.taskbar"
+  },
+  {
+    "id": "code-10043d",
+    "category": "extra",
+    "name_en": "Close window",
+    "name_ru": "закрыть окно",
+    "kind": 16,
+    "code1": 4,
+    "code2": 61,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "keyboard.closeWindow"
+  },
+  {
+    "id": "code-100429",
+    "category": "extra",
+    "name_en": "Switch to next App",
+    "name_ru": "переход к следующему приложению",
+    "kind": 16,
+    "code1": 4,
+    "code2": 41,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.switchNextApplication"
+  },
+  {
+    "id": "KC_MEDIA_WEB_HOME",
+    "category": "extra",
+    "name_en": "Browser homepage",
+    "name_ru": "домашняя страница браузера",
+    "kind": 48,
+    "code1": 35,
+    "code2": 2,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "keyboard.browserHome"
+  },
+  {
+    "id": "KC_MEDIA_CALCULATOR",
+    "category": "extra",
+    "name_en": "Calculator",
+    "name_ru": "калькулятор",
+    "kind": 48,
+    "code1": 146,
+    "code2": 1,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "keyboard.calculator"
+  },
+  {
+    "id": "KC_MEDIA_EMAIL",
+    "category": "extra",
+    "name_en": "Mail",
+    "name_ru": "почта",
+    "kind": 48,
+    "code1": 138,
+    "code2": 1,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "keyboard.email"
+  },
+  {
+    "id": "KC_MEDIA_COMPUTER",
+    "category": "extra",
+    "name_en": "My computer",
+    "name_ru": "мой компьютер",
+    "kind": 48,
+    "code1": 148,
+    "code2": 1,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "keyboard.myComputer"
+  },
+  {
+    "id": "KC_MEDIA_WEB_FAVORITE",
+    "category": "extra",
+    "name_en": "Favorites",
+    "name_ru": "избранное",
+    "kind": 48,
+    "code1": 42,
+    "code2": 2,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "keyboard.favorites"
+  },
+  {
+    "id": "code-10054c",
+    "category": "extra",
+    "name_en": "Windows security screen",
+    "name_ru": "экран безопасности Windowsи Windows",
+    "kind": 16,
+    "code1": 5,
+    "code2": 76,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "keyboard.windowsSecurity"
+  },
+  {
+    "id": "code-100329",
+    "category": "extra",
+    "name_en": "Task Manager",
+    "name_ru": "диспетчер задач",
+    "kind": 16,
+    "code1": 3,
+    "code2": 41,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.taskManager"
+  },
+  {
+    "id": "KC_MEDIA_BRIGHTNESS_ADD",
+    "category": "extra",
+    "name_en": "Screen brightness +",
+    "name_ru": "увеличить яркость экрана",
+    "kind": 48,
+    "code1": 111,
+    "code2": 0,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.screenBrightUp"
+  },
+  {
+    "id": "KC_MEDIA_BRIGHTNESS_SUBTRACT",
+    "category": "extra",
+    "name_en": "Screen brightness -",
+    "name_ru": "уменьшить яркость экрана",
+    "kind": 48,
+    "code1": 112,
+    "code2": 0,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.screenBrightDown"
+  },
+  {
+    "id": "KC_MEDIA_WEB_SEARCH",
+    "category": "extra",
+    "name_en": "Search (Web)",
+    "name_ru": "Поиск (веб)",
+    "kind": 48,
+    "code1": 33,
+    "code2": 2,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "web.search"
+  },
+  {
+    "id": "KC_MEDIA_WEB_REFRESH",
+    "category": "extra",
+    "name_en": "Refresh (web page)",
+    "name_ru": "Обновить (веб-страницу)",
+    "kind": 48,
+    "code1": 39,
+    "code2": 2,
+    "layers": [
+      0,
+      1
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "web.refresh"
+  },
+  {
+    "id": "KC_SwitchProfile",
+    "category": "extra",
+    "name_en": "Switch to onboard",
+    "name_ru": "Переключить на встроенный режим",
+    "kind": 240,
+    "code1": 250,
+    "code2": 0,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [
+      "tgl"
+    ],
+    "lang_key": "switchProfile"
+  },
+  {
+    "id": "KC_Forbid",
+    "category": "extra",
+    "name_en": "Disable",
+    "name_ru": "Отключить",
+    "kind": 16,
+    "code1": 0,
+    "code2": 0,
+    "layers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "word.forbid"
+  },
+  {
+    "id": "KC_FN1",
+    "category": "extra",
+    "name_en": "Win Fn",
+    "name_ru": "Win Fn",
+    "kind": 240,
+    "code1": 255,
+    "code2": 1,
+    "layers": [
+      0
+    ],
+    "disabled_advanced_types": [
+      "dks",
+      "tgl",
+      "rs",
+      "socd",
+      "lt",
+      "cb"
+    ],
+    "lang_key": "121"
+  },
+  {
+    "id": "KC_META_LEFT",
+    "category": "basic",
+    "name_en": "Left\ncommand",
+    "name_ru": "Left\ncommand",
+    "kind": 16,
+    "code1": 8,
+    "code2": 0,
+    "layers": [
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_META_RIGHT",
+    "category": "basic",
+    "name_en": "Right\ncommand",
+    "name_ru": "Right\ncommand",
+    "kind": 16,
+    "code1": 128,
+    "code2": 0,
+    "layers": [
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_ALT_LEFT",
+    "category": "basic",
+    "name_en": "Left\noption",
+    "name_ru": "Left\noption",
+    "kind": 16,
+    "code1": 4,
+    "code2": 0,
+    "layers": [
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "KC_ALT_RIGHT",
+    "category": "basic",
+    "name_en": "Right\noption",
+    "name_ru": "Right\noption",
+    "kind": 16,
+    "code1": 64,
+    "code2": 0,
+    "layers": [
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": ""
+  },
+  {
+    "id": "code-10082d",
+    "category": "extra",
+    "name_en": "Zoom out",
+    "name_ru": "уменьшить масштаб",
+    "kind": 16,
+    "code1": 8,
+    "code2": 45,
+    "layers": [
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.zoomOut"
+  },
+  {
+    "id": "code-10082e",
+    "category": "extra",
+    "name_en": "Zoom in",
+    "name_ru": "увеличить масштаб",
+    "kind": 16,
+    "code1": 8,
+    "code2": 46,
+    "layers": [
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.zoomIn"
+  },
+  {
+    "id": "code-100827",
+    "category": "extra",
+    "name_en": "Actual Size",
+    "name_ru": "Реальный размер",
+    "kind": 16,
+    "code1": 8,
+    "code2": 39,
+    "layers": [
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "word.actualSize"
+  },
+  {
+    "id": "code-100a1d",
+    "category": "extra",
+    "name_en": "Redo",
+    "name_ru": "Повторить",
+    "kind": 16,
+    "code1": 10,
+    "code2": 29,
+    "layers": [
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "word.redo"
+  },
+  {
+    "id": "code-10081d",
+    "category": "extra",
+    "name_en": "Undo",
+    "name_ru": "отменить",
+    "kind": 16,
+    "code1": 8,
+    "code2": 29,
+    "layers": [
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.repeal"
+  },
+  {
+    "id": "code-100804",
+    "category": "extra",
+    "name_en": "Select all",
+    "name_ru": "Выбрать все",
+    "kind": 16,
+    "code1": 8,
+    "code2": 4,
+    "layers": [
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "word.selectAll"
+  },
+  {
+    "id": "code-100811",
+    "category": "extra",
+    "name_en": "New file/window",
+    "name_ru": "Новый файл/окно",
+    "kind": 16,
+    "code1": 8,
+    "code2": 17,
+    "layers": [
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "word.newFileOrWindow"
+  },
+  {
+    "id": "code-100806",
+    "category": "extra",
+    "name_en": "Copy",
+    "name_ru": "копировать",
+    "kind": 16,
+    "code1": 8,
+    "code2": 6,
+    "layers": [
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.copy"
+  },
+  {
+    "id": "code-10081b",
+    "category": "extra",
+    "name_en": "Cut",
+    "name_ru": "вырезать",
+    "kind": 16,
+    "code1": 8,
+    "code2": 27,
+    "layers": [
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.cut"
+  },
+  {
+    "id": "code-100819",
+    "category": "extra",
+    "name_en": "Paste",
+    "name_ru": "вставить",
+    "kind": 16,
+    "code1": 8,
+    "code2": 25,
+    "layers": [
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.paste"
+  },
+  {
+    "id": "code-100816",
+    "category": "extra",
+    "name_en": "Save",
+    "name_ru": "Сохранить",
+    "kind": 16,
+    "code1": 8,
+    "code2": 22,
+    "layers": [
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "mouse.save"
+  },
+  {
+    "id": "code-100812",
+    "category": "extra",
+    "name_en": "Open file",
+    "name_ru": "Открыть файл",
+    "kind": 16,
+    "code1": 8,
+    "code2": 18,
+    "layers": [
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "word.openFile"
+  },
+  {
+    "id": "code-100817",
+    "category": "extra",
+    "name_en": "New tab",
+    "name_ru": "Новая вкладка",
+    "kind": 16,
+    "code1": 8,
+    "code2": 23,
+    "layers": [
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "word.newTab"
+  },
+  {
+    "id": "code-10081a",
+    "category": "extra",
+    "name_en": "Close current tab/window",
+    "name_ru": "Закрыть вкладку/окно",
+    "kind": 16,
+    "code1": 8,
+    "code2": 26,
+    "layers": [
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "word.closeTabOrWindow"
+  },
+  {
+    "id": "code-10082f",
+    "category": "extra",
+    "name_en": "Go back/up one level",
+    "name_ru": "Назад/вверх",
+    "kind": 16,
+    "code1": 8,
+    "code2": 47,
+    "layers": [
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "word.goBack"
+  },
+  {
+    "id": "code-100830",
+    "category": "extra",
+    "name_en": "Go to next page",
+    "name_ru": "Вперёд",
+    "kind": 16,
+    "code1": 8,
+    "code2": 48,
+    "layers": [
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "word.goForward"
+  },
+  {
+    "id": "code-100c07",
+    "category": "extra",
+    "name_en": "Show/hide Dock",
+    "name_ru": "Показать/скрыть Dock",
+    "kind": 16,
+    "code1": 12,
+    "code2": 7,
+    "layers": [
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "word.toggleDock"
+  },
+  {
+    "id": "code-10083e",
+    "category": "extra",
+    "name_en": "VoiceOver",
+    "name_ru": "VoiceOver",
+    "kind": 16,
+    "code1": 8,
+    "code2": 62,
+    "layers": [
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "word.voiceOver"
+  },
+  {
+    "id": "code-10082b",
+    "category": "extra",
+    "name_en": "Switch applications",
+    "name_ru": "Переключение приложений",
+    "kind": 16,
+    "code1": 8,
+    "code2": 43,
+    "layers": [
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "word.switchApp"
+  },
+  {
+    "id": "code-100c2c",
+    "category": "extra",
+    "name_en": "Open Finder",
+    "name_ru": "Открыть Finder",
+    "kind": 16,
+    "code1": 12,
+    "code2": 44,
+    "layers": [
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "word.revealFinder"
+  },
+  {
+    "id": "code-100914",
+    "category": "extra",
+    "name_en": "Lock screen",
+    "name_ru": "Блокировка экрана",
+    "kind": 16,
+    "code1": 9,
+    "code2": 20,
+    "layers": [
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "word.lockScreen"
+  },
+  {
+    "id": "code-f05100",
+    "category": "extra",
+    "name_en": "Spotlight search",
+    "name_ru": "Поиск Spotlight",
+    "kind": 240,
+    "code1": 81,
+    "code2": 0,
+    "layers": [
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "word.spotlightSearch"
+  },
+  {
+    "id": "code-10092c",
+    "category": "extra",
+    "name_en": "Emoji & Symbols",
+    "name_ru": "Эмодзи и символы",
+    "kind": 16,
+    "code1": 9,
+    "code2": 44,
+    "layers": [
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "word.emojiAndSymbols"
+  },
+  {
+    "id": "code-100152",
+    "category": "extra",
+    "name_en": "Mission Control",
+    "name_ru": "Mission Control",
+    "kind": 16,
+    "code1": 1,
+    "code2": 82,
+    "layers": [
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "word.missionControl"
+  },
+  {
+    "id": "code-100a0b",
+    "category": "extra",
+    "name_en": "Browser homepage",
+    "name_ru": "домашняя страница браузера",
+    "kind": 16,
+    "code1": 10,
+    "code2": 11,
+    "layers": [
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "keyboard.browserHome"
+  },
+  {
+    "id": "code-100a06",
+    "category": "extra",
+    "name_en": "Go to home directory",
+    "name_ru": "Перейти в домашнюю папку",
+    "kind": 16,
+    "code1": 10,
+    "code2": 6,
+    "layers": [
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "word.goToComputerHome"
+  },
+  {
+    "id": "code-100c05",
+    "category": "extra",
+    "name_en": "Show bookmarks (Safari)",
+    "name_ru": "Показать закладки (Safari)",
+    "kind": 16,
+    "code1": 12,
+    "code2": 5,
+    "layers": [
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "word.showBookmarks"
+  },
+  {
+    "id": "code-100c29",
+    "category": "extra",
+    "name_en": "Force Quit",
+    "name_ru": "Принуд. выход",
+    "kind": 16,
+    "code1": 12,
+    "code2": 41,
+    "layers": [
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "word.forceQuitMenu"
+  },
+  {
+    "id": "KC_MEDIA_BRIGHTNESS_ADD",
+    "category": "extra",
+    "name_en": "Increase brightness",
+    "name_ru": "Увеличить яркость",
+    "kind": 48,
+    "code1": 111,
+    "code2": 0,
+    "layers": [
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "word.increaseBrightness"
+  },
+  {
+    "id": "KC_MEDIA_BRIGHTNESS_SUBTRACT",
+    "category": "extra",
+    "name_en": "Decrease brightness",
+    "name_ru": "Уменьшить яркость",
+    "kind": 48,
+    "code1": 112,
+    "code2": 0,
+    "layers": [
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "word.decreaseBrightness"
+  },
+  {
+    "id": "code-100809",
+    "category": "extra",
+    "name_en": "Find/Address Bar",
+    "name_ru": "Поиск/Адресная строка",
+    "kind": 16,
+    "code1": 8,
+    "code2": 9,
+    "layers": [
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "word.findInPageOrFocusAddress"
+  },
+  {
+    "id": "code-100815",
+    "category": "extra",
+    "name_en": "Reload page",
+    "name_ru": "Перезагрузить страницу",
+    "kind": 16,
+    "code1": 8,
+    "code2": 21,
+    "layers": [
+      2,
+      3
+    ],
+    "disabled_advanced_types": [],
+    "lang_key": "word.reloadPage"
+  },
+  {
+    "id": "KC_FN3",
+    "category": "extra",
+    "name_en": "Mac Fn",
+    "name_ru": "Mac Fn",
+    "kind": 240,
+    "code1": 255,
+    "code2": 3,
+    "layers": [
+      2
+    ],
+    "disabled_advanced_types": [
+      "dks",
+      "tgl",
+      "rs",
+      "socd",
+      "lt",
+      "cb"
+    ],
+    "lang_key": "123"
+  }
+]
